@@ -38,5 +38,27 @@ def load_done_ids(path: str | Path, key: str = "id") -> set[str]:
     return out
 
 
+def load_done_ids_ok(path: str | Path, key: str = "id") -> set[str]:
+    """IDs with at least one *successful* (non-error) record.
+
+    Unlike `load_done_ids`, rows whose only record carries an ``error`` are
+    *not* counted as done, so they remain eligible for retry.
+    """
+    p = Path(path)
+    if not p.exists():
+        return set()
+    out: set[str] = set()
+    for line in p.open("r", encoding="utf-8"):
+        try:
+            rec = json.loads(line)
+        except Exception:
+            continue
+        if "error" in rec:
+            continue
+        if key in rec:
+            out.add(rec[key])
+    return out
+
+
 def model_slug(model_id: str) -> str:
     return model_id.replace("/", "__").replace(":", "_")

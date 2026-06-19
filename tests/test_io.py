@@ -1,7 +1,13 @@
 """I/O helpers: JSONL round-trip, resume IDs, model slug."""
 from __future__ import annotations
 
-from synthgen.io import iter_jsonl, load_done_ids, model_slug, write_jsonl
+from synthgen.io import (
+    iter_jsonl,
+    load_done_ids,
+    load_done_ids_ok,
+    model_slug,
+    write_jsonl,
+)
 
 
 def test_write_then_iter_roundtrips(tmp_path):
@@ -34,6 +40,24 @@ def test_load_done_ids(tmp_path):
 
 def test_load_done_ids_missing_file(tmp_path):
     assert load_done_ids(tmp_path / "nope.jsonl") == set()
+
+
+def test_load_done_ids_ok_excludes_error_records(tmp_path):
+    p = tmp_path / "gen.jsonl"
+    # "a" succeeded, "b" only errored, "c" errored then succeeded
+    p.write_text(
+        '{"id": "a", "generated_prompt": "x"}\n'
+        '{"id": "b", "error": "boom"}\n'
+        '{"id": "c", "error": "boom"}\n'
+        '{"id": "c", "generated_prompt": "y"}\n',
+        encoding="utf-8",
+    )
+    assert load_done_ids(p) == {"a", "b", "c"}       # any record present
+    assert load_done_ids_ok(p) == {"a", "c"}         # only non-error records
+
+
+def test_load_done_ids_ok_missing_file(tmp_path):
+    assert load_done_ids_ok(tmp_path / "nope.jsonl") == set()
 
 
 def test_model_slug():

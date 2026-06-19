@@ -32,7 +32,7 @@ import httpx
 
 from synthgen.backends import Backend
 from synthgen.config import SynthConfig
-from synthgen.io import iter_jsonl, load_done_ids, model_slug
+from synthgen.io import iter_jsonl, load_done_ids_ok, model_slug
 from synthgen.log import get_logger
 
 log = get_logger("synthgen.generate")
@@ -105,19 +105,9 @@ def _record_for(mode: str, row: dict, model: str,
 
 # ----- core runner ---------------------------------------------------------
 
-async def _run_backend(backend: Backend, mode: str, rows: list[dict],
-                       out_path: Path, cfg: SynthConfig,
-                       sampling: dict | None = None) -> None:
-    done = load_done_ids(out_path)
-    todo = [r for r in rows if r["id"] not in done]
-    if not todo:
-        log.info("[%s/%s] nothing to do (%d already done)",
-                 backend.name, backend.model, len(done))
-        return
-    log.info("[%s/%s] %d rows to run (skipping %d) -> %s",
-             backend.name, backend.model, len(todo), len(done), out_path.name)
-
-    sampling = sampling or cfg.sampling
+async def _generate_once(backend: Backend, mode: str, todo: list[dict],
+                         out_path: Path, cfg: SynthConfig, sampling: dict) -> None:
+    """Run one pass over `todo`, appending one record per row to `out_path`."""
     sem = asyncio.Semaphore(cfg.concurrency)
     progress = {"done": 0, "errs": 0}
     total = len(todo)
@@ -147,9 +137,53 @@ async def _run_backend(backend: Backend, mode: str, rows: list[dict],
                                  backend.model, progress["done"], total,
                                  progress["errs"], rate, eta / 60)
             await asyncio.gather(*(worker(r) for r in todo))
-            log.info("[%s/%s] done in %.1fs, errors=%d/%d",
+            log.info("[%s/%s] pass done in %.1fs, errors=%d/%d",
                      backend.name, backend.model,
                      time.time() - t0, progress["errs"], total)
+
+
+async def _run_backend(backend: Backend, mode: str, rows: list[dict],
+                       out_path: Path, cfg: SynthConfig,
+                       sampling: dict | None = None, *,
+                       max_attempts: int = 1, retry_delay: float = 10.0) -> int:
+    """Generate `rows` for `backend`, retrying short runs up to `max_attempts`.
+
+    "Short" = some input rows still lack a successful (non-error) record. Each
+    attempt re-runs only the rows still missing, so errored/incomplete rows are
+    retried while finished ones are skipped. Returns the count still missing.
+    """
+    sampling = sampling or cfg.sampling
+    target_ids = {r["id"] for r in rows}
+    n_target = len(target_ids)
+
+    for attempt in range(1, max_attempts + 1):
+        done = load_done_ids_ok(out_path)
+        todo = [r for r in rows if r["id"] not in done]
+        n_done = n_target - len(todo)
+        if not todo:
+            log.info("[%s/%s] complete: %d/%d generated",
+                     backend.name, backend.model, n_done, n_target)
+            return 0
+        if attempt == 1:
+            log.info("[%s/%s] %d rows to run (skipping %d done) -> %s",
+                     backend.name, backend.model, len(todo), n_done, out_path.name)
+        else:
+            log.warning("[%s/%s] attempt %d/%d: %d/%d done, retrying %d missing "
+                        "after %.0fs", backend.name, backend.model, attempt,
+                        max_attempts, n_done, n_target, len(todo), retry_delay)
+            if retry_delay > 0:
+                await asyncio.sleep(retry_delay)
+        await _generate_once(backend, mode, todo, out_path, cfg, sampling)
+
+    missing = len(target_ids - load_done_ids_ok(out_path))
+    if missing:
+        log.error("[%s/%s] INCOMPLETE after %d attempt(s): %d/%d generated, "
+                  "%d still missing", backend.name, backend.model, max_attempts,
+                  n_target - missing, n_target, missing)
+    else:
+        log.info("[%s/%s] complete: %d/%d generated",
+                 backend.name, backend.model, n_target, n_target)
+    return missing
 
 
 def _max_tokens_default(mode: str) -> int:
@@ -166,6 +200,8 @@ def run(
     in_path: Path | None = None,
     split: bool | None = None,
     max_tokens: int | None = None,
+    max_attempts: int = 1,
+    retry_delay: float = 10.0,
 ) -> list[Path]:
     """Run generation across `backends`.
 
@@ -173,6 +209,9 @@ def run(
     - mode="response"  : generated_prompt → response (SFT pair)
     - split=True       : partition rows across backends (round-robin) for diversity
                          default True iff multiple backends are passed
+    - max_attempts>1   : if a run finishes short of its target (some rows have no
+                         successful record), re-run the missing rows up to this
+                         many times, waiting `retry_delay` seconds between attempts
     """
     if mode not in ("prompt", "response"):
         raise ValueError(f"mode must be 'prompt' or 'response', got {mode!r}")
@@ -209,7 +248,8 @@ def run(
             log.info("  [split] %s: %d rows", be.model, len(shards[be.model]))
         for be in backends:
             out = _output_path_for(mode, cfg, be.model, None)
-            asyncio.run(_run_backend(be, mode, shards[be.model], out, cfg, sampling))
+            asyncio.run(_run_backend(be, mode, shards[be.model], out, cfg, sampling,
+                                     max_attempts=max_attempts, retry_delay=retry_delay))
             outputs.append(out)
     else:
         for be in backends:
@@ -217,7 +257,8 @@ def run(
             out = _output_path_for(mode, cfg, be.model, None)
             rows = _load_rows(mode, ip)
             log.info("loaded %d rows from %s", len(rows), ip)
-            asyncio.run(_run_backend(be, mode, rows, out, cfg, sampling))
+            asyncio.run(_run_backend(be, mode, rows, out, cfg, sampling,
+                                     max_attempts=max_attempts, retry_delay=retry_delay))
             outputs.append(out)
 
     return outputs

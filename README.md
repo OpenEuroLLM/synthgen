@@ -108,6 +108,28 @@ later are picked up automatically, and removing a file evicts an endpoint.
 (or `gen_<model>.jsonl` if no filter step has run) and writes
 `sft_<model>.jsonl` — one SFT pair per row.
 
+### Resume & retry
+
+Every `generate` run is checkpointed: it appends one record per row and, on
+restart, **skips rows that already have a successful (non-error) record** — so
+re-running the same command resumes where it left off and re-attempts any rows
+that errored.
+
+To make a run keep itself whole automatically, pass `--max-attempts`: after a
+pass, if the output is short of its target (the input row count), it re-runs
+only the missing rows, up to N attempts, pausing `--retry-delay` seconds
+between them.
+
+```bash
+synthgen generate --backend vllm --mode response \
+    --models google/gemma-4-26b-a4b-it \
+    --endpoints-dir endpoints \
+    --max-attempts 5 --retry-delay 30
+```
+
+If it's still short after the last attempt, it logs an `INCOMPLETE` error with
+the missing count (a later re-run will pick those up).
+
 ### Common follow-up
 
 ```bash

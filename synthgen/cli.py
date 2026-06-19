@@ -61,6 +61,8 @@ def _cmd_generate(args):
         in_path=Path(args.in_path) if args.in_path else None,
         split=args.split,
         max_tokens=args.max_tokens,
+        max_attempts=args.max_attempts,
+        retry_delay=args.retry_delay,
     )
 
 
@@ -152,6 +154,11 @@ def main(argv: list[str] | None = None) -> None:
                    help="Override input JSONL (default: derived from mode + model).")
     p.add_argument("--max-tokens", type=int, default=None,
                    help="Override max_tokens (defaults: 1024 prompt, 1536 response).")
+    p.add_argument("--max-attempts", type=int, default=1,
+                   help="If the run finishes short of the target, re-run the missing "
+                        "rows up to this many times (default: 1, no retry).")
+    p.add_argument("--retry-delay", type=float, default=10.0,
+                   help="Seconds to wait between retry attempts (default: 10).")
     grp = p.add_mutually_exclusive_group()
     grp.add_argument("--split", dest="split", action="store_true", default=None,
                      help="Round-robin partition rows across models for diversity.")
