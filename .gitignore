@@ -1,0 +1,28 @@
+__pycache__/
+*.py[co]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# data + run artifacts (use SYNTHGEN_ROOT to isolate)
+outputs/
+prompts/
+review/
+logs/
+topic_distribution.json
+
+# reference material / planning docs (not part of the package)
+*.pdf
+*.docx
+*.png
+
+# pilot run (data + one-off scripts; tracked separately, not in the package)
+pilot/
+
+# editor / OS
+.idea/
+.vscode/
+.DS_Store
