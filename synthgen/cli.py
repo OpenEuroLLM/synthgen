@@ -31,7 +31,7 @@ def _add_root(p: argparse.ArgumentParser) -> None:
 # ----- subcommand implementations -----------------------------------------
 
 def _cmd_build_prompts(args):
-    from synthgen import prompts
+    from synthgen.pipeline import prompts
     prompts.build(_build_cfg(args), seed=args.seed, n_override=args.n)
 
 
@@ -52,7 +52,7 @@ def _make_backends(args, cfg: SynthConfig):
 
 
 def _cmd_generate(args):
-    from synthgen import generate
+    from synthgen.pipeline import generate
     cfg = _build_cfg(args)
     backends = _make_backends(args, cfg)
     generate.run(
@@ -67,21 +67,21 @@ def _cmd_generate(args):
 
 
 def _cmd_filter(args):
-    from synthgen import filter as flt
+    from synthgen.pipeline import filter as flt
     cfg = _build_cfg(args)
     gen = [Path(p) for p in args.gen] if args.gen else None
     flt.run(cfg, gen=gen)
 
 
 def _cmd_verify(args):
-    from synthgen import verify
+    from synthgen.pipeline import verify
     cfg = _build_cfg(args)
     gen = [Path(p) for p in args.gen] if args.gen else None
     verify.run(cfg, gen=gen)
 
 
 def _cmd_back_translate(args):
-    from synthgen import back_translate
+    from synthgen.pipeline import back_translate
     cfg = _build_cfg(args)
     gen = [Path(p) for p in args.gen] if args.gen else None
     back_translate.run(cfg, gen=gen, sample=args.sample, seed=args.seed,
@@ -90,7 +90,7 @@ def _cmd_back_translate(args):
 
 def _cmd_dedupe(args):
     import json as _json
-    from synthgen import dedupe
+    from synthgen.pipeline import dedupe
     summary = dedupe.run(
         input=Path(args.input), output=Path(args.output),
         min_response_chars=args.min_response_chars,
@@ -100,13 +100,13 @@ def _cmd_dedupe(args):
 
 
 def _cmd_qc(args):
-    from synthgen import qc
+    from synthgen.pipeline import qc
     qc.run(input=Path(args.input), output=Path(args.output))
 
 
 def _cmd_export_openinstruct(args):
     import json as _json
-    from synthgen import to_open_instruct
+    from synthgen.pipeline import to_open_instruct
     summary = to_open_instruct.run(
         input=Path(args.input), out_dir=Path(args.out_dir),
         source=args.source, batch_size=args.batch_size,
@@ -116,7 +116,7 @@ def _cmd_export_openinstruct(args):
 
 
 def _cmd_topics(args):
-    from synthgen import topics
+    from synthgen.pipeline import topics
     cfg = _build_cfg(args)
     topics.run(cfg, dataset=args.dataset, split=args.split,
                text_field=args.text_field, n=args.n, seed=args.seed,

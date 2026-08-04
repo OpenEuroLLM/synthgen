@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import json
 
-from synthgen import qc
+from synthgen.pipeline import qc
 from synthgen.io import write_jsonl
 
 

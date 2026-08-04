@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import json
 
-from synthgen import dedupe
+from synthgen.pipeline import dedupe
 from synthgen.io import iter_jsonl, write_jsonl
 
 

@@ -4,7 +4,7 @@ from __future__ import annotations
 import asyncio
 import collections
 
-from synthgen import generate
+from synthgen.pipeline import generate
 from synthgen.config import Paths, SynthConfig
 from synthgen.io import load_done_ids_ok
 

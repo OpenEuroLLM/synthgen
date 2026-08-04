@@ -184,7 +184,7 @@ Defaults (`--phase 3`):
 ```python
 from synthgen import SynthConfig, Paths
 from synthgen.backends import OpenRouterBackend, VLLMBackend
-from synthgen import prompts, generate, filter as flt, verify
+from synthgen.pipeline import prompts, generate, filter as flt, verify
 
 cfg = SynthConfig(phase=3, paths=Paths.from_root("/path/to/run"))
 prompts.build(cfg)

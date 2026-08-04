@@ -1,7 +1,7 @@
 """Leakage detection: the constraint-aware signals in filter.detect_leakage."""
 from __future__ import annotations
 
-from synthgen.filter import MAX_WORDS, detect_leakage
+from synthgen.pipeline.filter import MAX_WORDS, detect_leakage
 
 
 def test_empty_prompt_is_leak():

@@ -5,7 +5,7 @@ import random
 
 from synthgen.config import CONSTRAINTS, Paths, SynthConfig
 from synthgen.io import iter_jsonl
-from synthgen.prompts import build, build_one
+from synthgen.pipeline.prompts import build, build_one
 
 ONE_TOPIC = [("qa", 1.0)]
 _SCRIPT_SAFE = {c[0] for c in CONSTRAINTS if c[2]}

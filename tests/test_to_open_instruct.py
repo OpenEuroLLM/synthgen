@@ -5,7 +5,7 @@ import pytest
 
 pq = pytest.importorskip("pyarrow.parquet")
 
-from synthgen import to_open_instruct
+from synthgen.pipeline import to_open_instruct
 from synthgen.io import write_jsonl
 
 
