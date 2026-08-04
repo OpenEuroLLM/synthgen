@@ -1,15 +1,28 @@
 """Backend-agnostic generator with checkpoint/resume.
 
-Two modes:
-    prompt    meta_prompt -> generated_prompt
-              Input  : prompts/prompts.jsonl  (from `synthgen build-prompts`)
-              Output : outputs/gen_<model_slug>.jsonl
-              Feeds  : filter / verify / back-translate
+Four modes:
+    prompt      meta_prompt -> generated_prompt
+                Input  : prompts/prompts.jsonl  (from `synthgen build-prompts`)
+                Output : outputs/gen_<model_slug>.jsonl
+                Feeds  : filter / verify / back-translate
 
-    response  generated_prompt -> assistant response
-              Input  : outputs/gen_<model_slug>.filtered.jsonl
-              Output : outputs/sft_<model_slug>.jsonl
-              One SFT pair per row.
+    response    generated_prompt -> assistant response
+                Input  : outputs/gen_<model_slug>.filtered.jsonl
+                Output : outputs/sft_<model_slug>.jsonl
+                One SFT pair per row.
+
+    localized   meta_prompt -> {instruction, response} in one call (JSON out)
+                Input  : prompts/localized_prompts.jsonl (from
+                         `synthgen.prompts_localized`)
+                Output : outputs/loc_<model_slug>.jsonl
+                A parse failure is recorded as an error (not a silent drop) so
+                it is retried like any other failure.
+                Feeds  : mode="judge", synthgen.topup
+
+    judge       {instruction, response} -> {score, reason}
+                Input  : outputs/loc_<model_slug>.jsonl (rows from mode="localized")
+                Output : outputs/judged_<model_slug>.jsonl
+                Feeds  : synthgen.quality_filter
 
 Two backends (selected at the CLI):
     openrouter  hosted API, requires OPENROUTER_API_KEY
@@ -31,8 +44,8 @@ from typing import Iterable
 import httpx
 
 from synthgen.backends import Backend
-from synthgen.config import SynthConfig
-from synthgen.io import iter_jsonl, load_done_ids_ok, model_slug
+from synthgen.config import LANG_COUNTRY, LANGUAGES_PHASE3, SynthConfig
+from synthgen.io import extract_json, iter_jsonl, load_done_ids_ok, model_slug
 from synthgen.log import get_logger
 
 log = get_logger("synthgen.generate")
@@ -46,6 +59,14 @@ def _input_path_for(mode: str, cfg: SynthConfig, model: str,
         return explicit
     if mode == "prompt":
         return cfg.paths.prompts / "prompts.jsonl"
+    if mode == "localized":
+        return cfg.paths.prompts / "localized_prompts.jsonl"
+    if mode == "judge":
+        # Judge input is keyed by the *generator's* model slug, not the judge
+        # backend's — there's no way to derive that from the judge backend
+        # alone, so this mode always requires an explicit `in_path`.
+        raise ValueError("mode='judge' requires an explicit in_path "
+                         "(outputs/loc_<generator_model_slug>.jsonl)")
     s = model_slug(model)
     p = cfg.paths.outputs / f"gen_{s}.filtered.jsonl"
     return p if p.exists() else cfg.paths.outputs / f"gen_{s}.jsonl"
@@ -58,12 +79,19 @@ def _output_path_for(mode: str, cfg: SynthConfig, model: str,
     s = model_slug(model)
     if mode == "prompt":
         return cfg.paths.outputs / f"gen_{s}.jsonl"
+    if mode == "localized":
+        return cfg.paths.outputs / f"loc_{s}.jsonl"
+    if mode == "judge":
+        return cfg.paths.outputs / f"judged_{s}.jsonl"
     return cfg.paths.outputs / f"sft_{s}.jsonl"
 
 
 def _load_rows(mode: str, path: Path) -> list[dict]:
-    if mode == "prompt":
+    if mode in ("prompt", "localized"):
         return list(iter_jsonl(path))
+    if mode == "judge":
+        return [r for r in iter_jsonl(path)
+                if not r.get("error") and r.get("instruction") and r.get("response")]
     rows: list[dict] = []
     for r in iter_jsonl(path):
         if r.get("error") or not r.get("generated_prompt"):
@@ -73,7 +101,13 @@ def _load_rows(mode: str, path: Path) -> list[dict]:
 
 
 def _messages_for(mode: str, row: dict) -> list[dict]:
-    key = "meta_prompt" if mode == "prompt" else "generated_prompt"
+    if mode == "judge":
+        from synthgen.localized.prompts import judge_quality_prompt
+        content = judge_quality_prompt(
+            lang_name=LANGUAGES_PHASE3[row["lang"]], country=LANG_COUNTRY[row["lang"]],
+            instruction=row["instruction"], response=row["response"])
+        return [{"role": "user", "content": content}]
+    key = "meta_prompt" if mode in ("prompt", "localized") else "generated_prompt"
     return [{"role": "user", "content": row[key]}]
 
 
@@ -89,6 +123,35 @@ def _record_for(mode: str, row: dict, model: str,
             "persona": row.get("persona"),
             "model": model,
             "generated_prompt": content,
+            "usage": usage or {},
+        }
+    if mode == "localized":
+        ex = extract_json(content) or {}
+        instr, resp = ex.get("instruction"), ex.get("response")
+        if not instr or not resp:
+            return {"id": row["id"], "lang": row["lang"], "model": model,
+                    "error": "unparseable_json" if content else "empty_content"}
+        return {
+            "id": row["id"], "lang": row["lang"],
+            "domain": row.get("domain"), "is_local": row.get("is_local"),
+            "intent": row.get("intent"), "role": row.get("role"),
+            "salt": row.get("salt"),
+            "intent_used": ex.get("intent_used"), "role_used": ex.get("role_used"),
+            "model": model,
+            "instruction": instr, "response": resp,
+            "usage": usage or {},
+        }
+    if mode == "judge":
+        j = extract_json(content) or {}
+        sc = j.get("score")
+        if isinstance(sc, str) and sc.strip().lstrip("-").isdigit():
+            sc = int(sc)
+        if not isinstance(sc, (int, float)):
+            return {"id": row["id"], "lang": row["lang"], "model": model,
+                    "error": "unparseable_score" if content else "empty_content"}
+        return {
+            "id": row["id"], "lang": row["lang"], "model": model,
+            "score": sc, "reason": j.get("reason"),
             "usage": usage or {},
         }
     return {
@@ -187,10 +250,37 @@ async def _run_backend(backend: Backend, mode: str, rows: list[dict],
 
 
 def _max_tokens_default(mode: str) -> int:
-    return 1024 if mode == "prompt" else 1536
+    if mode == "prompt":
+        return 1024
+    if mode == "judge":
+        return 512
+    return 1536  # response, localized
+
+
+def _sampling_for(mode: str, cfg: SynthConfig, backend: Backend,
+                  max_tokens: int | None) -> dict:
+    sampling = {**cfg.sampling}
+    sampling["max_tokens"] = max_tokens or _max_tokens_default(mode)
+    if mode == "judge":
+        # Deterministic scoring, and — critical for reasoning judge models like
+        # Qwen3.6 — disable thinking so the JSON comes out directly instead of
+        # burning max_tokens on a <think> block and truncating before it.
+        sampling["temperature"] = 0.0
+        sampling["top_p"] = 1.0
+        if backend.name == "vllm":
+            sampling["chat_template_kwargs"] = {"enable_thinking": False}
+    return sampling
 
 
 # ----- public API ----------------------------------------------------------
+
+def output_path_for(mode: str, cfg: SynthConfig, model: str) -> Path:
+    """Public accessor for a mode's default output path (no explicit override) —
+    lets callers (e.g. synthgen.topup) locate a stage's checkpoint file without
+    re-running it."""
+    return _output_path_for(mode, cfg, model, None)
+
+
 
 def run(
     cfg: SynthConfig,
@@ -205,23 +295,23 @@ def run(
 ) -> list[Path]:
     """Run generation across `backends`.
 
-    - mode="prompt"    : meta_prompt → generated_prompt
-    - mode="response"  : generated_prompt → response (SFT pair)
+    - mode="prompt"     : meta_prompt → generated_prompt
+    - mode="response"   : generated_prompt → response (SFT pair)
+    - mode="localized"  : meta_prompt → {instruction, response} in one call
+    - mode="judge"      : {instruction, response} → {score, reason}
     - split=True       : partition rows across backends (round-robin) for diversity
                          default True iff multiple backends are passed
     - max_attempts>1   : if a run finishes short of its target (some rows have no
                          successful record), re-run the missing rows up to this
                          many times, waiting `retry_delay` seconds between attempts
     """
-    if mode not in ("prompt", "response"):
-        raise ValueError(f"mode must be 'prompt' or 'response', got {mode!r}")
+    if mode not in ("prompt", "response", "localized", "judge"):
+        raise ValueError(f"mode must be one of prompt/response/localized/judge, "
+                         f"got {mode!r}")
     cfg.paths.ensure()
     backends = list(backends)
     if not backends:
         raise ValueError("at least one backend required")
-
-    sampling = {**cfg.sampling}
-    sampling["max_tokens"] = max_tokens or _max_tokens_default(mode)
 
     do_split = split if split is not None else (len(backends) > 1)
     outputs: list[Path] = []
@@ -248,6 +338,7 @@ def run(
             log.info("  [split] %s: %d rows", be.model, len(shards[be.model]))
         for be in backends:
             out = _output_path_for(mode, cfg, be.model, None)
+            sampling = _sampling_for(mode, cfg, be, max_tokens)
             asyncio.run(_run_backend(be, mode, shards[be.model], out, cfg, sampling,
                                      max_attempts=max_attempts, retry_delay=retry_delay))
             outputs.append(out)
@@ -257,6 +348,7 @@ def run(
             out = _output_path_for(mode, cfg, be.model, None)
             rows = _load_rows(mode, ip)
             log.info("loaded %d rows from %s", len(rows), ip)
+            sampling = _sampling_for(mode, cfg, be, max_tokens)
             asyncio.run(_run_backend(be, mode, rows, out, cfg, sampling,
                                      max_attempts=max_attempts, retry_delay=retry_delay))
             outputs.append(out)

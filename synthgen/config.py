@@ -37,6 +37,14 @@ LANGUAGES_PHASE3: dict[str, str] = {
 LANGUAGES_DOLCI_TRAINED = ["es", "fr", "de", "it", "pt", "pl", "nl", "cs"]
 LANGUAGES_HELDOUT = ["ro", "el", "uk"]
 
+# Representative country per language, for localization grounding (domain/intent
+# prompts in synthgen.taxonomy / synthgen.prompts_localized).
+LANG_COUNTRY: dict[str, str] = {
+    "es": "Spain", "fr": "France", "de": "Germany", "it": "Italy",
+    "pt": "Portugal", "pl": "Poland", "nl": "the Netherlands", "cs": "Czechia",
+    "ro": "Romania", "el": "Greece", "uk": "Ukraine",
+}
+
 LANG_SCRIPT: dict[str, str] = {
     "el": "non_latin", "uk": "non_latin",
     "ro": "latin", "cs": "latin", "pl": "latin",

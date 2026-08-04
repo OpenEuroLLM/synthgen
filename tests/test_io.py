@@ -1,11 +1,13 @@
-"""I/O helpers: JSONL round-trip, resume IDs, model slug."""
+"""I/O helpers: JSONL round-trip, resume IDs, model slug, JSON extraction."""
 from __future__ import annotations
 
 from synthgen.io import (
+    extract_json,
     iter_jsonl,
     load_done_ids,
     load_done_ids_ok,
     model_slug,
+    next_id_index,
     write_jsonl,
 )
 
@@ -63,3 +65,49 @@ def test_load_done_ids_ok_missing_file(tmp_path):
 def test_model_slug():
     assert model_slug("google/gemma-4-26b-a4b-it") == "google__gemma-4-26b-a4b-it"
     assert model_slug("openai/gpt-oss:120b") == "openai__gpt-oss_120b"
+
+
+def test_extract_json_plain():
+    assert extract_json('{"a": 1, "b": "x"}') == {"a": 1, "b": "x"}
+
+
+def test_extract_json_strips_think_block():
+    text = '<think>reasoning about the answer</think>\n{"score": 7, "reason": "ok"}'
+    assert extract_json(text) == {"score": 7, "reason": "ok"}
+
+
+def test_extract_json_strips_code_fences():
+    text = '```json\n{"instruction": "hi", "response": "hello"}\n```'
+    assert extract_json(text) == {"instruction": "hi", "response": "hello"}
+
+
+def test_extract_json_picks_last_balanced_object():
+    # a stray brace earlier in the text must not break parsing of the real object
+    text = 'note: use {curly braces} sparingly\n{"score": 3}'
+    assert extract_json(text) == {"score": 3}
+
+
+def test_extract_json_none_or_empty():
+    assert extract_json(None) is None
+    assert extract_json("") is None
+    assert extract_json("no json here") is None
+
+
+def test_extract_json_malformed_returns_none():
+    assert extract_json('{"score": 3,}') is None
+
+
+def test_next_id_index_missing_file(tmp_path):
+    assert next_id_index(tmp_path / "nope.jsonl", "es") == 0
+
+
+def test_next_id_index_continues_from_max(tmp_path):
+    p = tmp_path / "loc.jsonl"
+    write_jsonl(p, [
+        {"id": "es-000000", "lang": "es"},
+        {"id": "es-000004", "lang": "es"},
+        {"id": "fr-000009", "lang": "fr"},   # different language, ignored
+    ])
+    assert next_id_index(p, "es") == 5
+    assert next_id_index(p, "fr") == 10
+    assert next_id_index(p, "de") == 0
