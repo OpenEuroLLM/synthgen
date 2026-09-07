@@ -104,11 +104,22 @@ not the "too few rows" one. See `_common/rescore_embeddings.py` and
   produced real spread across every listed alternate country in every
   language (e.g. fr: Canada 10, Belgium 9, Switzerland 8, France 3; es:
   Colombia 11, Argentina 8, Mexico 6, Spain 5) with no score penalty.
-- **Recommendation: add multi-country sampling for fr/de/es/pt/nl** (the
-  languages with known alternates) — no measured downside, and it directly
-  fixes a real mode-collapse source. **Do not expect the current exemplar
-  mechanism in `01` to improve country-specificity** without further work —
-  the small sample here at least doesn't support it.
+  **Correction: this run's `COUNTRY_ALTERNATES` included non-EU countries
+  (Canada, Switzerland, Mexico, Argentina, Colombia, Brazil) — wrong scope
+  for OpenEuroLLM.** `country_diversify.py` has since been restricted to EU
+  member states only; the numbers above (collected before that fix) still
+  show the *mechanism* works (real spread, no score penalty), but the
+  specific countries listed are no longer what the code would sample.
+- **Recommendation: add multi-country sampling for fr/de/nl** (the only
+  languages in this study's set with a genuine EU alternate — fr: France/
+  Belgium/Luxembourg; de: Germany/Austria; nl: the Netherlands/Belgium). `es`
+  and `pt` have **no** EU alternate to diversify into (no other EU member
+  state has either as a majority language) — `LANG_COUNTRY`'s single-country
+  default is not a simplification to fix for them, it's already the only EU
+  option. No measured downside for fr/de/nl, and it directly fixes a real
+  mode-collapse source. **Do not expect the current exemplar mechanism in
+  `01` to improve country-specificity** without further work — the small
+  sample here at least doesn't support it.
 
 ## 06 — domain split ratio
 
@@ -179,7 +190,8 @@ Taken together, the axes tested split into three groups:
 2. **Needs a different default, not removal** — `06` (pool split): the
    proposed `GENERAL_P=0.6` overshoots the stated 40% general target; use
    ~0.42-0.45 instead. `05` (country): add multi-country sampling for
-   fr/de/es/pt/nl — clear win, no downside measured.
+   fr/de/nl (EU alternates only — es/pt have none) — clear win, no downside
+   measured.
 3. **Not delivering on its premise as currently built** — `01` (domain
    grounding) shows no score benefit from deeper grounding once the sampling
    bugs are fixed, and `05`'s accuracy check suggests the real-exemplar

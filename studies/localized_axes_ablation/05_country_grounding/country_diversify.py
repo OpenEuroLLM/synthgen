@@ -13,7 +13,7 @@ Standalone — does not depend on 01's output.
 
   python country_diversify.py \
       --gen-endpoints endpoints/gen --judge-endpoints endpoints/judge \
-      --n-per-lang 30 --langs fr pt de es
+      --n-per-lang 30 --langs fr de nl
 """
 from __future__ import annotations
 
@@ -40,14 +40,16 @@ from _common import diversity_metrics as dm  # noqa: E402
 from _common import report as rpt  # noqa: E402
 
 # Plausible alternate countries per language, for languages spoken across
-# multiple countries. Languages not listed here fall back to LANG_COUNTRY's
-# single default (nothing to diversify — e.g. el, uk, ro, cs, pl, it are
-# effectively single-country for this taxonomy's purposes).
+# multiple countries. EU MEMBER STATES ONLY -- this is OpenEuroLLM, not a
+# general "wherever the language is spoken" list, so e.g. Switzerland
+# (fr/de), Canada (fr), Mexico/Argentina/Colombia (es), and Brazil (pt) are
+# deliberately excluded even though they're real, large speaker populations.
+# Languages not listed here (including es and pt: no other EU member state
+# has them as a majority language) fall back to LANG_COUNTRY's single
+# default -- nothing to diversify within the EU.
 COUNTRY_ALTERNATES: dict[str, list[str]] = {
-    "es": ["Spain", "Mexico", "Argentina", "Colombia"],
-    "fr": ["France", "Belgium", "Canada", "Switzerland"],
-    "de": ["Germany", "Austria", "Switzerland"],
-    "pt": ["Portugal", "Brazil"],
+    "fr": ["France", "Belgium", "Luxembourg"],
+    "de": ["Germany", "Austria"],
     "nl": ["the Netherlands", "Belgium"],
 }
 
