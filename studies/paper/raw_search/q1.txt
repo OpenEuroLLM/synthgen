@@ -1,0 +1,211 @@
+[dblp] Error: 503 Server Error: Service Unavailable for url: https://dblp.org/search/publ/api?q=multilingual+synthetic+instruction+tuning+data+generation&format=json&h=12&f=0
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+[open_alex] Error: 504 Server Error: Gateway Timeout for url: https://api.openalex.org/works?search.semantic=multilingual+synthetic+instruction+tuning+data+generation&filter=publication_year%3A2023-2026&sort=relevance_score%3Adesc&page=1&per-page=12
+
+============================================================
+  dblp: 0 papers found
+============================================================
+
+============================================================
+  arxiv: 12 papers found
+============================================================
+  [1] FFPDG: Fast, Fair and Private Data Generation
+      Authors: Weijie Xu, Jinjin Zhao, Francis Iannacci...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2307.00161v1
+
+  [2] Privacy Measurement in Tabular Synthetic Data: State of the Art and Future Research Directions
+      Authors: Alexander Boudewijn, Andrea Filippo Ferraris, Daniele Panfilo...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2311.17453v1
+
+  [3] Vision-Flan: Scaling Human-Labeled Tasks in Visual Instruction Tuning
+      Authors: Zhiyang Xu, Chao Feng, Rulin Shao...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2402.11690v1
+
+  [4] Demystifying Instruction Mixing for Fine-tuning Large Language Models
+      Authors: Renxi Wang, Haonan Li, Minghao Wu...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2312.10793v3
+
+  [5] FinGPT: Instruction Tuning Benchmark for Open-Source Large Language Models in Financial Datasets
+      Authors: Neng Wang, Hongyang Yang, Christina Dan Wang
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2310.04793v2
+
+  [6] On LLMs-Driven Synthetic Data Generation, Curation, and Evaluation: A Survey
+      Authors: Lin Long, Rui Wang, Ruixuan Xiao...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2406.15126v1
+
+  [7] AeroGen: Enhancing Remote Sensing Object Detection with Diffusion-Driven Data Generation
+      Authors: Datao Tang, Xiangyong Cao, Xuan Wu...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2411.15497v3
+
+  [8] Instruction Tuning with GPT-4
+      Authors: Baolin Peng, Chunyuan Li, Pengcheng He...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2304.03277v1
+
+  [9] TerraGen: A Unified Multi-Task Layout Generation Framework for Remote Sensing Data Augmentation
+      Authors: Datao Tang, Hao Wang, Yudeng Xin...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2510.21391v1
+
+  [10] Seed-Free Synthetic Data Generation Framework for Instruction-Tuning LLMs: A Case Study in Thai
+      Authors: Parinthapat Pengpun, Can Udomcharoenchaikit, Weerayut Buaphet...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2411.15484v1
+
+  [11] From Zero to Hero: Examining the Power of Symbolic Tasks in Instruction Tuning
+      Authors: Qian Liu, Fan Zhou, Zhengbao Jiang...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2304.07995v1
+
+  [12] Synthetic Data in MR Spectroscopy: Current Practices, Applications, and Considerations
+      Authors: John T. LaMaster, Aaron T. Gudmundson, Alireza Abaei...
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2602.23463v2
+
+
+============================================================
+  crossref: 12 papers found
+============================================================
+  [1] Efficient Long Chain-of-Thought Elicitation through Synthetic Data Generation and Targeted Fine-Tuning
+      Authors: Abdulloh Abdulloh
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.36227/techrxiv.176369747.70179230/v1
+
+  [2] SynFine: Boosting Image Segmentation Accuracy Through Synthetic Data Generation and Surgical Fine-Tuning
+      Authors: Mehdi Mounsif, Yassine Motie, Mohamed Benabdelkrim...
+      Year: 2023  Citations: 0  Venue: Proceedings of the 12th International Conference on Pattern Recognition Applications and Methods
+      URL: https://doi.org/10.5220/0011848300003411
+
+  [3] Is It Good Data for Multilingual Instruction Tuning or Just Bad Multilingual Evaluation for Large Language Models?
+      Authors: Pinzhen Chen, Simon Yu, Zhicheng Guo...
+      Year: 2024  Citations: 1  Venue: Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing
+      URL: https://doi.org/10.18653/v1/2024.emnlp-main.542
+
+  [4] Seed-Free Synthetic Data Generation Framework for Instruction-Tuning LLMs: A Case Study in Thai
+      Authors: Parinthapat Pengpun, Can Udomcharoenchaikit, Weerayut Buaphet...
+      Year: 2024  Citations: 5  Venue: Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 4: Student Research Workshop)
+      URL: https://doi.org/10.18653/v1/2024.acl-srw.38
+
+  [5] Empowering Beyond English-Centric Machine Translation on Llms by Multilingual Fusion Instruction Tuning
+      Authors: Zihao Feng, Hailong Cao, Qiuyu Ding...
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.2139/ssrn.5332884
+
+  [6] Synthetic Data Generation and Fine-Tuning for Saudi Arabic Dialect Adaptation
+      Authors: Mahmoud Abdelhadi Mahmoud Safia
+      Year: 2024  Citations: 0  Venue: Computer Fraud and Security
+      URL: https://doi.org/10.52710/cfs.772
+
+  [7] Semantic Evaluation of Multilingual Data-to-Text Generation via NLI Fine-Tuning: Precision, Recall and F1 scores
+      Authors: William Soto Martinez, Yannick Parmentier, Claire Gardent
+      Year: 2025  Citations: 1  Venue: Findings of the Association for Computational Linguistics: ACL 2025
+      URL: https://doi.org/10.18653/v1/2025.findings-acl.542
+
+  [8] From Engineering Documents to Instruction-Tuning Datasets: A Two-Stage AI Pipeline for Synthetic Knowledge Bases
+      Authors: Yi Wang, Yuhang Zhang, Pei Liu
+      Year: 2026  Citations: 0  Venue: 2026 6th International Conference on Artificial Intelligence, Big Data and Algorithms (CAIBDA)
+      URL: https://doi.org/10.1109/caibda70336.2026.11621653
+
+  [9] Investigating Multilingual Instruction-Tuning: Do Polyglot Models Demand for Multilingual Instructions?
+      Authors: Alexander Arno Weber, Klaudia Thellmann, Jan Ebert...
+      Year: 2024  Citations: 0  Venue: Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing
+      URL: https://doi.org/10.18653/v1/2024.emnlp-main.1159
+
+  [10] COMMIT: Code-Mixing English-Centric Large Language Model for Multilingual Instruction Tuning
+      Authors: Jaeseong Lee, YeonJoon Jung, Seung-won Hwang
+      Year: 2024  Citations: 2  Venue: Findings of the Association for Computational Linguistics: NAACL 2024
+      URL: https://doi.org/10.18653/v1/2024.findings-naacl.198
+
+  [11] Fine-Tuning a Multilingual Translation Model for Financial Crime Data
+      Authors: Ravi Kumar Mishra, Avadhoot Suresh Jathar
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.21203/rs.3.rs-6944961/v1
+
+  [12] Synthetic Instruction Generation for Low-Resource Nordic Languages: Viability and Limitations in LLM Instruction-Tuning
+      Authors: Mathias Stenlund, Annika Simonsen, Lars Bungum...
+      Year: 2026  Citations: 0  Venue: Proceedings of the Language Resources and Evaluation Conference Proceedings of the Fifteenth Language Resources and Evaluation Conference (LREC 2026)
+      URL: https://doi.org/10.63317/3e73sy24wup3
+
+
+============================================================
+  openreview: 0 papers found
+============================================================
+
+============================================================
+  open_alex: 0 papers found
+============================================================
+
+============================================================
+  semantic_scholar: 12 papers found
+============================================================
+  [1] UPDESH: Synthesizing Grounded Instruction Tuning Data for 13 Indic Languages
+      Authors: Pranjal A. Chitale, Varun Gumma, Sanchit Ahuja...
+      Year: 2025  Citations: 2  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/ee4268ad1ed357aecb7c8b247402794249ceab4d
+
+  [2] Fine-Tuning Arabic Large Language Models for improved multi-turn dialogue: A blueprint for synthetic data generation and benchmarking
+      Authors: Ahmed Mahmoud Misbah, Mohamed Farouk, Mustafa AbdulAzim
+      Year: 2026  Citations: 1  Venue: PLoS ONE
+      URL: https://www.semanticscholar.org/paper/ebeb786b727cae2eba266cce97954a06d578ebc4
+
+  [3] Better as Generators Than Classifiers: Leveraging LLMs and Synthetic Data for Low-Resource Multilingual Classification
+      Authors: Branislav Pecher, Ján Cegin, Róbert Belanec...
+      Year: 2026  Citations: 3  Venue: Conference of the European Chapter of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/6ebdd9d01669392c00b24af795b3b81909ab88db
+
+  [4] Bridging the linguistic divide: a survey on leveraging large language models for machine translation
+      Authors: Baban Gain, Dibyanayan Bandyopadhyay, A. Ekbal
+      Year: 2025  Citations: 15  Venue: Language Resources and Evaluation
+      URL: https://www.semanticscholar.org/paper/5455fa93aad65b309e7dfbfc3d4275046bd16ba7
+
+  [5] GigaEmbeddings: Efficient Russian Language Embedding Model
+      Authors: Kolodin Egor, Daria Khomich, Nikita Savushkin...
+      Year: 2025  Citations: 2  Venue: Proceedings of the 10th Workshop on Slavic Natural Language Processing (Slavic NLP 2025)
+      URL: https://www.semanticscholar.org/paper/6a7de493b36fdd7c79cfa77d11c5b92518c6317d
+
+  [6] Seed-Free Synthetic Data Generation Framework for Instruction-Tuning LLMs: A Case Study in Thai
+      Authors: Parinthapat Pengpun, Can Udomcharoenchaikit † Weerayut Buaphet, Peerat Limkonchotiwat...
+      Year: 2024  Citations: 10  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/d18495151dd305ddb0dabf3eb76e5e07f6b82400
+
+  [7] LLaVA-Video: Video Instruction Tuning With Synthetic Data
+      Authors: Yuanhan Zhang, Jinming Wu, Wei Li...
+      Year: 2024  Citations: 494  Venue: Trans. Mach. Learn. Res.
+      URL: https://www.semanticscholar.org/paper/ed44571dd9de3654b84ee1fea63015ecb67e6e63
+
+  [8] C3L: Content Correlated Vision-Language Instruction Tuning Data Generation via Contrastive Learning
+      Authors: Ji Ma, Wei Suo, Peng Wang...
+      Year: 2024  Citations: 1  Venue: International Joint Conference on Artificial Intelligence
+      URL: https://www.semanticscholar.org/paper/7c000199b4835fc6c0887ddfc696c390f9f036bc
+
+  [9] A Modular Approach for Clinical SLMs Driven by Synthetic Data with Pre-Instruction Tuning, Model Merging, and Clinical-Tasks Alignment
+      Authors: Jean-Philippe Corbeil, Amin Dada, Jean-Michel Attendu...
+      Year: 2025  Citations: 34  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/c668268d68e646ef9d1a4df35264450d32573ca4
+
+  [10] Multi-Agent Collaboration for Multilingual Code Instruction Tuning
+      Authors: Jian Yang, Wei Zhang, Jiaxin Yang...
+      Year: 2025  Citations: 10  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/c249a3d1c6299936b3dc9a17741f7fa8eb4151d9
+
+  [11] Instruction-Tuning Data Synthesis from Scratch via Web Reconstruction
+      Authors: Yuxin Jiang, Yufei Wang, Chuhan Wu...
+      Year: 2025  Citations: 8  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/69741f622962bfd17818d51bc7fa96b57392a351
+
+  [12] Is It Good Data for Multilingual Instruction Tuning or Just Bad Multilingual Evaluation for Large Language Models?
+      Authors: Pinzhen Chen, Simon Yu, Zhicheng Guo...
+      Year: 2024  Citations: 5  Venue: Conference on Empirical Methods in Natural Language Processing
+      URL: https://www.semanticscholar.org/paper/0126fea92578e34ec9e3e1a0047c4e85dc4c93b4
+
+
+Total: 36 papers from 6 sources.

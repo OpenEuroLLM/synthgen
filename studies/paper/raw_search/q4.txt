@@ -1,0 +1,213 @@
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+[open_alex] Error: 504 Server Error: Gateway Timeout for url: https://api.openalex.org/works?search.semantic=culturally+grounded+multilingual+instruction+data+localization&filter=publication_year%3A2022-2026&sort=relevance_score%3Adesc&page=1&per-page=12
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+
+============================================================
+  crossref: 12 papers found
+============================================================
+  [1] Culturally Informed Instruction for Multilingual Learners and All Learners
+      Authors: 
+      Year: 2025  Citations: 0  Venue: Preparing Culturally Informed Educators
+      URL: https://doi.org/10.5040/9798881844752.ch-003
+
+  [2] Chapter 3: Culturally Informed Instruction for Multilingual Learners and All Learners
+      Authors: Barbara Martin, Susan Foster
+      Year: 2025  Citations: 0  Venue: Preparing Culturally Informed Educators
+      URL: https://doi.org/10.5771/9781475871555-23
+
+  [3] Decolonized Classrooms…Leverage a Multilingual World
+      Authors: Michael Domínguez, Robyn Seglem
+      Year: 2023  Citations: 0  Venue: Decolonizing Middle Level Literacy Instruction
+      URL: https://doi.org/10.4324/9781003290681-10
+
+  [4] SEA-Guard: Culturally Grounded Multilingual Safeguard for Southeast Asia
+      Authors: Panuthep Tasawong, Jian Gang Ngui, Alham Fikri Aji...
+      Year: 2026  Citations: 0  Venue: Findings of the Association for Computational Linguistics: ACL 2026
+      URL: https://doi.org/10.18653/v1/2026.findings-acl.141
+
+  [5] Culturally Relevant Picture Books
+      Authors: Griselda I. Solano
+      Year: 2022  Citations: 0  Venue: Innovative Approaches to Teaching Multilingual Students
+      URL: https://doi.org/10.1108/979-8-88730-082-520251017
+
+  [6] Enabling Structured Reasoning in Sindhi with Culturally Grounded Instruction Tuning
+      Authors: Mehak Mehak, Kamyar Zeinalipour, Pireh Soomro...
+      Year: 2026  Citations: 0  Venue: Proceedings of the Second Workshop on Language Models for Low-Resource Languages (LoResLM 2026)
+      URL: https://doi.org/10.18653/v1/2026.loreslm-1.22
+
+  [7] Advancing Culturally Responsive And Socially Just Approaches To Multilingual Family-School Partnerships
+      Authors: Kristine S. Lewis Grant
+      Year: 2023  Citations: 0  Venue: Advancing Culturally Responsive and Socially Just Approaches to Multilingual Family-School Partnerships
+      URL: https://doi.org/10.5040/9781666983302.0005
+
+  [8] From everyday language to disciplinary discourse: Culturally and linguistically sustaining dialogic instruction with multilingual learners
+      Authors: Kongji Qin, Jordan Wolf, Lorena Llosa
+      Year: 2025  Citations: 7  Venue: TESOL Journal
+      URL: https://doi.org/10.1002/tesj.913
+
+  [9] Persevering through Challenges to Culturally Affirming Instruction
+      Authors: 
+      Year: 2024  Citations: 0  Venue: Practical Steps Toward Culturally Responsive K-12 Literacy Instruction
+      URL: https://doi.org/10.5040/9798881867119.ch-1
+
+  [10] SeaDialogues: A Multilingual Culturally Grounded Multi-turn Dialogue Dataset on Southeast Asian Languages
+      Authors: Muhammad Dehan Al Kautsar, Aswin Candra, Muhammad Alif Al Hakim...
+      Year: 2026  Citations: 0  Venue: WOCHAT2026: Workshop on Chatbots and Agentic Technologies
+      URL: https://doi.org/10.21437/wochat.2026-8
+
+  [11] Evaluating and Advancing Culturally and Developmentally Grounded Measurement of Adolescent Temperament and Substance Use
+      Authors: Hartmann, Sarah
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.25148/fiuir.32732
+
+  [12] Culturally and Linguistically Diverse Students
+      Authors: Eda Başak Hancı-Azizoglu
+      Year: 2022  Citations: 0  Venue: Research Anthology on Bilingual and Multilingual Education
+      URL: https://doi.org/10.4018/978-1-6684-3690-5.ch076
+
+
+============================================================
+  dblp: 0 papers found
+============================================================
+
+============================================================
+  openreview: 0 papers found
+============================================================
+
+============================================================
+  open_alex: 0 papers found
+============================================================
+
+============================================================
+  arxiv: 12 papers found
+============================================================
+  [1] OASIS: A Multilingual and Multimodal Dataset for Culturally Grounded Spoken Visual QA
+      Authors: Firoj Alam, Ali Ezzat Shahroor, Md. Arid Hasan...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2510.06371v3
+
+  [2] NativQA: Multilingual Culturally-Aligned Natural Query for LLMs
+      Authors: Md. Arid Hasan, Maram Hasanain, Fatema Ahmad...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2407.09823v3
+
+  [3] MIDB: Multilingual Instruction Data Booster for Enhancing Cultural Equality in Multilingual Instruction Synthesis
+      Authors: Yilun Liu, Chunguang Zhao, Xinhua Yang...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2505.17671v2
+
+  [4] TerraGen: A Unified Multi-Task Layout Generation Framework for Remote Sensing Data Augmentation
+      Authors: Datao Tang, Hao Wang, Yudeng Xin...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2510.21391v1
+
+  [5] Grounding Multilingual Multimodal LLMs With Cultural Knowledge
+      Authors: Jean de Dieu Nyandwi, Yueqi Song, Simran Khanuja...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2508.07414v2
+
+  [6] AeroGen: Enhancing Remote Sensing Object Detection with Diffusion-Driven Data Generation
+      Authors: Datao Tang, Xiangyong Cao, Xuan Wu...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2411.15497v3
+
+  [7] Culturally-Grounded Governance for Multilingual Language Models: Rights, Data Boundaries, and Accountable AI Design
+      Authors: Hanjing Shi, Dominic DiFranzo
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2602.00497v1
+
+  [8] WangchanThaiInstruct: An instruction-following Dataset for Culture-Aware, Multitask, and Multi-domain Evaluation in Thai
+      Authors: Peerat Limkonchotiwat, Pume Tuchinda, Lalita Lowphansirikul...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2508.15239v2
+
+  [9] Alif: Advancing Urdu Large Language Models via Multilingual Synthetic Data Distillation
+      Authors: Muhammad Ali Shafique, Kanwal Mehreen, Muhammad Arham...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2510.09051v1
+
+  [10] CultranAI at PalmX 2025: Data Augmentation for Cultural Knowledge Representation
+      Authors: Hunzalah Hassan Bhatti, Youssef Ahmed, Md Arid Hasan...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2508.17324v2
+
+  [11] SEA-Guard: Culturally Grounded Multilingual Safeguard for Southeast Asia
+      Authors: Panuthep Tasawong, Jian Gang Ngui, Alham Fikri Aji...
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2602.01618v1
+
+  [12] Small Data Explainer -- The impact of small data methods in everyday life
+      Authors: Maren Hackenberg, Sophia G. Connor, Fabian Kabus...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2507.11773v2
+
+
+============================================================
+  semantic_scholar: 12 papers found
+============================================================
+  [1] MIDB: Multilingual Instruction Data Booster for Enhancing Cultural Equality in Multilingual Instruction Synthesis
+      Authors: Yilun Liu, Chunguang Zhao, Xinhua Yang...
+      Year: 2025  Citations: 0  Venue: 
+      URL: https://www.semanticscholar.org/paper/2d80e48fc69f2d7e15232659925dbcf84b05d9cd
+
+  [2] SEA-Guard: Culturally Grounded Multilingual Safeguard for Southeast Asia
+      Authors: Panuthep Tasawong, Jian Gang Ngui, Alham Fikri Aji...
+      Year: 2026  Citations: 2  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/629b5e57eab06637d5a419a9684f3cd644525344
+
+  [3] MIDB: Multilingual Instruction Data Booster for Enhancing Cultural Equality in Multilingual Instruction Synthesis
+      Authors: Yilun Liu, Chunguang Zhao, Xinhua Yang...
+      Year: 2026  Citations: 0  Venue: AAAI Conference on Artificial Intelligence
+      URL: https://www.semanticscholar.org/paper/db137429a4b3c311d3bdedbf0d3b1e1545010a00
+
+  [4] Culturally-Grounded Governance for Multilingual Language Models: Rights, Data Boundaries, and Accountable AI Design
+      Authors: Hanjing Shi, Dominic DiFranzo
+      Year: 2026  Citations: 1  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/d7ffc46df23397af3da098a775dcedf6de023ea4
+
+  [5] From everyday language to disciplinary discourse: Culturally and linguistically sustaining dialogic instruction with multilingual learners
+      Authors: K. Qin, Jordan Wolf, Lorena Llosa
+      Year: 2025  Citations: 7  Venue: TESOL journal
+      URL: https://www.semanticscholar.org/paper/cf4327d35e0ad160100dc5649d591501493bb8e8
+
+  [6] UPDESH: Synthesizing Grounded Instruction Tuning Data for 13 Indic Languages
+      Authors: Pranjal A. Chitale, Varun Gumma, Sanchit Ahuja...
+      Year: 2025  Citations: 2  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/ee4268ad1ed357aecb7c8b247402794249ceab4d
+
+  [7] Command R7B Arabic: A Small, Enterprise Focused, Multilingual, and Culturally Aware Arabic LLM
+      Authors: Yazeed Alnumay, Alexandre Barbet, Anna Bialas...
+      Year: 2025  Citations: 17  Venue: Proceedings of the Sixth Workshop on African Natural Language Processing (AfricaNLP 2025)
+      URL: https://www.semanticscholar.org/paper/1b322dde4d47b58ad4b0f3fc291fb10a2e6fcb43
+
+  [8] Teacher expertise in early childhood instruction: Cross-analysis of language policy and culturally sustaining pedagogies with multilingual learners
+      Authors: Heather Dunham, Erica Holyoke, Katie M. Crook
+      Year: 2024  Citations: 10  Venue: Journal of Early Childhood Literacy
+      URL: https://www.semanticscholar.org/paper/117e8094ab780ec7aeeb1ada11b4d971489b0e52
+
+  [9] Cultivating Intercultural Competence through Culturally Grounded Pedagogy: A Cultural Studies Perspective in Philippine Higher Education Institutions
+      Authors: Rozel Sales-Batang, Munayra Jaafar, Josephine Domingo-Alejo...
+      Year: 2025  Citations: 4  Venue: International Journal on Culture, History, and Religion
+      URL: https://www.semanticscholar.org/paper/e12d1811f7049753e7f9093e8a26b0dd545d8ac1
+
+  [10] Supporting Multilingual Students’ Mathematical Discourse Through Teacher Professional Development Grounded in Design-Based Research: A Conceptual Framework
+      Authors: Margarita Jiménez-Silva, Robin Martin, R. Restani...
+      Year: 2025  Citations: 4  Venue: Education sciences
+      URL: https://www.semanticscholar.org/paper/1569db17f20e587875034ffe2a151e87b9ee9d81
+
+  [11] Gospel-informed pedagogy in multilingual ESL classrooms: a reflective practice grounded in identity, ideology, and inclusion
+      Authors: Albert Maganaka
+      Year: 2025  Citations: 0  Venue: Asian Englishes
+      URL: https://www.semanticscholar.org/paper/53e1ff96e136e410b536da8fa259678ff351439c
+
+  [12] Leveraging National Survey Data to Examine and Extend Notions of Culturally and Linguistically Responsive Social Studies Instruction
+      Authors: Paul J. Yoder, Leona Calkins, Peter D. Wiens
+      Year: 2025  Citations: 0  Venue: The Journal of Social Studies Research
+      URL: https://www.semanticscholar.org/paper/5fd5e50f8ca2bd9dfe7a89896593b642e3a50d01
+
+
+Total: 36 papers from 6 sources.

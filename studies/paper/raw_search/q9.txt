@@ -1,0 +1,207 @@
+[open_alex] Error: 504 Server Error: Gateway Timeout for url: https://api.openalex.org/works?search.semantic=Aya+multilingual+instruction+collection+human+annotated+dataset&filter=publication_year%3A2022-2026&sort=relevance_score%3Adesc&page=1&per-page=12
+
+============================================================
+  arxiv: 12 papers found
+============================================================
+  [1] Aya Dataset: An Open-Access Collection for Multilingual Instruction Tuning
+      Authors: Shivalika Singh, Freddie Vargus, Daniel Dsouza...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2402.06619v1
+
+  [2] Rights by Architecture: A Human-Compatible Sociotechnical Layer for Digital Protection Across Regulatory Regimes
+      Authors: Soheil Human
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2609.02455v1
+
+  [3] The RSNA Abdominal Traumatic Injury CT (RATIC) Dataset
+      Authors: Jeffrey D. Rudie, Hui-Ming Lin, Robyn L. Ball...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2405.19595v1
+
+  [4] Aya Model: An Instruction Finetuned Open-Access Multilingual Language Model
+      Authors: Ahmet Üstün, Viraat Aryabumi, Zheng-Xin Yong...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2402.07827v1
+
+  [5] Mix, MinHash, and Match: Cross-Source Agreement for Multilingual Pretraining Datasets
+      Authors: Sultan Alrashed, Francesco Orabona
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2512.18834v2
+
+  [6] Exploring Multilingual Concepts of Human Value in Large Language Models: Is Value Alignment Consistent, Transferable and Controllable across Languages?
+      Authors: Shaoyang Xu, Weilong Dong, Zishan Guo...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2402.18120v3
+
+  [7] The RSNA Lumbar Degenerative Imaging Spine Classification (LumbarDISC) Dataset
+      Authors: Tyler J. Richards, Adam E. Flanders, Errol Colak...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2506.09162v1
+
+  [8] Beyond Counting Datasets: A Survey of Multilingual Dataset Construction and Necessary Resources
+      Authors: Xinyan Velocity Yu, Akari Asai, Trina Chatterjee...
+      Year: 2022  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2211.15649v1
+
+  [9] Needs-aware Artificial Intelligence: AI that 'serves [human] needs'
+      Authors: Ryan Watkins, Soheil Human
+      Year: 2022  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2202.04977v3
+
+  [10] Aya 23: Open Weight Releases to Further Multilingual Progress
+      Authors: Viraat Aryabumi, John Dang, Dwarak Talupuru...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2405.15032v2
+
+  [11] M$^3$IT: A Large-Scale Dataset towards Multi-Modal Multilingual Instruction Tuning
+      Authors: Lei Li, Yuwei Yin, Shicheng Li...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2306.04387v2
+
+  [12] Aya Expanse: Combining Research Breakthroughs for a New Multilingual Frontier
+      Authors: John Dang, Shivalika Singh, Daniel D'souza...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2412.04261v1
+
+
+============================================================
+  crossref: 12 papers found
+============================================================
+  [1] An Annotated Multilingual Dataset to Study Modality in the Gospels
+      Authors: Helena Bermúdez-Sabel, Francesca Dell'Oro
+      Year: 2024  Citations: 0  Venue: Digital Humanities Quarterly
+      URL: https://doi.org/10.63744/r386n4bcam37
+
+  [2] An Annotated Dataset and Automatic Approaches for Discourse Mode Identification in Low-resource Bengali Language
+      Authors: Salim Sazzed
+      Year: 2022  Citations: 1  Venue: Proceedings of the Workshop on Multilingual Information Access (MIA)
+      URL: https://doi.org/10.18653/v1/2022.mia-1.2
+
+  [3] MagicBrush: A Manually Annotated Dataset for Instruction-Guided Image Editing
+      Authors: Kai Zhang, Lingbo Mo, Wenhu Chen...
+      Year: 2023  Citations: 49  Venue: Advances in Neural Information Processing Systems 36
+      URL: https://doi.org/10.52202/075280-1365
+
+  [4] Reddit FlairShare: A Human-Annotated Dataset of Gender-Progressive Online Discourse
+      Authors: Carlos Hartmann
+      Year: 2025  Citations: 0  Venue: Interspeech 2025
+      URL: https://doi.org/10.21437/interspeech.2025-2128
+
+  [5] Technology and English-Medium Instruction in Higher Education Institutions in Multilingual China
+      Authors: Edith M. Y. Yan, Jackie Yeoh, Juyoung Lee...
+      Year: 2023  Citations: 0  Venue: Multilingual Education Yearbook Multilingual Education Yearbook 2023
+      URL: https://doi.org/10.1007/978-3-031-32811-4_1
+
+  [6] A Language-Based Approach to Content Instruction (LACI) for Multilingual Learners
+      Authors: Luciana C. de Oliveira
+      Year: 2023  Citations: 0  Venue: Supporting Multilingual Learners’ Academic Language Development
+      URL: https://doi.org/10.4324/9781003264927-1
+
+  [7] The Implementation of Technology in Supporting English-Medium Instruction in Multilingual University Settings: A Case Study of Economics
+      Authors: Fiona Xiaofei Tang, Tianhao Zhi, Xuenan Huo
+      Year: 2023  Citations: 1  Venue: Multilingual Education Yearbook Multilingual Education Yearbook 2023
+      URL: https://doi.org/10.1007/978-3-031-32811-4_8
+
+  [8] Annotated IoT Dataset of Waste Collection Events
+      Authors: Peter Tarábek, Andrej Michalek, Roman Hriník...
+      Year: 2026  Citations: 0  Venue: Data
+      URL: https://doi.org/10.3390/data11020038
+
+  [9] Using Technology for English-Medium Instruction: The Use of Livestreaming in the Marketing Classroom
+      Authors: Angela Kit Fong Ma
+      Year: 2023  Citations: 1  Venue: Multilingual Education Yearbook Multilingual Education Yearbook 2023
+      URL: https://doi.org/10.1007/978-3-031-32811-4_3
+
+  [10] Towards automatic identification of self-reported COVID-19 tweets: Introducing a multilingual manually annotated dataset, baseline systems and exploratory evaluations
+      Authors: Ramya Tekumalla, Luis Alberto Robles Hernandez, Juan M. Banda
+      Year: 2023  Citations: 0  Venue: 2023 IEEE International Conference on Big Data (BigData)
+      URL: https://doi.org/10.1109/bigdata59044.2023.10386536
+
+  [11] Aya Dataset: An Open-Access Collection for Multilingual Instruction Tuning
+      Authors: Shivalika Singh, Freddie Vargus, Daniel D’souza...
+      Year: 2024  Citations: 26  Venue: Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)
+      URL: https://doi.org/10.18653/v1/2024.acl-long.620
+
+  [12] Multilingual news dataset about Ukraine (2022–2025): data collection and documentation
+      Authors: Khrystyna Lipianina-Honcharenko, Myroslav Komar, Ihor Ihnatiev...
+      Year: 2026  Citations: 0  Venue: Scientific Data
+      URL: https://doi.org/10.1038/s41597-026-07033-5
+
+
+============================================================
+  dblp: 0 papers found
+============================================================
+
+============================================================
+  openreview: 0 papers found
+============================================================
+
+============================================================
+  semantic_scholar: 12 papers found
+============================================================
+  [1] Aya Dataset: An Open-Access Collection for Multilingual Instruction Tuning
+      Authors: Shivalika Singh, Freddie Vargus, Daniel Dsouza...
+      Year: 2024  Citations: 227  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/88cd6e0f7c2f1fe2bd4796a6729447d60bfeffc9
+
+  [2] HelpSteer3-Preference: Open Human-Annotated Preference Data across Diverse Tasks and Languages
+      Authors: Zhilin Wang, Jiaqi Zeng, Olivier Delalleau...
+      Year: 2025  Citations: 63  Venue: Neural Information Processing Systems
+      URL: https://www.semanticscholar.org/paper/4993fa8b35ea26cd2a83d8c08e9f1672911d3b76
+
+  [3] SemiHVision: Enhancing Medical Multimodal Models with a Semi-Human Annotated Dataset and Fine-Tuned Instruction Generation
+      Authors: Junda Wang, Yujan Ting, Eric Z. Chen...
+      Year: 2024  Citations: 2  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/28854b84e083e14b4e9b9593b9d1f04974525d0a
+
+  [4] Aya Model: An Instruction Finetuned Open-Access Multilingual Language Model
+      Authors: A. Ustun, Viraat Aryabumi, Zheng-Xin Yong...
+      Year: 2024  Citations: 401  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/2296629527ebbd6f8c897df7cf5cdbac3f0cc15b
+
+  [5] Introducing OmniGEC: A Silver Multilingual Dataset for Grammatical Error Correction
+      Authors: Roman Kovalchuk, Mariana Romanyshyn, Petro Ivaniuk
+      Year: 2025  Citations: 3  Venue: Proceedings of the Fourth Ukrainian Natural Language Processing Workshop (UNLP 2025)
+      URL: https://www.semanticscholar.org/paper/62a8551f102144c3e0dc84fba96f9d3d8e4a86c1
+
+  [6] HQ-Edit: A High-Quality Dataset for Instruction-based Image Editing
+      Authors: Mude Hui, Siwei Yang, Bingchen Zhao...
+      Year: 2024  Citations: 210  Venue: International Conference on Learning Representations
+      URL: https://www.semanticscholar.org/paper/09609bd28855fd9b27f043b4dbf509615229bd08
+
+  [7] AI4SER: An Italian Speech Emotion Dataset for Human-Centered Affective Applications
+      Authors: Salvatore Serrano, M. Amadeo, L. Patanè...
+      Year: 2026  Citations: 0  Venue: 2026 IEEE International Conference on Pervasive Computing and Communications Workshops and other Affiliated Events (PerCom Workshops)
+      URL: https://www.semanticscholar.org/paper/a9d57d09101a8e533c38df0cfc27a0273fe7fe0c
+
+  [8] Align2LLaVA: Cascaded Human and Large Language Model Preference Alignment for Multi-modal Instruction Curation
+      Authors: Hongzhe Huang, Zhewen Yu, Jiang Liu...
+      Year: 2024  Citations: 1  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/0ffc43970161df8217fde8bb42fb28186d8db6cd
+
+  [9] mEdIT: Multilingual Text Editing via Instruction Tuning
+      Authors: Vipul Raheja, Dimitris Alikaniotis, Vivek Kulkarni...
+      Year: 2024  Citations: 15  Venue: North American Chapter of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/038937be80c561740a47c68157eed3a02548abfe
+
+  [10] The Lucie-7B LLM and the Lucie Training Dataset: Open resources for multilingual language generation
+      Authors: Olivier Gouvert, Julie Hunter, Jérôme Louradour...
+      Year: 2025  Citations: 8  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/a2fe7438d86868422b70f2f575febe8e4fbcd4fd
+
+  [11] Pearl: A Multimodal Culturally-Aware Arabic Instruction Dataset
+      Authors: Fakhraddin Alwajih, Samar M. Magdy, Abdellah El Mekki...
+      Year: 2025  Citations: 7  Venue: Conference on Empirical Methods in Natural Language Processing
+      URL: https://www.semanticscholar.org/paper/6f63bb0e6a81f7cd30f0f9f3c5e993c922843bf0
+
+  [12] IndoPref: A Multi-Domain Pairwise Preference Dataset for Indonesian
+      Authors: Vanessa Rebecca Wiyono, David Anugraha, Ayu Purwarianti...
+      Year: 2025  Citations: 1  Venue: IJCNLP-AACL
+      URL: https://www.semanticscholar.org/paper/3f9531505ff36d7ce363318d7312296f62bdb090
+
+
+============================================================
+  open_alex: 0 papers found
+============================================================
+
+Total: 36 papers from 6 sources.

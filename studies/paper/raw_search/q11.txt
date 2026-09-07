@@ -1,0 +1,214 @@
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+
+============================================================
+  arxiv: 12 papers found
+============================================================
+  [1] Teuken-7B-Base & Teuken-7B-Instruct: Towards European LLMs
+      Authors: Mehdi Ali, Michael Fromm, Klaudia Thellmann...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2410.03730v3
+
+  [2] Vision-Flan: Scaling Human-Labeled Tasks in Visual Instruction Tuning
+      Authors: Zhiyang Xu, Chao Feng, Rulin Shao...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2402.11690v1
+
+  [3] Demystifying Instruction Mixing for Fine-tuning Large Language Models
+      Authors: Renxi Wang, Haonan Li, Minghao Wu...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2312.10793v3
+
+  [4] FinGPT: Instruction Tuning Benchmark for Open-Source Large Language Models in Financial Datasets
+      Authors: Neng Wang, Hongyang Yang, Christina Dan Wang
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2310.04793v2
+
+  [5] Instruction Tuning with GPT-4
+      Authors: Baolin Peng, Chunyuan Li, Pengcheng He...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2304.03277v1
+
+  [6] EuroLLM: Multilingual Language Models for Europe
+      Authors: Pedro Henrique Martins, Patrick Fernandes, João Alves...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2409.16235v1
+
+  [7] From Zero to Hero: Examining the Power of Symbolic Tasks in Instruction Tuning
+      Authors: Qian Liu, Fan Zhou, Zhengbao Jiang...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2304.07995v1
+
+  [8] Multilingual Instruction Tuning With Just a Pinch of Multilinguality
+      Authors: Uri Shaham, Jonathan Herzig, Roee Aharoni...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2401.01854v4
+
+  [9] Automatic Construction of a Korean Toxic Instruction Dataset for Ethical Tuning of Large Language Models
+      Authors: Sungjoo Byun, Dongjun Jang, Hyemi Jo...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2311.18215v1
+
+  [10] LIMIT: Less Is More for Instruction Tuning Across Evaluation Paradigms
+      Authors: Aditi Jha, Sam Havens, Jeremy Dohmann...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2311.13133v1
+
+  [11] Investigating Multilingual Instruction-Tuning: Do Polyglot Models Demand for Multilingual Instructions?
+      Authors: Alexander Arno Weber, Klaudia Thellmann, Jan Ebert...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2402.13703v3
+
+  [12] EuroLLM-22B: Technical Report
+      Authors: Miguel Moura Ramos, Duarte M. Alves, Hippolyte Gisserot-Boukhlef...
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2602.05879v1
+
+
+============================================================
+  crossref: 12 papers found
+============================================================
+  [1] Empowering Beyond English-Centric Machine Translation on Llms by Multilingual Fusion Instruction Tuning
+      Authors: Zihao Feng, Hailong Cao, Qiuyu Ding...
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.2139/ssrn.5332884
+
+  [2] Selective Reflection-Tuning: Student-Selected Data Recycling for LLM Instruction-Tuning
+      Authors: Ming Li, Lichang Chen, Jiuhai Chen...
+      Year: 2024  Citations: 13  Venue: Findings of the Association for Computational Linguistics ACL 2024
+      URL: https://doi.org/10.18653/v1/2024.findings-acl.958
+
+  [3] 6 LLM Fine-Tuning: Instruction and Parameter-Efficient Fine-Tuning (PEFT)
+      Authors: S. Aathilakshmi, G. Sivapriya, T. Manikandan
+      Year: 2024  Citations: 1  Venue: Generative AI and LLMs
+      URL: https://doi.org/10.1515/9783111425078-006
+
+  [4] Evaluating the Multilingual Capabilities of LLM-based Web UI Agents
+      Authors: Sreejon Biswas Antor
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.62891/2d7c8429
+
+  [5] Star-Agents: Automatic Data Optimization with LLM Agents for Instruction Tuning
+      Authors: Hang Zhou, Yehui Tang, Haochen Qin...
+      Year: None  Citations: 1  Venue: 
+      URL: https://doi.org/10.32388/fzgmpf
+
+  [6] Multimodal LLM using Federated Visual Instruction Tuning for Visually Impaired
+      Authors: Ankith Bala, Alina Vereshchaka
+      Year: 2025  Citations: 0  Venue: Proceedings of the 27th International Conference on Multimodal Interaction
+      URL: https://doi.org/10.1145/3716553.3750763
+
+  [7] Know the Unknown: An Uncertainty-Sensitive Method for LLM Instruction Tuning
+      Authors: Jiaqi Li, Yixuan Tang, Yi Yang
+      Year: 2025  Citations: 1  Venue: Findings of the Association for Computational Linguistics: ACL 2025
+      URL: https://doi.org/10.18653/v1/2025.findings-acl.153
+
+  [8] Is It Good Data for Multilingual Instruction Tuning or Just Bad Multilingual Evaluation for Large Language Models?
+      Authors: Pinzhen Chen, Simon Yu, Zhicheng Guo...
+      Year: 2024  Citations: 1  Venue: Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing
+      URL: https://doi.org/10.18653/v1/2024.emnlp-main.542
+
+  [9] A Survey on Data Selection for LLM Instruction Tuning
+      Authors: Bolin Zhang, Jiahao Wang, Qianlong Du...
+      Year: 2025  Citations: 17  Venue: Journal of Artificial Intelligence Research
+      URL: https://doi.org/10.1613/jair.1.17625
+
+  [10] Investigating Multilingual Instruction-Tuning: Do Polyglot Models Demand for Multilingual Instructions?
+      Authors: Alexander Arno Weber, Klaudia Thellmann, Jan Ebert...
+      Year: 2024  Citations: 0  Venue: Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing
+      URL: https://doi.org/10.18653/v1/2024.emnlp-main.1159
+
+  [11] COMMIT: Code-Mixing English-Centric Large Language Model for Multilingual Instruction Tuning
+      Authors: Jaeseong Lee, YeonJoon Jung, Seung-won Hwang
+      Year: 2024  Citations: 2  Venue: Findings of the Association for Computational Linguistics: NAACL 2024
+      URL: https://doi.org/10.18653/v1/2024.findings-naacl.198
+
+  [12] Federated Instruction Tuning with DeepSeek: Towards Scalable and Private LLM Adaptation
+      Authors: Fatiha Ait Baali, Addi Ait-Mlouk, Tarik Agouti
+      Year: 2025  Citations: 1  Venue: 2025 3rd International Conference on Federated Learning Technologies and Applications (FLTA)
+      URL: https://doi.org/10.1109/flta67013.2025.11336718
+
+
+============================================================
+  open_alex: 12 papers found
+============================================================
+  [1] Multilingual Instruction Tuning With Just a Pinch of Multilinguality
+      Authors: Uri Shaham, Jonathan Herzig, Roee Aharoni...
+      Year: 2024  Citations: 9  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.findings-acl.136
+
+  [2] EuroLLM: Multilingual Language Models for Europe
+      Authors: Pedro Henrique Martins, Patrick Fernandes, João Alves...
+      Year: 2025  Citations: 17  Venue: Procedia Computer Science
+      URL: https://doi.org/10.1016/j.procs.2025.02.260
+
+  [3] All Languages Matter: On the Multilingual Safety of LLMs
+      Authors: Wenxuan Wang, Zhaopeng Tu, Chang Chen...
+      Year: 2024  Citations: 19  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.findings-acl.349
+
+  [4] CoachLM: Automatic Instruction Revisions Improve the Data Quality in LLM Instruction Tuning
+      Authors: Yilun Liu, Shimin Tao, Xiaofeng Zhao...
+      Year: 2024  Citations: 9  Venue: 
+      URL: https://doi.org/10.1109/icde60146.2024.00390
+
+  [5] Chat Vector: A Simple Approach to Equip LLMs with Instruction Following and Model Alignment in New Languages
+      Authors: Shih-Cheng Huang, Pin-Zu Li, Yu-Chi Hsu...
+      Year: 2024  Citations: 8  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.acl-long.590
+
+  [6] Selective Reflection-Tuning: Student-Selected Data Recycling for LLM Instruction-Tuning
+      Authors: Ming Li, Lichang Chen, Jiuhai Chen...
+      Year: 2024  Citations: 13  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.findings-acl.958
+
+  [7] Empowering Beyond English-Centric Machine Translation on Llms by Multilingual Fusion Instruction Tuning
+      Authors: Zihao Feng, Hailong Cao, Qiuyu Ding...
+      Year: 2025  Citations: 0  Venue: SSRN Electronic Journal
+      URL: https://doi.org/10.2139/ssrn.5332884
+
+  [8] How Reliable Are Automatic Evaluation Methods for Instruction-Tuned LLMs?
+      Authors: Ehsan Doostmohammadi, Oskar Holmström, Marco Kuhlmann
+      Year: 2024  Citations: 8  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.findings-emnlp.367
+
+  [9] Investigating Multilingual Instruction-Tuning: Do Polyglot Models Demand for Multilingual Instructions?
+      Authors: Alexander Arno Weber, Klaudia Thellmann, Jan Ebert...
+      Year: 2024  Citations: 0  Venue: arXiv (Cornell University)
+      URL: https://doi.org/10.48550/arxiv.2402.13703
+
+  [10] COMMIT: Code-Mixing English-Centric Large Language Model for Multilingual Instruction Tuning
+      Authors: Jae‐Seong Lee, Yeonjoon Jung, Seung-won Hwang
+      Year: 2024  Citations: 2  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.findings-naacl.198
+
+  [11] An Empirical Study of Scaling Instruct-Tuned Large Multimodal Models
+      Authors: Yadong Lu, Chunyuan Li, Haotian Liu...
+      Year: 2023  Citations: 6  Venue: arXiv (Cornell University)
+      URL: https://doi.org/10.48550/arxiv.2309.09958
+
+  [12] A Fair Comparison without Translationese: English vs. Target-language Instructions for Multilingual LLMs
+      Authors: Taisei Enomoto, Hwichan Kim, Zhousi Chen...
+      Year: 2025  Citations: 1  Venue: 
+      URL: https://doi.org/10.18653/v1/2025.naacl-short.55
+
+
+============================================================
+  dblp: 0 papers found
+============================================================
+
+============================================================
+  openreview: 0 papers found
+============================================================
+
+============================================================
+  semantic_scholar: 0 papers found
+============================================================
+
+Total: 36 papers from 6 sources.

@@ -1,0 +1,167 @@
+Rate limited. Waiting 3 seconds...
+Retrying request: GET /notes?content.venueid=ICLR.cc%2F2023%2FConference&limit=1000&sort=id&count=true, response: b'<!doctype html><meta charset="utf-8"><meta name=viewport content="width=device-width, initial-scale=1"><title>429</title>429 Too Many Requests', error: None
+Retrying request: GET /notes?content.venueid=ICLR.cc%2F2023%2FConference&limit=1000&sort=id&count=true, response: b'<!doctype html><meta charset="utf-8"><meta name=viewport content="width=device-width, initial-scale=1"><title>429</title>429 Too Many Requests', error: None
+Retrying request: GET /notes?content.venueid=ICLR.cc%2F2023%2FConference&limit=1000&sort=id&count=true, response: b'<!doctype html><meta charset="utf-8"><meta name=viewport content="width=device-width, initial-scale=1"><title>429</title>429 Too Many Requests', error: None
+Retrying request: GET /notes?content.venueid=ICLR.cc%2F2023%2FConference&limit=1000&sort=id&count=true, response: b'<!doctype html><meta charset="utf-8"><meta name=viewport content="width=device-width, initial-scale=1"><title>429</title>429 Too Many Requests', error: None
+[open_alex] Error: 504 Server Error: Gateway Timeout for url: https://api.openalex.org/works?search.semantic=diversity+mode+collapse+synthetic+instruction+data+persona+attribute+conditioning&filter=publication_year%3A2022-2026&sort=relevance_score%3Adesc&page=1&per-page=12
+
+============================================================
+  arxiv: 12 papers found
+============================================================
+  [1] Privacy Measurement in Tabular Synthetic Data: State of the Art and Future Research Directions
+      Authors: Alexander Boudewijn, Andrea Filippo Ferraris, Daniele Panfilo...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2311.17453v1
+
+  [2] AeroGen: Enhancing Remote Sensing Object Detection with Diffusion-Driven Data Generation
+      Authors: Datao Tang, Xiangyong Cao, Xuan Wu...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2411.15497v3
+
+  [3] MENASpeechBank: A Reference Voice Bank with Persona-Conditioned Multi-Turn Conversations for AudioLLMs
+      Authors: Zien Sheikh Ali, Hunzalah Hassan Bhatti, Rabindra Nath Nandi...
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2602.07036v1
+
+  [4] Distributional Validity and Calibration of a Korean Synthetic Persona Panel for Digital and AI Service Use: A Secondary-Data Validation Against the Korea Media Panel Survey
+      Authors: Howard Kim, Keun Tae Cho
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2608.28615v1
+
+  [5] Measuring Lexical Diversity of Synthetic Data Generated through Fine-Grained Persona Prompting
+      Authors: Gauri Kambhatla, Chantal Shaib, Venkata Govindarajan
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2505.17390v2
+
+  [6] TerraGen: A Unified Multi-Task Layout Generation Framework for Remote Sensing Data Augmentation
+      Authors: Datao Tang, Hao Wang, Yudeng Xin...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2510.21391v1
+
+  [7] Taming Mode Collapse in Score Distillation for Text-to-3D Generation
+      Authors: Peihao Wang, Dejia Xu, Zhiwen Fan...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2401.00909v2
+
+  [8] Synthetic Data in MR Spectroscopy: Current Practices, Applications, and Considerations
+      Authors: John T. LaMaster, Aaron T. Gudmundson, Alireza Abaei...
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2602.23463v2
+
+  [9] Exploring Augmentation and Cognitive Strategies for AI based Synthetic Personae
+      Authors: Rafael Arias Gonzalez, Steve DiPaola
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2404.10890v1
+
+  [10] FFPDG: Fast, Fair and Private Data Generation
+      Authors: Weijie Xu, Jinjin Zhao, Francis Iannacci...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2307.00161v1
+
+  [11] Concerns on Bias in Large Language Models when Creating Synthetic Personae
+      Authors: Helena A. Haxvig
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2405.05080v1
+
+  [12] Persona Generators: Generating Diverse Synthetic Personas for Arbitrary Contexts
+      Authors: Davide Paglieri, Logan Cross, William A. Cunningham...
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2602.03545v2
+
+
+============================================================
+  crossref: 12 papers found
+============================================================
+  [1] Measuring Lexical Diversity of Synthetic Data Generated through Fine-Grained Persona Prompting
+      Authors: Gauri Kambhatla, Chantal Shaib, Venkata S Govindarajan
+      Year: 2025  Citations: 0  Venue: Findings of the Association for Computational Linguistics: EMNLP 2025
+      URL: https://doi.org/10.18653/v1/2025.findings-emnlp.1146
+
+  [2] Review for "Diversity in Stable GANs: A Systematic Review of Mode Collapse Mitigation Strategies"
+      Authors: 
+      Year: 2025  Citations: 0  Venue: 
+      URL: https://doi.org/10.1002/eng2.70209/v2/review1
+
+  [3] Review for "Diversity in Stable GANs: A Systematic Review of Mode Collapse Mitigation Strategies"
+      Authors: 
+      Year: 2025  Citations: 0  Venue: 
+      URL: https://doi.org/10.1002/eng2.70209/v2/review2
+
+  [4] Review for "Diversity in Stable GANs: A Systematic Review of Mode Collapse Mitigation Strategies"
+      Authors: 
+      Year: 2025  Citations: 0  Venue: 
+      URL: https://doi.org/10.1002/eng2.70209/v1/review1
+
+  [5] Review for "Diversity in Stable GANs: A Systematic Review of Mode Collapse Mitigation Strategies"
+      Authors: 
+      Year: 2025  Citations: 0  Venue: 
+      URL: https://doi.org/10.1002/eng2.70209/v1/review2
+
+  [6] Decision letter for "Diversity in Stable GANs: A Systematic Review of Mode Collapse Mitigation Strategies"
+      Authors: 
+      Year: 2025  Citations: 0  Venue: 
+      URL: https://doi.org/10.1002/eng2.70209/v2/decision1
+
+  [7] Decision letter for "Diversity in Stable GANs: A Systematic Review of Mode Collapse Mitigation Strategies"
+      Authors: 
+      Year: 2025  Citations: 0  Venue: 
+      URL: https://doi.org/10.1002/eng2.70209/v1/decision1
+
+  [8] Pater for Millions
+      Authors: Michael Lee Humphrey
+      Year: 2023  Citations: 1  Venue: Persona Studies
+      URL: https://doi.org/10.21153/psj2022vol8no2art1643
+
+  [9] Quantifying Generative Stability: Mode Collapse Entropy Score for Mode Diversity Evaluation
+      Authors: Jens Duym, José Oramas, Ali Anwar
+      Year: 2025  Citations: 4  Venue: 2025 IEEE/CVF Winter Conference on Applications of Computer Vision Workshops (WACVW)
+      URL: https://doi.org/10.1109/wacvw65960.2025.00025
+
+  [10] Cluster-based Diversity Over-sampling: A Density and Diversity Oriented Synthetic Over-sampling for Imbalanced Data
+      Authors: Yuxuan Yang, Hadi Khorshidi, Uwe Aickelin
+      Year: 2022  Citations: 3  Venue: Proceedings of the 14th International Joint Conference on Computational Intelligence
+      URL: https://doi.org/10.5220/0011381000003332
+
+  [11] CollapseTracker: An Empirical Dataset Documenting Progressive Model Collapse Across Recursive Generations of Synthetic Training Data
+      Authors: Ramkumar R, Pragalya M
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.2139/ssrn.6560303
+
+  [12] Epistemic Collapse and the Rise of Synthetic Data: Safeguarding AI Training Corpora in the Post-Reality Age
+      Authors: Peter Obiefuna
+      Year: None  Citations: 2  Venue: 
+      URL: https://doi.org/10.2139/ssrn.5312051
+
+
+============================================================
+  dblp: 0 papers found
+============================================================
+
+============================================================
+  open_alex: 0 papers found
+============================================================
+
+============================================================
+  semantic_scholar: 3 papers found
+============================================================
+  [1] MENASpeechBank: A Reference Voice Bank with Persona-Conditioned Multi-Turn Conversations for AudioLLMs
+      Authors: Zien Sheikh Ali, Hunzalah Hassan Bhatti, Rabindra Nath Nandi...
+      Year: 2026  Citations: 3  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/76d7d1b22298f808cc8b96aaacc896f57c339a70
+
+  [2] Parametric Social Identity Injection and Diversification in Public Opinion Simulation
+      Authors: Hexi Wang, Yujia Zhou, Bangde Du...
+      Year: 2026  Citations: 2  Venue: Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining V.2
+      URL: https://www.semanticscholar.org/paper/0af19a96b75ded13c7ad9c746cce901103bff73b
+
+  [3] 94 st Annual Meeting of the Eastern Society of the Seismological Society of America
+      Authors: Zhigang Peng, S. Jaumé
+      Year: 2022  Citations: 0  Venue: 
+      URL: https://www.semanticscholar.org/paper/c56f32390db446adc70525cb4c4e7f5d381022e6
+
+
+============================================================
+  openreview: 0 papers found
+============================================================
+
+Total: 27 papers from 6 sources.

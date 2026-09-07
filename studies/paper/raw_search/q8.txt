@@ -1,0 +1,214 @@
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+
+============================================================
+  arxiv: 12 papers found
+============================================================
+  [1] Turkish Native Language Identification V2
+      Authors: Ahmet Yavuz Uluslu, Gerold Schneider
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2307.14850v6
+
+  [2] Overview of the First Workshop on Language Models for Low-Resource Languages (LoResLM 2025)
+      Authors: Hansi Hettiarachchi, Tharindu Ranasinghe, Paul Rayson...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2412.16365v1
+
+  [3] X-Instruction: Aligning Language Model in Low-resource Languages with Self-curated Cross-lingual Instructions
+      Authors: Chong Li, Wen Yang, Jiajun Zhang...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2405.19744v1
+
+  [4] SPRING Lab IITM's submission to Low Resource Indic Language Translation Shared Task
+      Authors: Hamees Sayed, Advait Joglekar, Srinivasan Umesh
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2411.00727v2
+
+  [5] An Overview of Indian Spoken Language Recognition from Machine Learning Perspective
+      Authors: Spandan Dey, Md Sahidullah, Goutam Saha
+      Year: 2022  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2212.03812v1
+
+  [6] Native vs Non-Native Language Prompting: A Comparative Analysis
+      Authors: Mohamed Bayan Kmainasi, Rakif Khan, Ali Ezzat Shahroor...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2409.07054v2
+
+  [7] Building a Strong Instruction Language Model for a Less-Resourced Language
+      Authors: Domen Vreš, Tjaša Arčon, Timotej Petrič...
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2603.01691v1
+
+  [8] Automated Collection of Evaluation Dataset for Semantic Search in Low-Resource Domain Language
+      Authors: Anastasia Zhukova, Christian E. Matt, Bela Gipp
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2412.10008v1
+
+  [9] WizardLM: Empowering large pre-trained language models to follow complex instructions
+      Authors: Can Xu, Qingfeng Sun, Kai Zheng...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2304.12244v3
+
+  [10] Multilingual and Multimodal LLMs in the Wild: Building for Low-Resource Languages
+      Authors: Firoj Alam, Shammur Absar Chowdhury, Enamul Hoque Prince
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2605.17152v1
+
+  [11] Demystifying Instruction Mixing for Fine-tuning Large Language Models
+      Authors: Renxi Wang, Haonan Li, Minghao Wu...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2312.10793v3
+
+  [12] Instruction-tuned Large Language Models for Machine Translation in the Medical Domain
+      Authors: Miguel Rios
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2408.16440v2
+
+
+============================================================
+  crossref: 12 papers found
+============================================================
+  [1] MedInjection-FR: Exploring the Role of Native, Synthetic, and Translated Data in Biomedical Instruction Tuning
+      Authors: Ikram Belmadani, Oumaima el Khettari, Pacome Constant Dit Beaufils...
+      Year: 2026  Citations: 0  Venue: Proceedings of the Language Resources and Evaluation Conference Proceedings of the Fifteenth Language Resources and Evaluation Conference (LREC 2026)
+      URL: https://doi.org/10.63317/5kmc9ovfzvyo
+
+  [2] Enhancing Low-Resource Language and Instruction Following Capabilities of Audio Language Models
+      Authors: Potsawee Manakul, Guangzhi Sun, Warit Sirichotedumrong...
+      Year: 2025  Citations: 1  Venue: Interspeech 2025
+      URL: https://doi.org/10.21437/interspeech.2025-1258
+
+  [3] Recursive Instruction Tuning of Large Language Models for Low-Resource Languages
+      Authors: Tilda Harrington, Christian Navarro, Elena Davidson...
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.22541/au.172712663.32653113/v1
+
+  [4] Native, Non-Native, or Bilingual? A Concise Assessment of ChatGPT’s Suitability for Second-Language Instruction as a Native or Non-Native Pedagogue
+      Authors: Noboru Sakai
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.31219/osf.io/hy9ju_v3
+
+  [5] Native, Non-Native, or Bilingual? A Concise Assessment of ChatGPT’s Suitability for Second-Language Instruction as a Native or Non-Native Pedagogue
+      Authors: Noboru Sakai
+      Year: None  Citations: 2  Venue: 
+      URL: https://doi.org/10.31219/osf.io/hy9ju
+
+  [6] Enhancing Low Resource Language Text-to-Speech with Native Corpus Training: A High-Quality Waveglow Vocoder Approach
+      Authors: abdulhady Abas, Sabat Muhamad, Hadi Veisi
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.2139/ssrn.5165691
+
+  [7] Native, Non-Native, or Bilingual? A Concise Assessment of ChatGPT’s Suitability for Second-Language Instruction as a Native or Non-Native Pedagogue
+      Authors: Noboru Sakai
+      Year: None  Citations: 2  Venue: 
+      URL: https://doi.org/10.31219/osf.io/hy9ju_v1
+
+  [8] Data-driven learning in a low-level language classroom
+      Authors: Katya Goussakova
+      Year: 2022  Citations: 2  Venue: Enhancing Beginner-Level Foreign Language Education for Adult Learners
+      URL: https://doi.org/10.4324/9781003058441-15
+
+  [9] InstructAlign: High-and-Low Resource Language Alignment via Continual Crosslingual Instruction Tuning
+      Authors: Samuel Cahyawijaya, Holy Lovenia, Tiezheng Yu...
+      Year: 2023  Citations: 2  Venue: Proceedings of the First Workshop in South East Asian Language Processing
+      URL: https://doi.org/10.18653/v1/2023.sealp-1.5
+
+  [10] A Data-Centric Approach to Mitigating Class Imbalance in Low-Resource Telugu Natural Language Processing
+      Authors: Kedhar Seetammagari, Nikola Nikolov
+      Year: 2026  Citations: 0  Venue: Proceedings of the 18th International Conference on Agents and Artificial Intelligence
+      URL: https://doi.org/10.5220/0014716600004052
+
+  [11] Integrating Native Customs into English Language Instruction to Advance Moral Development
+      Authors: Laiba Ghafoor
+      Year: None  Citations: 1  Venue: 
+      URL: https://doi.org/10.31219/osf.io/qdzy9
+
+  [12] Reasoning on a Budget: Miniaturizing DeepSeek R1 with SFT-GRPO Alignment for Instruction-Tuned LLMs
+      Authors: Esmaeil Narimissa
+      Year: None  Citations: 2  Venue: 
+      URL: https://doi.org/10.36227/techrxiv.174742969.91776650/v1
+
+
+============================================================
+  dblp: 0 papers found
+============================================================
+
+============================================================
+  open_alex: 12 papers found
+============================================================
+  [1] Aya Dataset: An Open-Access Collection for Multilingual Instruction Tuning
+      Authors: Shivalika Singh, Freddie Vargus, Daniel D’souza...
+      Year: 2024  Citations: 29  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.acl-long.620
+
+  [2] Multilingual Instruction Tuning With Just a Pinch of Multilinguality
+      Authors: Uri Shaham, Jonathan Herzig, Roee Aharoni...
+      Year: 2024  Citations: 9  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.findings-acl.136
+
+  [3] Lasagne: a static binary translator for weak memory model architectures
+      Authors: Rodrigo C. O. Rocha, Dennis Sprokholt, Martin Fink...
+      Year: 2022  Citations: 21  Venue: 
+      URL: https://doi.org/10.1145/3519939.3523719
+
+  [4] A New Pipeline for Generating Instruction Dataset via RAG and Self Fine-Tuning
+      Authors: Chih-Wei Sung, Yu-Kai Lee, Yin-Te Tsai
+      Year: 2024  Citations: 9  Venue: 
+      URL: https://doi.org/10.1109/compsac61105.2024.00371
+
+  [5] COMMIT: Code-Mixing English-Centric Large Language Model for Multilingual Instruction Tuning
+      Authors: Jae‐Seong Lee, Yeonjoon Jung, Seung-won Hwang
+      Year: 2024  Citations: 2  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.findings-naacl.198
+
+  [6] Better Alignment with Instruction Back-and-Forth Translation
+      Authors: Thao Nguyen, Jeffrey Li, Sewoong Oh...
+      Year: 2024  Citations: 2  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.findings-emnlp.777
+
+  [7] PLUG: Leveraging Pivot Language in Cross-Lingual Instruction Tuning
+      Authors: Zhihan Zhang, Dong-Ho Lee, Yuwei Fang...
+      Year: 2024  Citations: 1  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.acl-long.379
+
+  [8] MURI: High-Quality Instruction Tuning Datasets for Low-Resource Languages via Reverse Instructions
+      Authors: Abdullatif Köksal, Marion Thaler, Ayyoob Imani...
+      Year: 2025  Citations: 2  Venue: Transactions of the Association for Computational Linguistics
+      URL: https://doi.org/10.1162/tacl.a.18
+
+  [9] Bridging the differences across CPU instruction set architectures—LoongArch architecture software porting technique based on large language models
+      Authors: Chenguang Wang, Ying Wang, Yunwei WEN...
+      Year: 2025  Citations: 0  Venue: Scientia Sinica Informationis
+      URL: https://doi.org/10.1360/ssi-2024-0224
+
+  [10] COIG-CQIA: Quality is All You Need for Chinese Instruction Fine-tuning
+      Authors: Yuelin Bai, Xeron Du, Yiming Liang...
+      Year: 2025  Citations: 6  Venue: 
+      URL: https://doi.org/10.18653/v1/2025.findings-naacl.457
+
+  [11] Chat Vector: A Simple Approach to Equip LLMs with Instruction Following and Model Alignment in New Languages
+      Authors: Shih-Cheng Huang, Pin-Zu Li, Yu-Chi Hsu...
+      Year: 2024  Citations: 8  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.acl-long.590
+
+  [12] Qwen2.5-xCoder: Multi-Agent Collaboration for Multilingual Code Instruction Tuning
+      Authors: Jian Yang, Wei Zhang, Yibo Miao...
+      Year: 2025  Citations: 3  Venue: 
+      URL: https://doi.org/10.18653/v1/2025.acl-long.642
+
+
+============================================================
+  openreview: 0 papers found
+============================================================
+
+============================================================
+  semantic_scholar: 1 papers found
+============================================================
+  [1] VEEF-Multi-LLM: Effective Vocabulary Expansion and Parameter Efficient Finetuning Towards Multilingual Large Language Models
+      Authors: Jiu Sha, Mengxiao Zhu, Chong Feng...
+      Year: 2025  Citations: 4  Venue: International Conference on Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/9f89d19d68955e95c95108800aac3053b18f4f2f
+
+
+Total: 37 papers from 6 sources.

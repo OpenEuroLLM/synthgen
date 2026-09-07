@@ -1,0 +1,272 @@
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+
+============================================================
+  arxiv: 12 papers found
+============================================================
+  [1] FFPDG: Fast, Fair and Private Data Generation
+      Authors: Weijie Xu, Jinjin Zhao, Francis Iannacci...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2307.00161v1
+
+  [2] On LLMs-Driven Synthetic Data Generation, Curation, and Evaluation: A Survey
+      Authors: Lin Long, Rui Wang, Ruixuan Xiao...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2406.15126v1
+
+  [3] Privacy Measurement in Tabular Synthetic Data: State of the Art and Future Research Directions
+      Authors: Alexander Boudewijn, Andrea Filippo Ferraris, Daniele Panfilo...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2311.17453v1
+
+  [4] AeroGen: Enhancing Remote Sensing Object Detection with Diffusion-Driven Data Generation
+      Authors: Datao Tang, Xiangyong Cao, Xuan Wu...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2411.15497v3
+
+  [5] TerraGen: A Unified Multi-Task Layout Generation Framework for Remote Sensing Data Augmentation
+      Authors: Datao Tang, Hao Wang, Yudeng Xin...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2510.21391v1
+
+  [6] Synthetic Data in MR Spectroscopy: Current Practices, Applications, and Considerations
+      Authors: John T. LaMaster, Aaron T. Gudmundson, Alireza Abaei...
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2602.23463v2
+
+  [7] Multi-Sample Prompting and Actor-Critic Prompt Optimization for Diverse Synthetic Data Generation
+      Authors: Abdelkarim El-Hajjami, Camille Salinesi
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2506.21138v2
+
+  [8] LLMs as Academic Reading Companions: Extending HCI Through Synthetic Personae
+      Authors: Celia Chen, Alex Leitch
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2403.19506v2
+
+  [9] A Survey of LLM $\times$ DATA
+      Authors: Xuanhe Zhou, Junxuan He, Wei Zhou...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2505.18458v3
+
+  [10] Automated Prompt Generation for Creative and Counterfactual Text-to-image Synthesis
+      Authors: Aleksa Jelaca, Ying Jiao, Chang Tian...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2509.21375v1
+
+  [11] MetaSynth: Meta-Prompting-Driven Agentic Scaffolds for Diverse Synthetic Data Generation
+      Authors: Haris Riaz, Sourav Bhabesh, Vinayak Arannil...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2504.12563v2
+
+  [12] Measuring Lexical Diversity of Synthetic Data Generated through Fine-Grained Persona Prompting
+      Authors: Gauri Kambhatla, Chantal Shaib, Venkata Govindarajan
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2505.17390v2
+
+
+============================================================
+  crossref: 12 papers found
+============================================================
+  [1] Auditing Synthetic Code: A Multi-Dimensional Taxonomy and Evaluation Framework for LLM-Generated Code Training Data
+      Authors: Matin Rouzehkhah Azad
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.2139/ssrn.7181298
+
+  [2] SHAP-LLM: Explainability-Guided Synthetic Tabular Data Generation Using Large Language Models
+      Authors: Akshata Karandikar, Christoph Schommer, Salima Lamsiyah
+      Year: 2026  Citations: 1  Venue: Proceedings of the 18th International Conference on Agents and Artificial Intelligence
+      URL: https://doi.org/10.5220/0014485700004052
+
+  [3] Data-Driven Persona Generation via Structured Analysis and LLM Prompt Injection: Comparing Analytical Method Selection and Combination Strategies
+      Authors: Yujin kim, Jaekwang Kim
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.2139/ssrn.7281659
+
+  [4] Prompt Editor: A Taxonomy-driven System for Guided LLM Prompt Development in Enterprise Settings
+      Authors: Jeffery Cao, Lampros Flokas, Yujian Xu...
+      Year: 2025  Citations: 0  Venue: Companion of the 2025 International Conference on Management of Data
+      URL: https://doi.org/10.1145/3722212.3725124
+
+  [5] LLM-Based Semantic Retrieval and Synthetic Response Generation for Longitudinal Survey Data
+      Authors: Bas Weerman, Chirag Patel
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.2139/ssrn.5990615
+
+  [6] Adaptive refinement and prompt-guided conditioning for clinically realistic LLM-generated synthetic pediatric data
+      Authors: Ebtesam Alomari
+      Year: 2026  Citations: 0  Venue: Frontiers in Digital Health
+      URL: https://doi.org/10.3389/fdgth.2026.1826526
+
+  [7] Llm-Tabflow: Synthetic Tabular Data Generation with Inter-Column Logical Relationship Preservation
+      Authors: Yunbo Long, Liming Xu, Alexandra Brintrup
+      Year: None  Citations: 1  Venue: 
+      URL: https://doi.org/10.2139/ssrn.5183709
+
+  [8] Systematic Prompt Optimization for LLM-Based Backend API Generation: An Empirical Study in NestJS
+      Authors: Himanshu Sharma
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.31224/6363
+
+  [9] Secure Prompt Engineering: A Practical Framework for Mitigating Prompt Injection and Data Leakage in LLM-based Systems
+      Authors: Gustavo Viana
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.2139/ssrn.6956641
+
+  [10] Synthetic Eggs in Many Baskets: The Impact of Synthetic Data Diversity on LLM Fine-Tuning
+      Authors: Max Schaffelder, Albert Gatt
+      Year: 2026  Citations: 0  Venue: Findings of the Association for Computational Linguistics: ACL 2026
+      URL: https://doi.org/10.18653/v1/2026.findings-acl.360
+
+  [11] Human-Centered Intention Refinement for LLM-based Domain-Data Analysis Using Iterative Prompt Generation
+      Authors: Daichi Ohnami, Rentaro Yoshioka, Takayuki Hoshino
+      Year: 2024  Citations: 0  Venue: TENCON 2024 - 2024 IEEE Region 10 Conference (TENCON)
+      URL: https://doi.org/10.1109/tencon61640.2024.10902869
+
+  [12] Toward Fully Automated Prompting: An LLM-Powered Genetic Algorithm for Prompt Generation, Optimization, and Self-Evaluation
+      Authors: Leandro A. Loss, Pratikkumar Dhuvad
+      Year: 2026  Citations: 0  Venue: Journal of Data Science and Intelligent Systems
+      URL: https://doi.org/10.47852/bonviewjdsis62028440
+
+
+============================================================
+  open_alex: 12 papers found
+============================================================
+  [1] On LLMs-Driven Synthetic Data Generation, Curation, and Evaluation: A Survey
+      Authors: Lin Long, Rui Wang, Ruixuan Xiao...
+      Year: 2024  Citations: 108  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.findings-acl.658
+
+  [2] DataDreamer: A Tool for Synthetic Data Generation and Reproducible LLM Workflows
+      Authors: Ajay Patel, Colin Raffel, Chris Callison-Burch
+      Year: 2024  Citations: 21  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.acl-long.208
+
+  [3] An LLM-Based Framework for Synthetic Data Generation
+      Authors: Mandeep Goyal, Qusay H. Mahmoud
+      Year: 2025  Citations: 5  Venue: 
+      URL: https://doi.org/10.1109/ccwc62904.2025.10903878
+
+  [4] Balancing Diversity and Risk in LLM Sampling: How to Select Your Method and Parameter for Open-Ended Text Generation
+      Authors: Yuxuan Zhou, Margret Keuper, Mario Fritz
+      Year: 2025  Citations: 5  Venue: 
+      URL: https://doi.org/10.18653/v1/2025.acl-long.1278
+
+  [5] Exploring Precision and Recall to assess the quality and diversity of LLMs
+      Authors: Florian Le Bronnec, Alexandre Vérine, Benjamin Négrevergne...
+      Year: 2024  Citations: 14  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.acl-long.616
+
+  [6] Few-shot LLM Synthetic Data with Distribution Matching
+      Authors: Jiyuan Ren, Zhaocheng Du, Zhihao Wen...
+      Year: 2025  Citations: 3  Venue: 
+      URL: https://doi.org/10.1145/3701716.3715245
+
+  [7] Better Synthetic Data by Retrieving and Transforming Existing Datasets
+      Authors: Saumya Gandhi, Ritu Gala, Vijay Viswanathan...
+      Year: 2024  Citations: 12  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.findings-acl.385
+
+  [8] Assessing the Potentials of LLMs and GANs as State-of-the-Art Tabular Synthetic Data Generation Methods
+      Authors: Marko Miletic, Murat Sariyar
+      Year: 2024  Citations: 9  Venue: Lecture notes in computer science
+      URL: https://doi.org/10.1007/978-3-031-69651-0_25
+
+  [9] MetaSynth: Meta-Prompting-Driven Agentic Scaffolds for Diverse Synthetic Data Generation
+      Authors: Association for Computational Linguistics 2025, A, vinayak, Ballesteros, Miguel...
+      Year: 2025  Citations: 0  Venue: Underline Science Inc.
+      URL: https://doi.org/10.48448/74jd-5782
+
+  [10] The Use of LLMs for Synthesis Data for Small Datasets
+      Authors: Valentyn Fedorov, Roman Bilyy, Oleksandr Toroshanko...
+      Year: 2025  Citations: 0  Venue: 
+      URL: https://doi.org/10.1109/acit65614.2025.11185820
+
+  [11] LLMs for Question-Answer and Synthetic Data Generation and Evaluation
+      Authors: Renu Balyan, Kayla Thompson, Francisco Iacobelli
+      Year: 2025  Citations: 3  Venue: Lecture notes in computer science
+      URL: https://doi.org/10.1007/978-3-031-98284-2_2
+
+  [12] MetaSynth: Meta-Prompting-Driven Agentic Scaffolds for Diverse Synthetic Data Generation
+      Authors: Association for Computational Linguistics 2025, A, vinayak, Ballesteros, Miguel...
+      Year: 2025  Citations: 0  Venue: Open MIND
+      URL: https://doi.org/10.48448/cn72-hy64
+
+
+============================================================
+  openreview: 0 papers found
+============================================================
+
+============================================================
+  dblp: 0 papers found
+============================================================
+
+============================================================
+  semantic_scholar: 12 papers found
+============================================================
+  [1] Multi-Sample Prompting and Actor-Critic Prompt Optimization for Diverse Synthetic Data Generation
+      Authors: Abdelkarim El-Hajjami, Camille Salinesi
+      Year: 2025  Citations: 3  Venue: 
+      URL: https://www.semanticscholar.org/paper/43b722e4fe4e9eb43527bcf676c0a6a8d324a61d
+
+  [2] Attributes as Textual Genes: Leveraging LLMs as Genetic Algorithm Simulators for Conditional Synthetic Data Generation
+      Authors: Guangzeng Han, Weisi Liu, Xiaolei Huang
+      Year: 2025  Citations: 8  Venue: Conference on Empirical Methods in Natural Language Processing
+      URL: https://www.semanticscholar.org/paper/bf54a21f2def71dcae3b3b48857e48230f65e94f
+
+  [3] Synthetic Data Generation Using Large Language Models: Advances in Text and Code
+      Authors: M. Nadăş, Laura Dioşan, Andreea Tomescu
+      Year: 2025  Citations: 120  Venue: IEEE Access
+      URL: https://www.semanticscholar.org/paper/4731bb716a378a00928f5e826ce7e2de6b41efc4
+
+  [4] Script generation from synthetic stories using lightweight LLM and emotion-aware TTS pipelines
+      Authors: Uzma Patil, Aniket K. Shahade
+      Year: 2025  Citations: 1  Venue: Social Network Analysis and Mining
+      URL: https://www.semanticscholar.org/paper/ff94b72c45302035fe81f45967c159cbd00ba42c
+
+  [5] UniFi-LLM: A Unified Large Language Model for Financial Data Generation and Fraud Prediction
+      Authors: Giridhar Pamisetty, Subbareddy Batreddy, Priya Verma...
+      Year: 2025  Citations: 0  Venue: BigData Congress [Services Society]
+      URL: https://www.semanticscholar.org/paper/efb4f2d56648ff49b1ffab7a3a2955c15fc8c505
+
+  [6] MetaSynth: Meta-Prompting-Driven Agentic Scaffolds for Diverse Synthetic Data Generation
+      Authors: Haris Riaz, Sourav S. Bhabesh, Vinayak Arannil...
+      Year: 2025  Citations: 9  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/5e41b451140f6739c5c4e5fe19606cd5923f11da
+
+  [7] Persona-Based Synthetic Data Generation Using Multi-Stage Conditioning with Large Language Models for Emotion Recognition
+      Authors: Keito Inoshita, Rushia Harada
+      Year: 2025  Citations: 6  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/637ee5e74840e389b642eb98e26c1b72984481de
+
+  [8] BARE: Leveraging Base Language Models for Few-Shot Synthetic Data Generation
+      Authors: Alan Zhu, Parth Asawa, J. Davis...
+      Year: 2025  Citations: 8  Venue: 
+      URL: https://www.semanticscholar.org/paper/b008348e12a482b32fd3cfa6b815944b4d907014
+
+  [9] Candidate Profile Summarization- A RAG Approach with Synthetic Data Generation for Tech Jobs
+      Authors: Anum Afzal, Ishwor Subedi, Florian Matthes
+      Year: 2025  Citations: 0  Venue: International conference: Recent advances in natural language processing
+      URL: https://www.semanticscholar.org/paper/cc7351c118121f88b1c4c1249518b393342a7612
+
+  [10] Adaptive refinement and prompt-guided conditioning for clinically realistic LLM-generated synthetic pediatric data
+      Authors: E. Alomari
+      Year: 2026  Citations: 0  Venue: Frontiers in Digital Health
+      URL: https://www.semanticscholar.org/paper/5207b1ccb259c7174351bdc5ccb434fd33225abf
+
+  [11] SynthSeg-Agents: Multi-Agent Synthetic Data Generation for Zero-Shot Weakly Supervised Semantic Segmentation
+      Authors: Wangyu Wu, Zhenhong Chen, Xiaowei Huang...
+      Year: 2025  Citations: 3  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/92139905b01ddc31c6bd1e813410d37ed95f0919
+
+  [12] SHAP-LLM: Explainability-Guided Synthetic Tabular Data Generation Using Large Language Models
+      Authors: Akshata Karandikar, Christoph Schommer, Salima Lamsiyah
+      Year: 2026  Citations: 1  Venue: International Conference on Agents and Artificial Intelligence
+      URL: https://www.semanticscholar.org/paper/525b64693e515fd08bce6749eef5ac1a6580aa1a
+
+
+Total: 48 papers from 6 sources.

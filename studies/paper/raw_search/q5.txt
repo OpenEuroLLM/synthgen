@@ -1,0 +1,202 @@
+[open_alex] Error: 504 Server Error: Gateway Timeout for url: https://api.openalex.org/works?search.semantic=self-instruct+evol-instruct+magpie+instruction+data+synthesis&filter=publication_year%3A2022-2026&sort=relevance_score%3Adesc&page=1&per-page=12
+
+============================================================
+  arxiv: 12 papers found
+============================================================
+  [1] Robo-Instruct: Simulator-Augmented Instruction Alignment For Finetuning Code LLMs
+      Authors: Zichao Hu, Junyi Jessy Li, Arjun Guha...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2405.20179v5
+
+  [2] Magpie: Alignment Data Synthesis from Scratch by Prompting Aligned LLMs with Nothing
+      Authors: Zhangchen Xu, Fengqing Jiang, Luyao Niu...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2406.08464v2
+
+  [3] Rapidly Developing High-quality Instruction Data and Evaluation Benchmark for Large Language Models with Minimal Human Effort: A Case Study on Japanese
+      Authors: Yikun Sun, Zhen Wan, Nobuhiro Ueda...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2403.03690v1
+
+  [4] Multimodal Self-Instruct: Synthetic Abstract Image and Visual Reasoning Instruction Using Language Model
+      Authors: Wenqi Zhang, Zhenglin Cheng, Yuanyu He...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2407.07053v5
+
+  [5] WizardLM: Empowering large pre-trained language models to follow complex instructions
+      Authors: Can Xu, Qingfeng Sun, Kai Zheng...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2304.12244v3
+
+  [6] Tag-Evol: Achieving Efficient Instruction Evolving via Tag Injection
+      Authors: Yixuan Wang, Shiqi Zhou, Chuanzhe Guo...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2505.24165v1
+
+  [7] Magpie: Real-Time World Renderer for Interactive Games
+      Authors: Xiaoyu Zhan, Xinyu Wang, Xiaohong Zhang...
+      Year: 2026  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2608.27168v1
+
+  [8] TerraGen: A Unified Multi-Task Layout Generation Framework for Remote Sensing Data Augmentation
+      Authors: Datao Tang, Hao Wang, Yudeng Xin...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2510.21391v1
+
+  [9] WizardCoder: Empowering Code Large Language Models with Evol-Instruct
+      Authors: Ziyang Luo, Can Xu, Pu Zhao...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2306.08568v2
+
+  [10] X-Instruction: Aligning Language Model in Low-resource Languages with Self-curated Cross-lingual Instructions
+      Authors: Chong Li, Wen Yang, Jiajun Zhang...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2405.19744v1
+
+  [11] Semi-Instruct: Bridging Natural-Instruct and Self-Instruct for Code Large Language Models
+      Authors: Xianzhen Luo, Qingfu Zhu, Zhiming Zhang...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2403.00338v1
+
+  [12] AeroGen: Enhancing Remote Sensing Object Detection with Diffusion-Driven Data Generation
+      Authors: Datao Tang, Xiangyong Cao, Xuan Wu...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2411.15497v3
+
+
+============================================================
+  crossref: 12 papers found
+============================================================
+  [1] DS2-Instruct: Domain-Specific Data Synthesis for Large Language Models Instruction Tuning
+      Authors: Ruiyao Xu, Noelle I. Samia, Han Liu
+      Year: 2026  Citations: 0  Venue: Findings of the Association for Computational Linguistics: EACL 2026
+      URL: https://doi.org/10.18653/v1/2026.findings-eacl.176
+
+  [2] AryWiki-Instruct: A high-fidelity instruction tuning dataset for Moroccan Arabic (Darija)
+      Authors: Safouane Boudakkou, Abdelaaziz El Hibaoui
+      Year: 2026  Citations: 0  Venue: Data in Brief
+      URL: https://doi.org/10.1016/j.dib.2026.113140
+
+  [3] ZeroSeedRec: Enhancing Zero-Shot Recommendation with Domain-Specific Instruction-Tuned LLMs: A Pipeline for Synthetic Seed and Self-Instruct Data Generation
+      Authors: Eyad Elbella, Ahmed Aly, Rasha Kashef
+      Year: 2025  Citations: 0  Venue: 2025 7th Novel Intelligent and Leading Emerging Sciences Conference (NILES)
+      URL: https://doi.org/10.1109/niles68063.2025.11231926
+
+  [4] High-resolution cryo-EM structure of integrin αIIbβ3 bound to disease-causing maternal HPA-1a antibody that blocks integrin activation
+      Authors: José M. de Pereda, Wendy Stam, Marcos Gragera...
+      Year: 2026  Citations: 0  Venue: Science Advances
+      URL: https://doi.org/10.1126/sciadv.aed9833
+
+  [5] pre-instruct, v.
+      Authors: 
+      Year: 2023  Citations: 0  Venue: Oxford English Dictionary
+      URL: https://doi.org/10.1093/oed/7502934430
+
+  [6] instruct, n.
+      Authors: 
+      Year: 2023  Citations: 0  Venue: Oxford English Dictionary
+      URL: https://doi.org/10.1093/oed/6120488253
+
+  [7] Corrigendum to “Achievement gaps for English learners with disabilities” [Learn. Instruct. 96 (2025) 102072]
+      Authors: Johny Daniel
+      Year: 2025  Citations: 0  Venue: Learning and Instruction
+      URL: https://doi.org/10.1016/j.learninstruc.2025.102101
+
+  [8] Ada-Instruct: Adapting Instruction Generators for Complex Reasoning
+      Authors: Wanyun Cui, Qianle Wang
+      Year: 2024  Citations: 4  Venue: Findings of the Association for Computational Linguistics: EMNLP 2024
+      URL: https://doi.org/10.18653/v1/2024.findings-emnlp.409
+
+  [9] Instruct-FinGPT: Financial Sentiment Analysis by Instruction Tuning of General-Purpose Large Language Models
+      Authors: Boyu Zhang, Hongyang Yang, Xiao-Yang Liu
+      Year: None  Citations: 88  Venue: 
+      URL: https://doi.org/10.2139/ssrn.4489831
+
+  [10] instruct, v.
+      Authors: 
+      Year: 2023  Citations: 0  Venue: Oxford English Dictionary
+      URL: https://doi.org/10.1093/oed/6429794299
+
+  [11] Instruct-CLIP: Improving Instruction-Guided Image Editing with Automated Data Refinement Using Contrastive Learning
+      Authors: Sherry X. Chen, Misha Sra, Pradeep Sen
+      Year: 2025  Citations: 1  Venue: 2025 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)
+      URL: https://doi.org/10.1109/cvpr52734.2025.02655
+
+  [12] instruct, adj.
+      Authors: 
+      Year: 2023  Citations: 0  Venue: Oxford English Dictionary
+      URL: https://doi.org/10.1093/oed/1151380938
+
+
+============================================================
+  dblp: 0 papers found
+============================================================
+
+============================================================
+  openreview: 0 papers found
+============================================================
+
+============================================================
+  open_alex: 0 papers found
+============================================================
+
+============================================================
+  semantic_scholar: 11 papers found
+============================================================
+  [1] Magpie: Alignment Data Synthesis from Scratch by Prompting Aligned LLMs with Nothing
+      Authors: Zhangchen Xu, Fengqing Jiang, Luyao Niu...
+      Year: 2024  Citations: 378  Venue: International Conference on Learning Representations
+      URL: https://www.semanticscholar.org/paper/cab3d65b3f4d0a4169d0fdaaed15af6be1d6bb84
+
+  [2] Semi-Instruct: Bridging Natural-Instruct and Self-Instruct for Code Large Language Models
+      Authors: Xianzhen Luo, Qingfu Zhu, Zhiming Zhang...
+      Year: 2024  Citations: 2  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/554b5514ebb83efe98e0c32a3d9fd661be9bc613
+
+  [3] DS2-Instruct: Domain-Specific Data Synthesis for Large Language Models Instruction Tuning
+      Authors: Ruiyao Xu, Noelle I. Samia, Hanbing Liu
+      Year: 2026  Citations: 3  Venue: Conference of the European Chapter of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/324156f69e997b8638c89e6683299af5d623bdd2
+
+  [4] Tag-Evol: Achieving Efficient Instruction Evolving via Tag Injection
+      Authors: Yixuan Wang, Shi-Qi Zhou, Chuanzhe Guo...
+      Year: 2025  Citations: 0  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/a2984e9c78b85b4865890c64ca7ab60869c9cbc0
+
+  [5] Data Synthesis for Large Language Model Reasoning: A Review of the Evolution from Surface Imitation to Deep Logic
+      Authors: Minyu Wu
+      Year: 2026  Citations: 0  Venue: Advances in Engineering Technology Research
+      URL: https://www.semanticscholar.org/paper/8b0ae8657b908277e64dc60f444d7d5b3438f176
+
+  [6] Envs-FORGE: Frontier-Optimized Reward-Grounded Environment Synthesis for Agent RL
+      Authors: Xiao-Jun Wu, Cehao Yang, Honghao Liu...
+      Year: 2026  Citations: 0  Venue: 
+      URL: https://www.semanticscholar.org/paper/f7f9dad2ffc493629ae7ab6e2a470bcd8ece8f10
+
+  [7] OctoPack: Instruction Tuning Code Large Language Models
+      Authors: Niklas Muennighoff, Qian Liu, Qi Liu...
+      Year: 2023  Citations: 224  Venue: International Conference on Learning Representations
+      URL: https://www.semanticscholar.org/paper/40e0b9361d88b1879891eb6d16de110b30bf6c62
+
+  [8] SelfCodeAlign: Self-Alignment for Code Generation
+      Authors: Yuxiang Wei, Federico Cassano, Jiawei Liu...
+      Year: 2024  Citations: 74  Venue: Neural Information Processing Systems
+      URL: https://www.semanticscholar.org/paper/3257a72f5cc9f9e35a179b28229045e8cb3c231c
+
+  [9] TarGEN: Targeted Data Generation with Large Language Models
+      Authors: Himanshu Gupta, K. Scaria, Ujjwala Anantheswaran...
+      Year: 2023  Citations: 19  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/d9e771732100c0f696cefb2a5c82cdd953140bb0
+
+  [10] Text2Video-Zero: Text-to-Image Diffusion Models are Zero-Shot Video Generators
+      Authors: L. Khachatryan, A. Movsisyan, Vahram Tadevosyan...
+      Year: 2023  Citations: 874  Venue: IEEE International Conference on Computer Vision
+      URL: https://www.semanticscholar.org/paper/923a03032014a12c4e8b26511c0394e1b915fe74
+
+  [11] CRAFT Your Dataset: Task-Specific Synthetic Dataset Generation Through Corpus Retrieval and Augmentation
+      Authors: Ingo Ziegler, Abdullatif Köksal, Desmond Elliott...
+      Year: 2024  Citations: 22  Venue: Transactions of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/5616be414472881c170abca7ac2472378c63fc74
+
+
+Total: 35 papers from 6 sources.

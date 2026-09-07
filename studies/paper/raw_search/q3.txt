@@ -1,0 +1,214 @@
+[dblp] Error: 503 Server Error: Service Unavailable for url: https://dblp.org/search/publ/api?q=translated+instruction+tuning+data+multilingual+LLM+alignment&format=json&h=12&f=0
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+[open_alex] Error: 504 Server Error: Gateway Timeout for url: https://api.openalex.org/works?search.semantic=translated+instruction+tuning+data+multilingual+LLM+alignment&filter=publication_year%3A2022-2026&sort=relevance_score%3Adesc&page=1&per-page=12
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+
+============================================================
+  dblp: 0 papers found
+============================================================
+
+============================================================
+  arxiv: 12 papers found
+============================================================
+  [1] Demystifying Instruction Mixing for Fine-tuning Large Language Models
+      Authors: Renxi Wang, Haonan Li, Minghao Wu...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2312.10793v3
+
+  [2] Vision-Flan: Scaling Human-Labeled Tasks in Visual Instruction Tuning
+      Authors: Zhiyang Xu, Chao Feng, Rulin Shao...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2402.11690v1
+
+  [3] FinGPT: Instruction Tuning Benchmark for Open-Source Large Language Models in Financial Datasets
+      Authors: Neng Wang, Hongyang Yang, Christina Dan Wang
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2310.04793v2
+
+  [4] Instruction Tuning with GPT-4
+      Authors: Baolin Peng, Chunyuan Li, Pengcheng He...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2304.03277v1
+
+  [5] Multilingual Pretraining and Instruction Tuning Improve Cross-Lingual Knowledge Alignment, But Only Shallowly
+      Authors: Changjiang Gao, Hongda Hu, Peng Hu...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2404.04659v1
+
+  [6] Conditions for Catastrophic Forgetting in Multilingual Translation
+      Authors: Danni Liu, Jan Niehues
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2510.19546v1
+
+  [7] From Zero to Hero: Examining the Power of Symbolic Tasks in Instruction Tuning
+      Authors: Qian Liu, Fan Zhou, Zhengbao Jiang...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2304.07995v1
+
+  [8] Multilingual Instruction Tuning With Just a Pinch of Multilinguality
+      Authors: Uri Shaham, Jonathan Herzig, Roee Aharoni...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2401.01854v4
+
+  [9] Automatic Construction of a Korean Toxic Instruction Dataset for Ethical Tuning of Large Language Models
+      Authors: Sungjoo Byun, Dongjun Jang, Hyemi Jo...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2311.18215v1
+
+  [10] TerraGen: A Unified Multi-Task Layout Generation Framework for Remote Sensing Data Augmentation
+      Authors: Datao Tang, Hao Wang, Yudeng Xin...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2510.21391v1
+
+  [11] LIMIT: Less Is More for Instruction Tuning Across Evaluation Paradigms
+      Authors: Aditi Jha, Sam Havens, Jeremy Dohmann...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2311.13133v1
+
+  [12] Is In-Context Learning Sufficient for Instruction Following in LLMs?
+      Authors: Hao Zhao, Maksym Andriushchenko, Francesco Croce...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2405.19874v3
+
+
+============================================================
+  crossref: 12 papers found
+============================================================
+  [1] Massive Supervised Fine-tuning Experiments Reveal How Data, Layer, and Training Factors Shape LLM Alignment Quality
+      Authors: Yuto Harada, Yusuke Yamauchi
+      Year: 2026  Citations: 0  Venue: Journal of Natural Language Processing
+      URL: https://doi.org/10.5715/jnlp.33.388
+
+  [2] Selective Reflection-Tuning: Student-Selected Data Recycling for LLM Instruction-Tuning
+      Authors: Ming Li, Lichang Chen, Jiuhai Chen...
+      Year: 2024  Citations: 13  Venue: Findings of the Association for Computational Linguistics ACL 2024
+      URL: https://doi.org/10.18653/v1/2024.findings-acl.958
+
+  [3] Star-Agents: Automatic Data Optimization with LLM Agents for Instruction Tuning
+      Authors: Hang Zhou, Yehui Tang, Haochen Qin...
+      Year: None  Citations: 1  Venue: 
+      URL: https://doi.org/10.32388/fzgmpf
+
+  [4] M-MiniGPT4: Multilingual VLLM Alignment via Translated Data
+      Authors: Seung Hun Eddie Han, Youssef Mohamed, Mohamed Elhoseiny
+      Year: 2026  Citations: 0  Venue: Proceedings of the 7th Workshop on African Natural Language Processing (AfricaNLP 2026)
+      URL: https://doi.org/10.18653/v1/2026.africanlp-main.2
+
+  [5] A Survey on Data Selection for LLM Instruction Tuning
+      Authors: Bolin Zhang, Jiahao Wang, Qianlong Du...
+      Year: 2025  Citations: 17  Venue: Journal of Artificial Intelligence Research
+      URL: https://doi.org/10.1613/jair.1.17625
+
+  [6] Is It Good Data for Multilingual Instruction Tuning or Just Bad Multilingual Evaluation for Large Language Models?
+      Authors: Pinzhen Chen, Simon Yu, Zhicheng Guo...
+      Year: 2024  Citations: 1  Venue: Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing
+      URL: https://doi.org/10.18653/v1/2024.emnlp-main.542
+
+  [7] Unlocking LLM Safeguards for Low-Resource Languages via Reasoning and Alignment with Minimal Training Data
+      Authors: Zhuowei Chen, Bowei Zhang, Nankai Lin...
+      Year: 2025  Citations: 0  Venue: Proceedings of the 5th Workshop on Multilingual Representation Learning (MRL 2025)
+      URL: https://doi.org/10.18653/v1/2025.mrl-main.7
+
+  [8] CoachLM: Automatic Instruction Revisions Improve the Data Quality in LLM Instruction Tuning
+      Authors: Yilun Liu, Shimin Tao, Xiaofeng Zhao...
+      Year: 2024  Citations: 9  Venue: 2024 IEEE 40th International Conference on Data Engineering (ICDE)
+      URL: https://doi.org/10.1109/icde60146.2024.00390
+
+  [9] VLM Fine-Tuning for Swine Status Monitoring via LLM-Generated Synthetic Instruction-Following Data
+      Authors: Eunji Lee, Minseok Kim, Eunju Kim...
+      Year: 2026  Citations: 0  Venue: Journal of Korea Multimedia Society
+      URL: https://doi.org/10.9717/kmms.2026.29.6.947
+
+  [10] Star-Agents: Automatic Data Optimization with LLM Agents for Instruction Tuning
+      Authors: Hang Zhou, Yehui Tang, Haochen Qin...
+      Year: 2024  Citations: 2  Venue: Advances in Neural Information Processing Systems 37
+      URL: https://doi.org/10.52202/079017-0149
+
+  [11] Empowering Beyond English-Centric Machine Translation on Llms by Multilingual Fusion Instruction Tuning
+      Authors: Zihao Feng, Hailong Cao, Qiuyu Ding...
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.2139/ssrn.5332884
+
+  [12] Multilingual Pretraining and Instruction Tuning Improve Cross-Lingual Knowledge Alignment, But Only Shallowly
+      Authors: Changjiang Gao, Hongda Hu, Peng Hu...
+      Year: 2024  Citations: 3  Venue: Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers)
+      URL: https://doi.org/10.18653/v1/2024.naacl-long.339
+
+
+============================================================
+  openreview: 0 papers found
+============================================================
+
+============================================================
+  open_alex: 0 papers found
+============================================================
+
+============================================================
+  semantic_scholar: 12 papers found
+============================================================
+  [1] LEAD: Iterative Data Selection for Efficient LLM Instruction Tuning
+      Authors: Xiaotian Lin, Yanlin Qi, Yizhang Zhu...
+      Year: 2025  Citations: 22  Venue: Proceedings of the VLDB Endowment
+      URL: https://www.semanticscholar.org/paper/7e258a9953de6315afe6c8dafefd19379b818bac
+
+  [2] TIT: A Tree-Structured Instruction Tuning Approach for LLM-Based Code Translation
+      Authors: He Jiang, Yufu Wang, Hao Lin...
+      Year: 2025  Citations: 1  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/3d4130252231240c2fb6099b69f70d6f0a621c7a
+
+  [3] COMMIT: Code-Mixing English-Centric Large Language Model for Multilingual Instruction Tuning
+      Authors: Jaeseong Lee, Yeonjoon Jung, Seung-won Hwang
+      Year: 2024  Citations: 9  Venue: NAACL-HLT
+      URL: https://www.semanticscholar.org/paper/629883cbca8844261eb6a8c71e00b4d9acff968e
+
+  [4] Towards Alignment-Centric Paradigm: A Survey of Instruction Tuning in Large Language Models
+      Authors: Xudong Han, Junjie Yang, Tianyang Wang...
+      Year: 2025  Citations: 13  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/0b91243e579c4a46516507e09db3467f9c48cb75
+
+  [5] Investigating Multilingual Instruction-Tuning: Do Polyglot Models Demand for Multilingual Instructions?
+      Authors: Alexander Arno Weber, Klaudia Thellmann, Jan Ebert...
+      Year: 2024  Citations: 13  Venue: Conference on Empirical Methods in Natural Language Processing
+      URL: https://www.semanticscholar.org/paper/32b8734b4834acf22fac8399026119fa3e60de79
+
+  [6] Is It Good Data for Multilingual Instruction Tuning or Just Bad Multilingual Evaluation for Large Language Models?
+      Authors: Pinzhen Chen, Simon Yu, Zhicheng Guo...
+      Year: 2024  Citations: 5  Venue: Conference on Empirical Methods in Natural Language Processing
+      URL: https://www.semanticscholar.org/paper/0126fea92578e34ec9e3e1a0047c4e85dc4c93b4
+
+  [7] MedInjection-FR: Exploring the Role of Native, Synthetic, and Translated Data in Biomedical Instruction Tuning
+      Authors: Ikram Belmadani, Oumaima EL KHETTARI, Pacôme Constant dit Beaufils...
+      Year: 2026  Citations: 1  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/f9850d94a05bfd7fce58dc0c3943b0b37f59b067
+
+  [8] From Tags to Trees: Structuring Fine-Grained Knowledge for Controllable Data Selection in LLM Instruction Tuning
+      Authors: Zihan Niu, Wenping Hu, Junmin Chen...
+      Year: 2026  Citations: 0  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/3db1a788fa503b7ee56042af00083a53da125b08
+
+  [9] Call for Rigor in Reporting Quality of Instruction Tuning Data
+      Authors: Hyeonseok Moon, J. Seo, Heu-Jeoung Lim
+      Year: 2025  Citations: 1  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/efb8ecfbe788111e9fb6f282aa867817b091377d
+
+  [10] Massive Supervised Fine-tuning Experiments Reveal How Data, Layer, and Training Factors Shape LLM Alignment Quality
+      Authors: Yuto Harada, Yusuke Yamauchi, Yusuke Oda...
+      Year: 2025  Citations: 20  Venue: Conference on Empirical Methods in Natural Language Processing
+      URL: https://www.semanticscholar.org/paper/1ba5158432157dfd436c632a4c41f4c116331f0b
+
+  [11] Reflection-Tuning: Data Recycling Improves LLM Instruction-Tuning
+      Authors: Ming Li, Lichang Chen, Jiuhai Chen...
+      Year: 2023  Citations: 35  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/4d2e4436f2ecfad866000a545bbd65e516d8525f
+
+  [12] UPDESH: Synthesizing Grounded Instruction Tuning Data for 13 Indic Languages
+      Authors: Pranjal A. Chitale, Varun Gumma, Sanchit Ahuja...
+      Year: 2025  Citations: 2  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/ee4268ad1ed357aecb7c8b247402794249ceab4d
+
+
+Total: 36 papers from 6 sources.

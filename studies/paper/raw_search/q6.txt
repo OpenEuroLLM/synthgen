@@ -1,0 +1,285 @@
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+Rate limited. Waiting 3 seconds...
+
+============================================================
+  arxiv: 12 papers found
+============================================================
+  [1] Mix, MinHash, and Match: Cross-Source Agreement for Multilingual Pretraining Datasets
+      Authors: Sultan Alrashed, Francesco Orabona
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2512.18834v2
+
+  [2] HPLT 3.0: Very Large-Scale Multilingual Resources for LLMs and MT. Mono- and Bi-lingual Data, Multilingual Evaluation, and Pre-Trained Models
+      Authors: Stephan Oepen, Nikolay Arefev, Mikko Aulamo...
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2511.01066v3
+
+  [3] The RSNA Abdominal Traumatic Injury CT (RATIC) Dataset
+      Authors: Jeffrey D. Rudie, Hui-Ming Lin, Robyn L. Ball...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2405.19595v1
+
+  [4] Multi-EuP: The Multilingual European Parliament Dataset for Analysis of Bias in Information Retrieval
+      Authors: Jinrui Yang, Timothy Baldwin, Trevor Cohn
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2311.01870v1
+
+  [5] Towards Multilingual LLM Evaluation for European Languages
+      Authors: Klaudia Thellmann, Bernhard Stadler, Michael Fromm...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2410.08928v2
+
+  [6] Improving LLM Safety and Helpfulness using SFT and DPO: A Study on OPT-350M
+      Authors: Piyush Pant
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2509.09055v1
+
+  [7] FinGPT: Instruction Tuning Benchmark for Open-Source Large Language Models in Financial Datasets
+      Authors: Neng Wang, Hongyang Yang, Christina Dan Wang
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2310.04793v2
+
+  [8] Releasing the CRaQAn (Coreference Resolution in Question-Answering): An open-source dataset and dataset creation methodology using instruction-following models
+      Authors: Rob Grzywinski, Joshua D'Arcy, Rob Naidoff...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2311.16338v1
+
+  [9] M$^3$IT: A Large-Scale Dataset towards Multi-Modal Multilingual Instruction Tuning
+      Authors: Lei Li, Yuwei Yin, Shicheng Li...
+      Year: 2023  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2306.04387v2
+
+  [10] Open-LLM-Leaderboard: From Multi-choice to Open-style Questions for LLMs Evaluation, Benchmark, and Arena
+      Authors: Aidar Myrzakhan, Sondos Mahmoud Bsharat, Zhiqiang Shen
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2406.07545v1
+
+  [11] SpokenNativQA: Multilingual Everyday Spoken Queries for LLMs
+      Authors: Firoj Alam, Md Arid Hasan, Shammur Absar Chowdhury
+      Year: 2025  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2505.19163v1
+
+  [12] A New Massive Multilingual Dataset for High-Performance Language Technologies
+      Authors: Ona de Gibert, Graeme Nail, Nikolay Arefyev...
+      Year: 2024  Citations: 0  Venue: arXiv
+      URL: http://arxiv.org/abs/2403.14009v1
+
+
+============================================================
+  crossref: 12 papers found
+============================================================
+  [1] A Measurement Crisis in Multilingual LLM Safety: Heuristic Classifiers Systematically Undercount Reasoning-Model Refusals in Indic Languages
+      Authors: Raghavendra Kaushik Kachireddy
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.2139/ssrn.7152058
+
+  [2] Science Across Languages: Assessing LLM Multilingual Translation of Scientific Papers
+      Authors: Hannah Calzi Kleidermacher, James Zou
+      Year: 2026  Citations: 3  Venue: Findings of the Association for Computational Linguistics: EACL 2026
+      URL: https://doi.org/10.18653/v1/2026.findings-eacl.204
+
+  [3] Lecturers’ Multilingual Practices and Ideologies on Disciplinary Vocabulary: English and Local Languages in Technology
+      Authors: Marta Aguilar-Pérez
+      Year: 2024  Citations: 0  Venue: Multilingual and Translingual Practices in English-Medium Instruction
+      URL: https://doi.org/10.5040/9781350373273.ch-010
+
+  [4] Evaluating the Multilingual Capabilities of LLM-based Web UI Agents
+      Authors: Sreejon Biswas Antor
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.62891/2d7c8429
+
+  [5] Cross-Lingual Stability of LLM Judges Under Controlled Generation: Evidence from Finno-Ugric Languages
+      Authors: Isaac Chung, Linda Freienthal
+      Year: 2026  Citations: 0  Venue: Proceedings of the First Workshop on Multilingual Multicultural Evaluation
+      URL: https://doi.org/10.18653/v1/2026.mme-main.8
+
+  [6] Retrieval-grounded multilingual LLM assistance for island smallholder farmers
+      Authors: Nikolaos Tantaroudas, Ilias Karachalios, Andrew McCracken
+      Year: 2026  Citations: 0  Venue: Open Research Europe
+      URL: https://doi.org/10.12688/openreseurope.24512.1
+
+  [7] Getting More Juice Out of the SFT Data: Reward Learning from Human Demonstration Improves SFT for LLM Alignment
+      Authors: Jiaxiang Li, Siliang Zeng, Hoi-To Wai...
+      Year: 2024  Citations: 2  Venue: Advances in Neural Information Processing Systems 37
+      URL: https://doi.org/10.52202/079017-3948
+
+  [8] Multilingual Disparities in LLM-Based Symptom Detection for Global Disease Surveillance: Findings from High- and Low-Resource Languages (Preprint)
+      Authors: Sa'idah Zahrotul Jannah, Tomohiro Nishiyama, Shaowen Peng...
+      Year: None  Citations: 0  Venue: 
+      URL: https://doi.org/10.2196/preprints.103321
+
+  [9] Reasoning on a Budget: Miniaturizing DeepSeek R1 with SFT-GRPO Alignment for Instruction-Tuned LLMs
+      Authors: Esmaeil Narimissa
+      Year: None  Citations: 2  Venue: 
+      URL: https://doi.org/10.36227/techrxiv.174742969.91776650/v1
+
+  [10] Checklist Engineering Empowers Multilingual LLM Judges
+      Authors: Mohammad Ghiasvand Mohammadkhani, Hamid Beigy
+      Year: 2025  Citations: 0  Venue: Proceedings of the Workshop on Beyond English: Natural Language Processing for all Languages in an Era of Large Language Models
+      URL: https://doi.org/10.26615/978-954-452-105-9-021
+
+  [11] An LLM-Based Multilingual Phishing Detection Framework for Regional Languages
+      Authors: S Sanjay, Nishant Krishna, G Paramesh...
+      Year: 2026  Citations: 0  Venue: 2026 International Conference on AI-Driven Innovations &amp;amp; Applications (IC-AIDA)
+      URL: https://doi.org/10.1109/ic-aida68291.2026.11564455
+
+  [12] Supplemental Material for Transactional Development of Science and Mathematics Knowledge and Reading Proficiency for Multilingual Students Across Languages of Instruction
+      Authors: 
+      Year: 2025  Citations: 0  Venue: Developmental Psychology
+      URL: https://doi.org/10.1037/dev0001858.supp
+
+
+============================================================
+  open_alex: 12 papers found
+============================================================
+  [1] All Languages Matter: On the Multilingual Safety of LLMs
+      Authors: Wenxuan Wang, Zhaopeng Tu, Chang Chen...
+      Year: 2024  Citations: 19  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.findings-acl.349
+
+  [2] M$^3$IT: A Large-Scale Dataset towards Multi-Modal Multilingual Instruction Tuning
+      Authors: Lei Li, Yuwei Yin, Shicheng Li...
+      Year: 2023  Citations: 14  Venue: arXiv (Cornell University)
+      URL: https://doi.org/10.48550/arxiv.2306.04387
+
+  [3] Chinese Open Instruction Generalist: A Preliminary Release
+      Authors: Ge Zhang, Yemin Shi, Ruibo Liu...
+      Year: 2023  Citations: 10  Venue: arXiv (Cornell University)
+      URL: https://doi.org/10.48550/arxiv.2304.07987
+
+  [4] A Fair Comparison without Translationese: English vs. Target-language Instructions for Multilingual LLMs
+      Authors: Taisei Enomoto, Hwichan Kim, Zhousi Chen...
+      Year: 2025  Citations: 1  Venue: 
+      URL: https://doi.org/10.18653/v1/2025.naacl-short.55
+
+  [5] Chat Vector: A Simple Approach to Equip LLMs with Instruction Following and Model Alignment in New Languages
+      Authors: Shih-Cheng Huang, Pin-Zu Li, Yu-Chi Hsu...
+      Year: 2024  Citations: 8  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.acl-long.590
+
+  [6] The PLLuM Instruction Corpus
+      Authors: Piotr Pęzik, Filip Żarnecki, Konrad Kaczyński...
+      Year: 2025  Citations: 0  Venue: arXiv (Cornell University)
+      URL: https://doi.org/10.48550/arxiv.2511.17161
+
+  [7] Investigating Multilingual Instruction-Tuning: Do Polyglot Models Demand for Multilingual Instructions?
+      Authors: Alexander Arno Weber, Klaudia Thellmann, Jan Ebert...
+      Year: 2024  Citations: 0  Venue: arXiv (Cornell University)
+      URL: https://doi.org/10.48550/arxiv.2402.13703
+
+  [8] LLMs Beyond English: Scaling the Multilingual Capability of LLMs with Cross-Lingual Feedback
+      Authors: Wen Lai, Mohsen Mesgar, Alexander Fraser
+      Year: 2024  Citations: 12  Venue: 
+      URL: https://doi.org/10.18653/v1/2024.findings-acl.488
+
+  [9] Bactrian-X: Multilingual Replicable Instruction-Following Models with Low-Rank Adaptation
+      Authors: Haonan Li, Fajri Koto, Minghao Wu...
+      Year: 2023  Citations: 6  Venue: arXiv (Cornell University)
+      URL: https://doi.org/10.48550/arxiv.2305.15011
+
+  [10] XIFBench: Evaluating Large Language Models on Multilingual Instruction Following
+      Authors: Li, Zhenyu, Chen, Kehai, Long, Yunfei...
+      Year: 2025  Citations: 0  Venue: arXiv (Cornell University)
+      URL: https://doi.org/10.48550/arxiv.2503.07539
+
+  [11] M2Lingual: Enhancing Multilingual, Multi-Turn Instruction Alignment in Large Language Models
+      Authors: Rishabh Maheshwary, Vikas Yadav, Hoang Nguyen...
+      Year: 2024  Citations: 0  Venue: arXiv (Cornell University)
+      URL: https://doi.org/10.48550/arxiv.2406.16783
+
+  [12] Findings of the WMT25 Multilingual Instruction Shared Task: Persistent Hurdles in Reasoning, Generation, and Evaluation
+      Authors: Schmidtová, Patrícia, Briakou, Eleftheria, Zouhar, Vilém...
+      Year: 2025  Citations: 0  Venue: Institute of Formal and Applied Linguistics (ÚFAL)
+      URL: https://openalex.org/W7111744129
+
+
+============================================================
+  dblp: 0 papers found
+============================================================
+
+============================================================
+  openreview: 0 papers found
+============================================================
+
+============================================================
+  semantic_scholar: 12 papers found
+============================================================
+  [1] Pangea: A Fully Open Multilingual Multimodal LLM for 39 Languages
+      Authors: Xiang Yue, Yueqi Song, Akari Asai...
+      Year: 2024  Citations: 76  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/2c562b516c54cf059fdeb9afc72a3f6bc1d2641f
+
+  [2] Aya Dataset: An Open-Access Collection for Multilingual Instruction Tuning
+      Authors: Shivalika Singh, Freddie Vargus, Daniel Dsouza...
+      Year: 2024  Citations: 227  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/88cd6e0f7c2f1fe2bd4796a6729447d60bfeffc9
+
+  [3] MiniLingua: A Small Open-Source LLM for European Languages
+      Authors: Anna Aksenova, Boris Zverkov, Nicola Dainese...
+      Year: 2025  Citations: 0  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/0b95132ec05491a2b25914940ef076031d4fd1a7
+
+  [4] The Lucie-7B LLM and the Lucie Training Dataset: Open resources for multilingual language generation
+      Authors: Olivier Gouvert, Julie Hunter, Jérôme Louradour...
+      Year: 2025  Citations: 8  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/a2fe7438d86868422b70f2f575febe8e4fbcd4fd
+
+  [5] OpenCodeInstruct: A Large-scale Instruction Tuning Dataset for Code LLMs
+      Authors: W. Ahmad, Aleksander Ficek, Mehrzad Samadi...
+      Year: 2025  Citations: 62  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/ebcc683e5494bd8fbe596dfc4b3eaf6fb641fc74
+
+  [6] Investigating the Multilingual Calibration Effects of Language Model Instruction-Tuning
+      Authors: Jerry M. Huang, Peng Lu, Qiuhao Zeng...
+      Year: 2026  Citations: 2  Venue: Conference of the European Chapter of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/0e3bc1e00e48098fcd32211228b60b196bbfecee
+
+  [7] Investigating Multilingual Instruction-Tuning: Do Polyglot Models Demand for Multilingual Instructions?
+      Authors: Alexander Arno Weber, Klaudia Thellmann, Jan Ebert...
+      Year: 2024  Citations: 13  Venue: Conference on Empirical Methods in Natural Language Processing
+      URL: https://www.semanticscholar.org/paper/32b8734b4834acf22fac8399026119fa3e60de79
+
+  [8] SeaLLMs 3: Open Foundation and Chat Multilingual Large Language Models for Southeast Asian Languages
+      Authors: Wenxuan Zhang, H. Chan, Yiran Zhao...
+      Year: 2024  Citations: 50  Venue: North American Chapter of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/fbc4cfaf31a32f2e6ef69a8aa6c079dd3fe72abc
+
+  [9] UniversalCEFR: Enabling Open Multilingual Research on Language Proficiency Assessment
+      Authors: Joseph Marvin Imperial, Abdullah Barayan, Regina Stodden...
+      Year: 2025  Citations: 13  Venue: Conference on Empirical Methods in Natural Language Processing
+      URL: https://www.semanticscholar.org/paper/773904032ec7afb173a0b3426aa018e9427bca92
+
+  [10] Aya Model: An Instruction Finetuned Open-Access Multilingual Language Model
+      Authors: A. Ustun, Viraat Aryabumi, Zheng-Xin Yong...
+      Year: 2024  Citations: 401  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/2296629527ebbd6f8c897df7cf5cdbac3f0cc15b
+
+  [11] UltraLink: An Open-Source Knowledge-Enhanced Multilingual Supervised Fine-tuning Dataset
+      Authors: Haoyu Wang, Shuo Wang, Yukun Yan...
+      Year: 2024  Citations: 2  Venue: Annual Meeting of the Association for Computational Linguistics
+      URL: https://www.semanticscholar.org/paper/c21022a4dca7b1a32d2f79818cb7e51df712372f
+
+  [12] M3IT: A Large-Scale Dataset towards Multi-Modal Multilingual Instruction Tuning
+      Authors: Lei Li, Yuwei Yin, Shi-Cheng Li...
+      Year: 2023  Citations: 144  Venue: arXiv.org
+      URL: https://www.semanticscholar.org/paper/6a2a756c60dbc99f666ae6e32b0dd1a58e1e2de8
+
+
+Total: 48 papers from 6 sources.

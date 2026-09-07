@@ -1,0 +1,461 @@
+[
+ {
+  "query": "UPDESH: Synthesizing Grounded Instruction Tuning Data for 13 Indic Languages",
+  "hit": {
+   "paperId": "ee4268ad1ed357aecb7c8b247402794249ceab4d",
+   "externalIds": {
+    "DBLP": "conf/acl/ChitaleGAKUSS26",
+    "ArXiv": "2509.21294",
+    "DOI": "10.18653/v1/2026.acl-long.1763",
+    "CorpusId": 281526226
+   },
+   "title": "UPDESH: Synthesizing Grounded Instruction Tuning Data for 13 Indic Languages",
+   "venue": "Annual Meeting of the Association for Computational Linguistics",
+   "year": 2025,
+   "citationCount": 2,
+   "openAccessPdf": {
+    "url": "https://aclanthology.org/2026.acl-long.1763.pdf",
+    "status": "GOLD",
+    "license": "CCBY",
+    "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2509.21294, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+   },
+   "authors": [
+    {
+     "authorId": "2040713514",
+     "name": "Pranjal A. Chitale"
+    },
+    {
+     "authorId": "2140408530",
+     "name": "Varun Gumma"
+    },
+    {
+     "authorId": "2266387781",
+     "name": "Sanchit Ahuja"
+    },
+    {
+     "authorId": "2101317204",
+     "name": "P. Kodali"
+    },
+    {
+     "authorId": "2381989658",
+     "name": "Manan Uppadhyay"
+    },
+    {
+     "authorId": "2327865528",
+     "name": "D. Sudharsan"
+    },
+    {
+     "authorId": "2256989615",
+     "name": "Sunayana Sitaram"
+    }
+   ],
+   "abstract": "Developing culturally grounded multilingual AI systems remains challenging, particularly for low-resource languages. While synthetic data offers promise, its effectiveness in multilingual and multicultural contexts is underexplored. We investigate bottom-up synthetic data generation using large open-source LLMs (>= 235B parameters) grounded in language-specific Wikipedia content, complementing dominant top-down translation-based approaches from English. We introduce Updesh, a high-quality large-scale synthetic instruction-following dataset comprising 9.5M data points across 13 Indian languages and English, encompassing diverse reasoning and generative tasks. Comprehensive evaluation using automated metrics and 10K human assessments confirms high data quality. Downstream evaluations performed by fine-tuning models on various datasets and assessing performance across 13 diverse multilingual datasets and model comparative evaluations, demonstrate that models trained on Updesh consistently obtain significant improvements on NLU, NLG evaluations. Finally, through ablation studies and cultural evaluations, we show that context-aware, culturally grounded data generation is essential for effective multilingual AI development."
+  }
+ },
+ {
+  "query": "MIDB: Multilingual Instruction Data Booster for Enhancing Cultural Equality in Multilingual Instruction Synthesis",
+  "hit": null
+ },
+ {
+  "query": "MURI: High-Quality Instruction Tuning Datasets for Low-Resource Languages via Reverse Instructions",
+  "hit": null
+ },
+ {
+  "query": "Seed-Free Synthetic Data Generation Framework for Instruction-Tuning LLMs: A Case Study in Thai",
+  "hit": null
+ },
+ {
+  "query": "M2Lingual: Enhancing Multilingual, Multi-Turn Instruction Alignment in Large Language Models",
+  "hit": null
+ },
+ {
+  "query": "UltraLink: An Open-Source Knowledge-Enhanced Multilingual Supervised Fine-tuning Dataset",
+  "hit": null
+ },
+ {
+  "query": "Magpie: Alignment Data Synthesis from Scratch by Prompting Aligned LLMs with Nothing",
+  "hit": null
+ },
+ {
+  "query": "The PLLuM Instruction Corpus",
+  "hit": {
+   "paperId": "0bac7963760cdb62e9efcf017a0389fef378f262",
+   "externalIds": {
+    "ArXiv": "2511.17161",
+    "DBLP": "journals/corr/abs-2511-17161",
+    "DOI": "10.48550/arXiv.2511.17161",
+    "CorpusId": 283225936
+   },
+   "title": "The PLLuM Instruction Corpus",
+   "venue": "arXiv.org",
+   "year": 2025,
+   "citationCount": 2,
+   "openAccessPdf": {
+    "url": "",
+    "status": null,
+    "license": null,
+    "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2511.17161, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+   },
+   "authors": [
+    {
+     "authorId": "1725419891",
+     "name": "Piotr Pkezik"
+    },
+    {
+     "authorId": "2390934644",
+     "name": "Filip Zarnecki"
+    },
+    {
+     "authorId": "2390934942",
+     "name": "Konrad Kaczy'nski"
+    },
+    {
+     "authorId": "66622876",
+     "name": "A. Cichosz"
+    },
+    {
+     "authorId": "2390935308",
+     "name": "Zuzanna Deckert"
+    },
+    {
+     "authorId": "2390935741",
+     "name": "Monika Garnys"
+    },
+    {
+     "authorId": "2085676829",
+     "name": "Izabela Grabarczyk"
+    },
+    {
+     "authorId": "2258403477",
+     "name": "Wojciech Janowski"
+    },
+    {
+     "authorId": "2390935745",
+     "name": "Sylwia Karasi'nska"
+    },
+    {
+     "authorId": "2198106348",
+     "name": "Aleksandra Kujawiak"
+    },
+    {
+     "authorId": "2390934716",
+     "name": "Piotr Misztela"
+    },
+    {
+     "authorId": "2390934854",
+     "name": "Maria Szyma'nska"
+    },
+    {
+     "authorId": "2275247348",
+     "name": "Karolina Walkusz"
+    },
+    {
+     "authorId": "2390935773",
+     "name": "Igor Siek"
+    },
+    {
+     "authorId": "2366077140",
+     "name": "Maciej Chrabkaszcz"
+    },
+    {
+     "authorId": "40094427",
+     "name": "Anna Ko\u0142os"
+    },
+    {
+     "authorId": "2232783315",
+     "name": "Agnieszka Karli'nska"
+    },
+    {
+     "authorId": "2372266914",
+     "name": "Karolina Seweryn"
+    },
+    {
+     "authorId": "2382999311",
+     "name": "Aleksandra Krasnodkebska"
+    },
+    {
+     "authorId": "2390936285",
+     "name": "Paula Betscher"
+    },
+    {
+     "authorId": "2390934668",
+     "name": "Zofia Cie'sli'nska"
+    },
+    {
+     "authorId": "2390934661",
+     "name": "K. Kowol"
+    },
+    {
+     "authorId": "2390936289",
+     "name": "Artur Wilczek"
+    },
+    {
+     "authorId": "144127475",
+     "name": "Maciej Trzci\u0144ski"
+    },
+    {
+     "authorId": "2225921824",
+     "name": "Katarzyna Dziewulska"
+    },
+    {
+     "authorId": "69522718",
+     "name": "R. Roszko"
+    },
+    {
+     "authorId": "2390934918",
+     "name": "Tomasz Berna's"
+    },
+    {
+     "authorId": "2390935322",
+     "name": "Jurgita Vaivcenonien.e"
+    },
+    {
+     "authorId": "69483684",
+     "name": "D. Roszko"
+    },
+    {
+     "authorId": "2390934329",
+     "name": "P. Levchuk"
+    },
+    {
+     "authorId": "2390936314",
+     "name": "Pawel Kowalski"
+    },
+    {
+     "authorId": "2333014694",
+     "name": "Irena Prawdzic-Jankowska"
+    },
+    {
+     "authorId": "2308606599",
+     "name": "Marek Koz\u0142owski"
+    },
+    {
+     "authorId": "2956370",
+     "name": "Slawomir Dadas"
+    },
+    {
+     "authorId": "2067171871",
+     "name": "Rafal Poswiata"
+    },
+    {
+     "authorId": "2118156954",
+     "name": "Alina Wr'oblewska"
+    },
+    {
+     "authorId": "1411226796",
+     "name": "Katarzyna Krasnowska-Kieras"
+    },
+    {
+     "authorId": "2142983616",
+     "name": "M. Ogrodniczuk"
+    },
+    {
+     "authorId": "16148114",
+     "name": "M. Rudolf"
+    },
+    {
+     "authorId": "2258409938",
+     "name": "Piotr Rybak"
+    },
+    {
+     "authorId": "2184032114",
+     "name": "Karol Saputa"
+    },
+    {
+     "authorId": "2390934628",
+     "name": "Joanna Wo\u0142oszyn"
+    },
+    {
+     "authorId": "2273421485",
+     "name": "Marcin Oleksy"
+    },
+    {
+     "authorId": "2208962106",
+     "name": "Bartlomiej Koptyra"
+    },
+    {
+     "authorId": "2284067181",
+     "name": "Teddy Ferdinan"
+    },
+    {
+     "authorId": "2390935446",
+     "name": "Stanislaw Wo'zniak"
+    },
+    {
+     "authorId": "2265495921",
+     "name": "Maciej Piasecki"
+    },
+    {
+     "authorId": "2360709961",
+     "name": "Pawel Walkowiak"
+    },
+    {
+     "authorId": "9583418",
+     "name": "Konrad Wojtasik"
+    },
+    {
+     "authorId": "2320520315",
+     "name": "Arkadiusz Janz"
+    },
+    {
+     "authorId": "2257235071",
+     "name": "Przemyslaw Kazienko"
+    },
+    {
+     "authorId": "2320520106",
+     "name": "Julia Moska"
+    },
+    {
+     "authorId": "2383973098",
+     "name": "Jan Kocon"
+    }
+   ],
+   "abstract": "This paper describes the instruction dataset used to fine-tune a set of transformer-based large language models (LLMs) developed in the PLLuM (Polish Large Language Model) project. We present a functional typology of the organic, converted, and synthetic instructions used in PLLuM and share some observations about the implications of using human-authored versus synthetic instruction datasets in the linguistic adaptation of base LLMs. Additionally, we release the first representative subset of the PLLuM instruction corpus (PLLuMIC), which we believe to be useful in guiding and planning the development of similar datasets for other LLMs."
+  }
+ },
+ {
+  "query": "A Fair Comparison without Translationese: English vs. Target-language Instructions for Multilingual LLMs",
+  "hit": null
+ },
+ {
+  "query": "Synthetic Instruction Generation for Low-Resource Nordic Languages: Viability and Limitations in LLM Instruction-Tuning",
+  "hit": null
+ },
+ {
+  "query": "WangchanThaiInstruct: An instruction-following Dataset for Culture-Aware, Multitask, and Multi-domain Evaluation in Thai",
+  "hit": null
+ },
+ {
+  "query": "Alif: Advancing Urdu Large Language Models via Multilingual Synthetic Data Distillation",
+  "hit": null
+ },
+ {
+  "query": "Is It Good Data for Multilingual Instruction Tuning or Just Bad Multilingual Evaluation for Large Language Models?",
+  "hit": null
+ },
+ {
+  "query": "Building a Strong Instruction Language Model for a Less-Resourced Language",
+  "hit": null
+ },
+ {
+  "query": "COIG-CQIA: Quality is All You Need for Chinese Instruction Fine-tuning",
+  "hit": {
+   "paperId": "c113d96c532c11eca026f50e80541eafb112e35f",
+   "externalIds": {
+    "DBLP": "journals/corr/abs-2403-18058",
+    "ArXiv": "2403.18058",
+    "DOI": "10.48550/arXiv.2403.18058",
+    "CorpusId": 268724242
+   },
+   "title": "COIG-CQIA: Quality is All You Need for Chinese Instruction Fine-tuning",
+   "venue": "North American Chapter of the Association for Computational Linguistics",
+   "year": 2024,
+   "citationCount": 60,
+   "openAccessPdf": {
+    "url": "",
+    "status": null,
+    "license": null,
+    "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2403.18058, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+   },
+   "authors": [
+    {
+     "authorId": "2287892865",
+     "name": "Yuelin Bai"
+    },
+    {
+     "authorId": "2279346001",
+     "name": "Xinrun Du"
+    },
+    {
+     "authorId": "2280286947",
+     "name": "Yiming Liang"
+    },
+    {
+     "authorId": "2220326553",
+     "name": "Yonggang Jin"
+    },
+    {
+     "authorId": "2274955102",
+     "name": "Ziqiang Liu"
+    },
+    {
+     "authorId": "2293705842",
+     "name": "Junting Zhou"
+    },
+    {
+     "authorId": "2268491856",
+     "name": "Tianyu Zheng"
+    },
+    {
+     "authorId": "2407426897",
+     "name": "Xincheng Zhang"
+    },
+    {
+     "authorId": "2068607132",
+     "name": "Nuo Ma"
+    },
+    {
+     "authorId": "2252413754",
+     "name": "Z. Wang"
+    },
+    {
+     "authorId": "2032236274",
+     "name": "Ruibin Yuan"
+    },
+    {
+     "authorId": "2281797299",
+     "name": "Haihong Wu"
+    },
+    {
+     "authorId": "2293660596",
+     "name": "Hongquan Lin"
+    },
+    {
+     "authorId": "2284758950",
+     "name": "Wenhao Huang"
+    },
+    {
+     "authorId": "2284830288",
+     "name": "Jiajun Zhang"
+    },
+    {
+     "authorId": "2249847177",
+     "name": "Wenhu Chen"
+    },
+    {
+     "authorId": "2279451646",
+     "name": "Chenghua Lin"
+    },
+    {
+     "authorId": "2276508494",
+     "name": "Jie Fu"
+    },
+    {
+     "authorId": "2275101569",
+     "name": "Min Yang"
+    },
+    {
+     "authorId": "2266469238",
+     "name": "Shiwen Ni"
+    },
+    {
+     "authorId": "2143853895",
+     "name": "Ge Zhang"
+    }
+   ],
+   "abstract": "Remarkable progress on English instruction tuning has facilitated the efficacy and reliability of large language models (LLMs). However, there remains a noticeable gap in instruction tuning for Chinese, where the complex linguistic features pose significant challenges. Existing datasets, generally distilled from English-centric LLMs, are not well-aligned with Chinese users' interaction patterns. To bridge this gap, we introduce COIG-CQIA, a new Chinese instruction tuning dataset derived from various real-world resources and undergoing rigorous human verification. We conduct extensive experiments on COIG-CQIA, and compare them with strong baseline models and datasets. The experimental results show that models trained on COIG-CQIA achieve highly competitive performance in diverse benchmarks. Additionally, our findings offer several insights for designing effective Chinese instruction-tuning datasets and data-mixing strategies. Our dataset are available at https://huggingface.co/datasets/m-a-p/COIG-CQIA."
+  }
+ },
+ {
+  "query": "X-Instruction: Aligning Language Model in Low-resource Languages with Self-curated Cross-lingual Instructions",
+  "hit": null
+ },
+ {
+  "query": "Aya Dataset: An Open-Access Collection for Multilingual Instruction Tuning",
+  "hit": null
+ },
+ {
+  "query": "Enabling Structured Reasoning in Sindhi with Culturally Grounded Instruction Tuning",
+  "hit": null
+ }
+]
