@@ -1,0 +1,6 @@
+# Login-node venv for the diversity/embedding re-scoring pass -- ~6GB
+# (sentence-transformers + torch + cached model weights), regenerate locally
+# with `python3 -m venv .diversity_venv && .diversity_venv/bin/pip install
+# sentence-transformers pytest -e .` per studies/localized_axes_ablation/
+# _common/rescore_embeddings.py's docstring. Never commit this.
+**/.diversity_venv/

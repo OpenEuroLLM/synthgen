@@ -1,0 +1,18 @@
+{
+  "gen": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.8/gen.jsonl",
+  "judged": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.8/judged.jsonl",
+  "output": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.8/filtered.jsonl",
+  "thresholds": {
+    "global": 6.0
+  },
+  "kept": 14,
+  "dropped_low_score": 1,
+  "dropped_unscored": 0,
+  "kept_by_lang": {
+    "es": 6,
+    "fr": 8
+  },
+  "dropped_by_lang": {
+    "es": 1
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "score_stats": {
+    "n": 10,
+    "mean": 8.8,
+    "min": 2,
+    "max": 10
+  },
+  "diversity": {
+    "group_keys": [
+      "lang",
+      "country"
+    ],
+    "groups": {
+      "fr:Canada": {
+        "n": 2,
+        "lexical": {
+          "n": 2,
+          "metric": "lexical_jaccard_n3",
+          "threshold": 0.5,
+          "near_dup_pairs": 0,
+          "near_dup_rate": 0.0,
+          "pairwise_scores": [
+            0.029069767441860465
+          ],
+          "examples": []
+        }
+      },
+      "fr:France": {
+        "n": 1
+      },
+      "fr:Belgium": {
+        "n": 1
+      },
+      "fr:Switzerland": {
+        "n": 1
+      },
+      "es:Mexico": {
+        "n": 1
+      },
+      "es:Spain": {
+        "n": 1
+      },
+      "es:Argentina": {
+        "n": 2,
+        "lexical": {
+          "n": 2,
+          "metric": "lexical_jaccard_n3",
+          "threshold": 0.5,
+          "near_dup_pairs": 0,
+          "near_dup_rate": 0.0,
+          "pairwise_scores": [
+            0.0
+          ],
+          "examples": []
+        }
+      },
+      "es:Colombia": {
+        "n": 1
+      }
+    },
+    "pooled_lexical": {
+      "n": 10,
+      "metric": "lexical_jaccard_n3",
+      "threshold": 0.5,
+      "near_dup_pairs": 0,
+      "near_dup_rate": 0.0,
+      "pairwise_scores": [
+        0.0,
+        0.029069767441860465,
+        0.005747126436781609,
+        0.00641025641025641,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.006802721088435374,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.006756756756756757,
+        0.006024096385542169,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "examples": []
+    },
+    "embedding_unavailable": "sentence-transformers not installed (needed for embedding diversity metrics; pip install it once with internet, then it's cached and loads fully offline) -- falling back to lexical-only diversity metrics"
+  },
+  "country_alternates_used": {
+    "es": [
+      "Spain",
+      "Mexico",
+      "Argentina",
+      "Colombia"
+    ],
+    "fr": [
+      "France",
+      "Belgium",
+      "Canada",
+      "Switzerland"
+    ],
+    "de": [
+      "Germany",
+      "Austria",
+      "Switzerland"
+    ],
+    "pt": [
+      "Portugal",
+      "Brazil"
+    ],
+    "nl": [
+      "the Netherlands",
+      "Belgium"
+    ]
+  }
+}

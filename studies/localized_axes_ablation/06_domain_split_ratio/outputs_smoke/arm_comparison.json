@@ -1,0 +1,156 @@
+{
+  "general_p=0.2": {
+    "general_p": 0.2,
+    "raw_ratio": {
+      "local": 16,
+      "general": 0,
+      "local_frac": 1.0,
+      "general_frac": 0.0
+    },
+    "post_filter_ratio": {
+      "local": 15,
+      "general": 0,
+      "local_frac": 1.0,
+      "general_frac": 0.0
+    },
+    "filter_summary": {
+      "gen": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.2/gen.jsonl",
+      "judged": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.2/judged.jsonl",
+      "output": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.2/filtered.jsonl",
+      "thresholds": {
+        "global": 6.0
+      },
+      "kept": 15,
+      "dropped_low_score": 1,
+      "dropped_unscored": 0,
+      "kept_by_lang": {
+        "es": 8,
+        "fr": 7
+      },
+      "dropped_by_lang": {
+        "fr": 1
+      }
+    },
+    "score_stats": {
+      "n": 16,
+      "mean": 9.31,
+      "min": 3,
+      "max": 10
+    }
+  },
+  "general_p=0.4": {
+    "general_p": 0.4,
+    "raw_ratio": {
+      "local": 10,
+      "general": 6,
+      "local_frac": 0.625,
+      "general_frac": 0.375
+    },
+    "post_filter_ratio": {
+      "local": 10,
+      "general": 6,
+      "local_frac": 0.625,
+      "general_frac": 0.375
+    },
+    "filter_summary": {
+      "gen": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.4/gen.jsonl",
+      "judged": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.4/judged.jsonl",
+      "output": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.4/filtered.jsonl",
+      "thresholds": {
+        "global": 6.0
+      },
+      "kept": 16,
+      "dropped_low_score": 0,
+      "dropped_unscored": 0,
+      "kept_by_lang": {
+        "es": 8,
+        "fr": 8
+      },
+      "dropped_by_lang": {}
+    },
+    "score_stats": {
+      "n": 16,
+      "mean": 10.0,
+      "min": 10,
+      "max": 10
+    }
+  },
+  "general_p=0.6": {
+    "general_p": 0.6,
+    "raw_ratio": {
+      "local": 8,
+      "general": 8,
+      "local_frac": 0.5,
+      "general_frac": 0.5
+    },
+    "post_filter_ratio": {
+      "local": 7,
+      "general": 8,
+      "local_frac": 0.467,
+      "general_frac": 0.533
+    },
+    "filter_summary": {
+      "gen": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.6/gen.jsonl",
+      "judged": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.6/judged.jsonl",
+      "output": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.6/filtered.jsonl",
+      "thresholds": {
+        "global": 6.0
+      },
+      "kept": 15,
+      "dropped_low_score": 1,
+      "dropped_unscored": 0,
+      "kept_by_lang": {
+        "es": 7,
+        "fr": 8
+      },
+      "dropped_by_lang": {
+        "es": 1
+      }
+    },
+    "score_stats": {
+      "n": 16,
+      "mean": 9.69,
+      "min": 5,
+      "max": 10
+    }
+  },
+  "general_p=0.8": {
+    "general_p": 0.8,
+    "raw_ratio": {
+      "local": 5,
+      "general": 11,
+      "local_frac": 0.312,
+      "general_frac": 0.688
+    },
+    "post_filter_ratio": {
+      "local": 4,
+      "general": 10,
+      "local_frac": 0.286,
+      "general_frac": 0.714
+    },
+    "filter_summary": {
+      "gen": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.8/gen.jsonl",
+      "judged": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.8/judged.jsonl",
+      "output": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/06_domain_split_ratio/outputs_smoke/general_p_0.8/filtered.jsonl",
+      "thresholds": {
+        "global": 6.0
+      },
+      "kept": 14,
+      "dropped_low_score": 1,
+      "dropped_unscored": 0,
+      "kept_by_lang": {
+        "es": 6,
+        "fr": 8
+      },
+      "dropped_by_lang": {
+        "es": 1
+      }
+    },
+    "score_stats": {
+      "n": 15,
+      "mean": 9.67,
+      "min": 5,
+      "max": 10
+    }
+  }
+}

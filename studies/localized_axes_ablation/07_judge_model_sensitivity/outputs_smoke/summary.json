@@ -1,0 +1,18 @@
+{
+  "n": 10,
+  "original_judge_stats": {
+    "n": 10,
+    "mean": 9.5,
+    "min": 5,
+    "max": 10
+  },
+  "second_judge_stats": {
+    "n": 10,
+    "mean": 9.6,
+    "min": 7,
+    "max": 10
+  },
+  "mean_abs_delta": 0.3,
+  "agreement_within_1_point": 0.9,
+  "records_source": "/scratch/project_462001516/abhasjha/synthgen/studies/localized_axes_ablation/04_diversity_baseline/outputs_smoke/records.jsonl"
+}

@@ -1,0 +1,121 @@
+{
+  "requested_mode": "none",
+  "score_stats": {
+    "n": 10,
+    "mean": 9.0,
+    "min": 2,
+    "max": 10
+  },
+  "diversity": {
+    "group_keys": [
+      "lang"
+    ],
+    "groups": {
+      "es": {
+        "n": 5,
+        "lexical": {
+          "n": 5,
+          "metric": "lexical_jaccard_n3",
+          "threshold": 0.5,
+          "near_dup_pairs": 0,
+          "near_dup_rate": 0.0,
+          "pairwise_scores": [
+            0.007547169811320755,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "examples": []
+        }
+      },
+      "fr": {
+        "n": 5,
+        "lexical": {
+          "n": 5,
+          "metric": "lexical_jaccard_n3",
+          "threshold": 0.5,
+          "near_dup_pairs": 0,
+          "near_dup_rate": 0.0,
+          "pairwise_scores": [
+            0.0,
+            0.012578616352201259,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.013422818791946308
+          ],
+          "examples": []
+        }
+      }
+    },
+    "pooled_lexical": {
+      "n": 10,
+      "metric": "lexical_jaccard_n3",
+      "threshold": 0.5,
+      "near_dup_pairs": 0,
+      "near_dup_rate": 0.0,
+      "pairwise_scores": [
+        0.007547169811320755,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.012578616352201259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.013422818791946308
+      ],
+      "examples": []
+    },
+    "embedding_unavailable": "sentence-transformers not installed (needed for embedding diversity metrics; pip install it once with internet, then it's cached and loads fully offline) -- falling back to lexical-only diversity metrics"
+  },
+  "pool_a_rows": 1,
+  "pool_b_rows": 9,
+  "clamped_to_light": 0
+}

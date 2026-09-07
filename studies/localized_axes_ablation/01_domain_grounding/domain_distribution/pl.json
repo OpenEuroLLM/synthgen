@@ -1,0 +1,38 @@
+{
+  "lang": "pl",
+  "source": "allenai/WildChat-1M",
+  "split": "train",
+  "n_classified": 30,
+  "raw_counts": {
+    "personal essays & reflections": 2,
+    "job applications & CVs": 1,
+    "math (word problems & explanations)": 4,
+    "coding": 3,
+    "general question answering": 11,
+    "customer & client communication": 1,
+    "short stories & fiction": 2,
+    "roleplay & character play": 2,
+    "reports, summaries & documentation": 1,
+    "data analysis (tables, lists, datasets)": 1
+  },
+  "smoothed_distribution": {
+    "workplace email & communication": 0.0172,
+    "reports, summaries & documentation": 0.0308,
+    "job applications & CVs": 0.0308,
+    "meetings, planning & project coordination": 0.0172,
+    "customer & client communication": 0.0308,
+    "short stories & fiction": 0.0616,
+    "poetry & song lyrics": 0.0172,
+    "personal essays & reflections": 0.0616,
+    "humor, jokes & satire": 0.0172,
+    "social media & blog posts": 0.0172,
+    "coding": 0.0924,
+    "math (word problems & explanations)": 0.1232,
+    "summarization": 0.0172,
+    "translation": 0.0172,
+    "data analysis (tables, lists, datasets)": 0.0308,
+    "general question answering": 0.3387,
+    "roleplay & character play": 0.0616,
+    "brainstorming & idea generation": 0.0172
+  }
+}
