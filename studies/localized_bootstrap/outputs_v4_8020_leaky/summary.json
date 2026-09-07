@@ -1,0 +1,169 @@
+{
+  "overall": {
+    "good": {
+      "n": 40,
+      "mean": 8.62,
+      "min": 1,
+      "max": 10
+    },
+    "medium": {
+      "n": 40,
+      "mean": 8.43,
+      "min": 1,
+      "max": 10
+    },
+    "bad": {
+      "n": 40,
+      "mean": 4.97,
+      "min": 1,
+      "max": 10
+    }
+  },
+  "by_language": {
+    "en": {
+      "good": {
+        "n": 10,
+        "mean": 9.4,
+        "min": 5,
+        "max": 10
+      },
+      "medium": {
+        "n": 10,
+        "mean": 8.7,
+        "min": 3,
+        "max": 10
+      },
+      "bad": {
+        "n": 10,
+        "mean": 3.8,
+        "min": 1,
+        "max": 10
+      }
+    },
+    "hi": {
+      "good": {
+        "n": 10,
+        "mean": 8.2,
+        "min": 7,
+        "max": 9
+      },
+      "medium": {
+        "n": 10,
+        "mean": 7.0,
+        "min": 5,
+        "max": 9
+      },
+      "bad": {
+        "n": 10,
+        "mean": 3.5,
+        "min": 1,
+        "max": 8
+      }
+    },
+    "fr": {
+      "good": {
+        "n": 10,
+        "mean": 7.5,
+        "min": 1,
+        "max": 10
+      },
+      "medium": {
+        "n": 10,
+        "mean": 8.6,
+        "min": 1,
+        "max": 10
+      },
+      "bad": {
+        "n": 10,
+        "mean": 5.9,
+        "min": 1,
+        "max": 10
+      }
+    },
+    "de": {
+      "good": {
+        "n": 10,
+        "mean": 9.4,
+        "min": 9,
+        "max": 10
+      },
+      "medium": {
+        "n": 10,
+        "mean": 9.4,
+        "min": 9,
+        "max": 10
+      },
+      "bad": {
+        "n": 10,
+        "mean": 6.7,
+        "min": 1,
+        "max": 10
+      }
+    }
+  },
+  "by_bad_type": {
+    "mixed_language": {
+      "n": 6,
+      "mean": 5.83,
+      "min": 3,
+      "max": 8
+    },
+    "unnatural_constraint": {
+      "n": 9,
+      "mean": 8.78,
+      "min": 1,
+      "max": 10
+    },
+    "trivial": {
+      "n": 9,
+      "mean": 6.33,
+      "min": 1,
+      "max": 10
+    },
+    "wrong_answer": {
+      "n": 8,
+      "mean": 2.25,
+      "min": 1,
+      "max": 10
+    },
+    "bad_explanation": {
+      "n": 8,
+      "mean": 1.25,
+      "min": 1,
+      "max": 2
+    }
+  },
+  "by_medium_type": {
+    "slightly_generic": {
+      "n": 8,
+      "mean": 8.38,
+      "min": 5,
+      "max": 10
+    },
+    "somewhat_shallow": {
+      "n": 8,
+      "mean": 7.88,
+      "min": 1,
+      "max": 10
+    },
+    "minor_imprecision": {
+      "n": 8,
+      "mean": 8.0,
+      "min": 3,
+      "max": 10
+    },
+    "slightly_unnatural": {
+      "n": 8,
+      "mean": 9.0,
+      "min": 7,
+      "max": 10
+    },
+    "borderline_basic": {
+      "n": 8,
+      "mean": 8.88,
+      "min": 7,
+      "max": 10
+    }
+  },
+  "gen_failures": 0
+}
