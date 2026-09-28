@@ -1,0 +1,48 @@
+{
+  "source": "aya",
+  "langs": [
+    "es",
+    "fr",
+    "de",
+    "pl",
+    "uk"
+  ],
+  "raw_counts": {
+    "general question answering": 1372,
+    "short stories & fiction": 167,
+    "brainstorming & idea generation": 50,
+    "summarization": 69,
+    "translation": 35,
+    "poetry & song lyrics": 9,
+    "math (word problems & explanations)": 64,
+    "social media & blog posts": 6,
+    "workplace email & communication": 4,
+    "data analysis (tables, lists, datasets)": 2,
+    "humor, jokes & satire": 18,
+    "reports, summaries & documentation": 3,
+    "job applications & CVs": 8,
+    "personal essays & reflections": 2,
+    "roleplay & character play": 2,
+    "coding": 1
+  },
+  "smoothed_distribution": {
+    "workplace email & communication": 0.0165,
+    "reports, summaries & documentation": 0.0165,
+    "job applications & CVs": 0.0165,
+    "meetings, planning & project coordination": 0.0165,
+    "customer & client communication": 0.0165,
+    "short stories & fiction": 0.0761,
+    "poetry & song lyrics": 0.0165,
+    "personal essays & reflections": 0.0165,
+    "humor, jokes & satire": 0.0165,
+    "social media & blog posts": 0.0165,
+    "coding": 0.0165,
+    "math (word problems & explanations)": 0.0292,
+    "summarization": 0.0315,
+    "translation": 0.0165,
+    "data analysis (tables, lists, datasets)": 0.0165,
+    "general question answering": 0.6256,
+    "roleplay & character play": 0.0165,
+    "brainstorming & idea generation": 0.0228
+  }
+}

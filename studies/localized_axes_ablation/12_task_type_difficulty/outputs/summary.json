@@ -1,0 +1,31 @@
+{
+  "full_4layer_stats": {
+    "n": 145,
+    "mean": 9.73,
+    "min": 1,
+    "max": 10
+  },
+  "stripped_2layer_stats": {
+    "n": 150,
+    "mean": 9.69,
+    "min": 1,
+    "max": 10
+  },
+  "task_type_distribution": {
+    "full": {
+      "generation": 0.6533,
+      "edit_rewrite": 0.28,
+      "null": 0.0333,
+      "extraction_classification": 0.0333
+    },
+    "stripped": {
+      "generation": 0.8133,
+      "edit_rewrite": 0.1533,
+      "extraction_classification": 0.0333
+    }
+  },
+  "mean_difficulty": {
+    "full": 2.9793103448275864,
+    "stripped": 2.9066666666666667
+  }
+}

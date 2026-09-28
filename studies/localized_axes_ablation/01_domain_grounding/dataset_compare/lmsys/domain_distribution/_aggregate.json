@@ -1,0 +1,51 @@
+{
+  "source": "lmsys/lmsys-chat-1m",
+  "split": "train",
+  "langs": [
+    "es",
+    "fr",
+    "de",
+    "pl",
+    "uk"
+  ],
+  "raw_counts": {
+    "roleplay & character play": 109,
+    "general question answering": 877,
+    "translation": 128,
+    "short stories & fiction": 54,
+    "coding": 173,
+    "math (word problems & explanations)": 87,
+    "poetry & song lyrics": 49,
+    "summarization": 58,
+    "brainstorming & idea generation": 110,
+    "data analysis (tables, lists, datasets)": 97,
+    "workplace email & communication": 33,
+    "reports, summaries & documentation": 77,
+    "customer & client communication": 16,
+    "social media & blog posts": 35,
+    "humor, jokes & satire": 18,
+    "personal essays & reflections": 11,
+    "meetings, planning & project coordination": 5,
+    "job applications & CVs": 12
+  },
+  "smoothed_distribution": {
+    "workplace email & communication": 0.0186,
+    "reports, summaries & documentation": 0.0368,
+    "job applications & CVs": 0.0186,
+    "meetings, planning & project coordination": 0.0186,
+    "customer & client communication": 0.0186,
+    "short stories & fiction": 0.0258,
+    "poetry & song lyrics": 0.0234,
+    "personal essays & reflections": 0.0186,
+    "humor, jokes & satire": 0.0186,
+    "social media & blog posts": 0.0186,
+    "coding": 0.0827,
+    "math (word problems & explanations)": 0.0416,
+    "summarization": 0.0277,
+    "translation": 0.0612,
+    "data analysis (tables, lists, datasets)": 0.0464,
+    "general question answering": 0.4192,
+    "roleplay & character play": 0.0521,
+    "brainstorming & idea generation": 0.0526
+  }
+}

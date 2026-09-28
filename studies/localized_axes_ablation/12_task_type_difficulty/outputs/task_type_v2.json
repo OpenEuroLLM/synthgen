@@ -1,0 +1,13 @@
+{
+  "full_task_type_v2": {
+    "generation": 0.6867,
+    "edit_rewrite": 0.2733,
+    "unparseable": 0.0333,
+    "extraction": 0.0067
+  },
+  "stripped_task_type_v2": {
+    "generation": 0.84,
+    "edit_rewrite": 0.1467,
+    "extraction": 0.0133
+  }
+}

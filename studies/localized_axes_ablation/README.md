@@ -56,6 +56,27 @@ into a real replacement generation, not just a flagged row. `11` (below)
 measures what enabling that actually costs before it's turned on for a full
 production run.
 
+**A larger production redesign followed, carrying forward `01`'s, `02`'s,
+`03`'s, and `05`'s findings together**: `synthgen/localized/taxonomy.py`'s
+`GENERAL_DOMAINS`/`LOCAL_DOMAINS`/`is_local()` split is gone, merged into one
+real-WildChat-1M-weighted `DOMAINS` list; `prompts.py`'s `_SCOPE_LOCAL`/
+`_SCOPE_GENERAL` binary and suggested-`intent` are gone, replaced by four
+independent, model-judged optional prompt layers (general-capability angle,
+local/cultural angle, task type, difficulty); `PERSONA_P` dropped to `0.1`.
+**Consequence for this directory**: `04_diversity_baseline/measure_baseline.py`,
+`03_intent_necessity/intent_ablation.py`, `06_domain_split_ratio/split_sweep.py`,
+`09_salt_necessity/salt_ablation.py`, and `01_domain_grounding/prompts_grounded.py`
+all call the old `generation_prompt(intent=..., localized=...)` signature or
+import `_SCOPE_LOCAL`/`_SCOPE_GENERAL`/`GENERAL_DOMAINS`/`LOCAL_DOMAINS`
+directly from production — none of that exists anymore. These scripts are
+frozen historical records of already-completed, already-reported runs; their
+results in `REPORT.md` stand as-is, but **none of them will import or run
+without updating first** if you ever need to re-run one. `01_domain_grounding/
+taxonomy_broadened.py` and `ground_domains.py` were the exception, fixed to
+keep working (frozen local copies of the domain lists instead of importing
+production's now-different ones) since they're still actively used to
+(re)generate `synthgen/localized/DOMAIN_WEIGHTS`.
+
 ## Subfolders
 
 | # | What | Depends on |

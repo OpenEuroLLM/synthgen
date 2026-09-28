@@ -1,0 +1,8 @@
+{
+  "n_gen_replicas": 4,
+  "n_judge_replicas": 4,
+  "gen_peak_tok_s": 5343.984580402982,
+  "judge_peak_tok_s": 5507.02989988601,
+  "gen_scaling_factor": 5.520645227689031,
+  "judge_scaling_factor": 6.927081635076742
+}
