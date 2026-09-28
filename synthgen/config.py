@@ -32,24 +32,86 @@ LANGUAGES_PHASE3: dict[str, str] = {
     "ro": "Romanian",
     "el": "Greek",
     "uk": "Ukrainian",
+    # Extended to OpenEuroLLM's full prioritized target list
+    # (github.com/OpenEuroLLM/training-data-catalogue/blob/main/languages):
+    # 24 EU official + 3 co-official + 7 candidate-EU + 2 closely-associated
+    # Scandinavian = 36, minus `eng` (English deliberately excluded from
+    # generation -- no natural representative country for this pipeline's
+    # country-angle grounding) = 35 total. Name kept as LANGUAGES_PHASE3
+    # despite now covering more than one "phase" -- renaming would touch
+    # generate.py/topup.py/back_translate.py/verify.py's imports for no
+    # functional benefit.
+    "bg": "Bulgarian",
+    "da": "Danish",
+    "et": "Estonian",
+    "fi": "Finnish",
+    "ga": "Irish",
+    "hr": "Croatian",
+    "hu": "Hungarian",
+    "lv": "Latvian",
+    "lt": "Lithuanian",
+    "mt": "Maltese",
+    "sk": "Slovak",
+    "sl": "Slovene",
+    "sv": "Swedish",
+    "ca": "Catalan",
+    "eu": "Basque",
+    "gl": "Galician",
+    "bs": "Bosnian",
+    "ka": "Georgian",
+    "mk": "Macedonian",
+    "sq": "Albanian",
+    "sr": "Serbian",
+    "tr": "Turkish",
+    "is": "Icelandic",
+    "no": "Norwegian",
 }
 
 LANGUAGES_DOLCI_TRAINED = ["es", "fr", "de", "it", "pt", "pl", "nl", "cs"]
 LANGUAGES_HELDOUT = ["ro", "el", "uk"]
 
+# The 24 newly-added codes above, for callers that want just the untested
+# extension (e.g. a pilot/validation run) rather than the full 35.
+LANGUAGES_OELLM_NEW: list[str] = [
+    "bg", "da", "et", "fi", "ga", "hr", "hu", "lv", "lt", "mt", "sk", "sl",
+    "sv", "ca", "eu", "gl", "bs", "ka", "mk", "sq", "sr", "tr", "is", "no",
+]
+
 # Representative country per language, for localization grounding (domain/intent
-# prompts in synthgen.taxonomy / synthgen.prompts_localized).
+# prompts in synthgen.taxonomy / synthgen.prompts_localized). Catalan/Basque/
+# Galician all map to Spain (co-official regional languages, not separate
+# countries) -- matches the source list's own "Co-official Languages in
+# Member States" grouping. Macedonia/Turkey kept in their more commonly
+# recognized forms rather than North Macedonia/Turkiye (deliberate choice,
+# not an oversight -- a generator model is also more likely to reliably
+# recognize the familiar forms).
 LANG_COUNTRY: dict[str, str] = {
     "es": "Spain", "fr": "France", "de": "Germany", "it": "Italy",
     "pt": "Portugal", "pl": "Poland", "nl": "the Netherlands", "cs": "Czechia",
     "ro": "Romania", "el": "Greece", "uk": "Ukraine",
+    "bg": "Bulgaria", "da": "Denmark", "et": "Estonia", "fi": "Finland",
+    "ga": "Ireland", "hr": "Croatia", "hu": "Hungary", "lv": "Latvia",
+    "lt": "Lithuania", "mt": "Malta", "sk": "Slovakia", "sl": "Slovenia",
+    "sv": "Sweden", "ca": "Spain", "eu": "Spain", "gl": "Spain",
+    "bs": "Bosnia and Herzegovina", "ka": "Georgia", "mk": "Macedonia",
+    "sq": "Albania", "sr": "Serbia", "tr": "Turkey", "is": "Iceland",
+    "no": "Norway",
 }
 
+# Serbian is officially digraphic (Cyrillic constitutionally designated,
+# Latin in heavy everyday/digital use) -- marked non_latin per the source
+# list's own srp_Cyrl-before-srp_Latn ordering, a judgment call, not a
+# clear-cut fact.
 LANG_SCRIPT: dict[str, str] = {
     "el": "non_latin", "uk": "non_latin",
     "ro": "latin", "cs": "latin", "pl": "latin",
     "es": "latin", "fr": "latin", "de": "latin",
     "it": "latin", "pt": "latin", "nl": "latin",
+    "bg": "non_latin", "ka": "non_latin", "mk": "non_latin", "sr": "non_latin",
+    "da": "latin", "et": "latin", "fi": "latin", "ga": "latin", "hr": "latin",
+    "hu": "latin", "lv": "latin", "lt": "latin", "mt": "latin", "sk": "latin",
+    "sl": "latin", "sv": "latin", "ca": "latin", "eu": "latin", "gl": "latin",
+    "bs": "latin", "sq": "latin", "tr": "latin", "is": "latin", "no": "latin",
 }
 
 

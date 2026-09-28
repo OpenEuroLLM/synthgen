@@ -17,15 +17,26 @@ log = get_logger("synthgen")
 def _build_cfg(args: argparse.Namespace) -> SynthConfig:
     paths = Paths.from_root(getattr(args, "root", None))
     paths.ensure()
-    return SynthConfig(
+    cfg = SynthConfig(
         phase=getattr(args, "phase", 3),
         paths=paths,
     )
+    concurrency = getattr(args, "concurrency", None)
+    if concurrency is not None:
+        cfg.concurrency = concurrency
+    return cfg
 
 
 def _add_root(p: argparse.ArgumentParser) -> None:
     p.add_argument("--root", default=None,
                    help="Project root (default: $SYNTHGEN_ROOT or cwd)")
+    p.add_argument("--concurrency", type=int, default=None,
+                   help="In-flight requests against the endpoint pool "
+                        "(default: SynthConfig.concurrency, 16). A pool with "
+                        "many replica endpoints needs this raised roughly "
+                        "proportional to the replica count to actually "
+                        "saturate them -- see topup's --gen-concurrency/"
+                        "--judge-concurrency for per-phase overrides.")
 
 
 # ----- subcommand implementations -----------------------------------------
@@ -113,6 +124,9 @@ def _cmd_dedupe(args):
         input=Path(args.input), output=Path(args.output),
         min_response_chars=args.min_response_chars,
         report=Path(args.report) if args.report else None,
+        embedding_dedupe=args.embedding_dedupe,
+        embedding_threshold=args.embedding_threshold,
+        embedding_model=args.embedding_model,
     )
     print(_json.dumps(summary, indent=2, ensure_ascii=False))
 
@@ -163,7 +177,10 @@ def _cmd_topup(args):
         lang_codes=args.langs, overgen_factor_default=args.overgen_factor,
         max_rounds=args.max_rounds, seed=args.seed,
         max_attempts=args.max_attempts, retry_delay=args.retry_delay,
-        split=args.split,
+        split=args.split, embedding_dedupe=args.embedding_dedupe,
+        embedding_threshold=args.embedding_threshold,
+        embedding_model=args.embedding_model,
+        gen_concurrency=args.gen_concurrency, judge_concurrency=args.judge_concurrency,
     )
     print(_json.dumps(summary, indent=2, ensure_ascii=False))
 
@@ -278,6 +295,20 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--output", required=True)
     p.add_argument("--min-response-chars", type=int, default=8)
     p.add_argument("--report", default=None)
+    p.add_argument("--embedding-dedupe", action="store_true",
+                   help="also drop paraphrased near-duplicates within each "
+                        "language via sentence-embedding cosine similarity "
+                        "(catches what exact-match dedup can't; needs "
+                        "sentence-transformers, skipped with a warning if "
+                        "unavailable)")
+    p.add_argument("--embedding-threshold", type=float, default=None,
+                   help="cosine-similarity cutoff for --embedding-dedupe "
+                        "(default: near_dup.DEFAULT_THRESHOLD, 0.85)")
+    p.add_argument("--embedding-model", default=None,
+                   help="sentence-transformers model id for --embedding-dedupe "
+                        "(default: near_dup.DEFAULT_EMBED_MODEL, a multilingual "
+                        "model -- don't swap in an English-only one, see "
+                        "near_dup.py)")
     p.set_defaults(func=_cmd_dedupe)
 
     # qc
@@ -346,6 +377,29 @@ def main(argv: list[str] | None = None) -> None:
     grp.add_argument("--split", dest="split", action="store_true", default=None,
                      help="Round-robin new rows across generator models.")
     grp.add_argument("--no-split", dest="split", action="store_false")
+    p.add_argument("--embedding-dedupe", action="store_true",
+                   help="also drop paraphrased near-duplicates each round via "
+                        "sentence-embedding cosine similarity, and let the "
+                        "resulting deficit trigger real replacement generation "
+                        "-- see near_dup.py and topup.run()'s docstring. Costs "
+                        "extra generate/judge calls proportional to whatever "
+                        "collapse rate this actually finds; measure with an "
+                        "ablation before enabling on a full production run.")
+    p.add_argument("--embedding-threshold", type=float, default=None,
+                   help="cosine-similarity cutoff for --embedding-dedupe "
+                        "(default: near_dup.DEFAULT_THRESHOLD, 0.85)")
+    p.add_argument("--embedding-model", default=None,
+                   help="sentence-transformers model id for --embedding-dedupe "
+                        "(default: near_dup.DEFAULT_EMBED_MODEL, multilingual)")
+    p.add_argument("--gen-concurrency", type=int, default=None,
+                   help="override --concurrency for just the gen-phase call. "
+                        "Needed when the gen endpoint pool has many more "
+                        "replicas than the judge pool -- EndpointPool round-"
+                        "robins evenly, so one shared concurrency value under-"
+                        "saturates a big pool or oversaturates a small one.")
+    p.add_argument("--judge-concurrency", type=int, default=None,
+                   help="override --concurrency for just the judge-phase call "
+                        "(see --gen-concurrency).")
     p.set_defaults(func=_cmd_topup)
 
     # export-openinstruct

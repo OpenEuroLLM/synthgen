@@ -27,7 +27,20 @@ def _key(lang: str, prompt: str) -> bytes:
 
 
 def run(*, input: Path, output: Path,
-        min_response_chars: int = 8, report: Path | None = None) -> dict:
+        min_response_chars: int = 8, report: Path | None = None,
+        embedding_dedupe: bool = False,
+        embedding_threshold: float | None = None,
+        embedding_model: str | None = None) -> dict:
+    """`embedding_dedupe=True` adds a second pass, after the exact-match pass
+    below: paraphrased near-duplicates within each language (cosine
+    similarity of sentence embeddings) are dropped too, not just
+    identical/whitespace-normalized strings. See `near_dup.py` for why this
+    exists -- the exact-match pass alone has no way to catch a model that
+    reworded the same content. This pass needs `sentence-transformers`
+    installed and the whole deduped set in memory per language (unlike the
+    streaming exact-match pass); if the embedder can't load, it's skipped
+    and noted in the summary rather than failing the whole run.
+    """
     seen: set[bytes] = set()
     kept = dup = empty = short = 0
     by_lang_kept: Counter[str] = Counter()
@@ -80,6 +93,32 @@ def run(*, input: Path, output: Path,
         "kept_by_lang": dict(by_lang_kept),
         "dropped_by_lang": dict(by_lang_drop),
     }
+
+    if embedding_dedupe:
+        from synthgen.pipeline import near_dup
+
+        rows = list(json.loads(line) for line in output.read_text().splitlines() if line.strip())
+        kw = {}
+        if embedding_threshold is not None:
+            kw["threshold"] = embedding_threshold
+        if embedding_model is not None:
+            kw["model_name"] = embedding_model
+        try:
+            kept_rows, emb_report = near_dup.embedding_dedupe(rows, **kw)
+        except near_dup.EmbedderUnavailable as e:
+            log.warning("embedding dedupe skipped: %s", e)
+            summary["embedding_dedupe_skipped"] = str(e)
+        else:
+            with open(output, "w", encoding="utf-8") as fout:
+                for r in kept_rows:
+                    fout.write(json.dumps(r, ensure_ascii=False) + "\n")
+            summary["kept"] = len(kept_rows)
+            summary["dropped_near_dup_embedding"] = emb_report["total_dropped"]
+            summary["dropped_by_lang_embedding"] = emb_report["dropped_by_lang"]
+            summary["embedding_dedupe_model"] = emb_report["model"]
+            summary["embedding_dedupe_threshold"] = emb_report["threshold"]
+            log.info("embedding dedupe: dropped=%d kept=%d", emb_report["total_dropped"], len(kept_rows))
+
     if report:
         report.write_text(json.dumps(summary, indent=2, ensure_ascii=False))
     log.info("kept=%d dup=%d empty=%d short=%d", kept, dup, empty, short)

@@ -176,7 +176,20 @@ async def _generate_once(backend: Backend, mode: str, todo: list[dict],
     total = len(todo)
     t0 = time.time()
 
-    async with httpx.AsyncClient() as client:
+    # httpx.AsyncClient()'s default is Limits(max_connections=100,
+    # max_keepalive_connections=20) -- silently caps real concurrent
+    # in-flight requests at 100 NO MATTER what cfg.concurrency/this
+    # semaphore allows. Found via a 4-node concurrency-scaling smoke test
+    # (studies/localized_axes_ablation/13_concurrency_scaling/): throughput
+    # only reached ~1.15x a single replica's peak with 4 replicas and
+    # concurrency raised proportionally -- this default connection cap was
+    # silently overriding cfg.concurrency the entire time, for every run
+    # this pipeline has ever done, not just this test. Sized to
+    # cfg.concurrency (with a little headroom) so the semaphore's limit is
+    # the real one again.
+    limits = httpx.Limits(max_connections=cfg.concurrency + 10,
+                          max_keepalive_connections=cfg.concurrency)
+    async with httpx.AsyncClient(limits=limits) as client:
         with open(out_path, "a", encoding="utf-8") as fout:
             async def worker(row: dict):
                 async with sem:

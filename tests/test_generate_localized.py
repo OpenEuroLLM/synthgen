@@ -21,7 +21,7 @@ def _cfg(tmp_path):
 
 def test_record_for_localized_parses_json():
     row = {"id": "es-000000", "lang": "es", "domain": "food & drink",
-          "intent": "ask (factual question)", "role": None, "salt": 1234}
+          "role": None, "salt": 1234}
     content = '{"instruction":"hola","response":"mundo","role_used":"none","intent_used":"ask"}'
     rec = generate._record_for("localized", row, "gen/model", content, {}, None)
     assert rec["instruction"] == "hola"
@@ -118,7 +118,7 @@ class FakeJSONBackend:
 
 
 def _loc_rows(ids):
-    return [{"id": i, "lang": "es", "domain": "d", "intent": "i",
+    return [{"id": i, "lang": "es", "domain": "d",
              "role": None, "salt": 1, "meta_prompt": i} for i in ids]
 
 

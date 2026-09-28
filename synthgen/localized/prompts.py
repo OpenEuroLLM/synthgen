@@ -5,10 +5,21 @@ pilot confirmed the judge separates good from bad. Production only ever wants
 the GOOD path: one model call renders both the instruction and the response as
 one JSON object, which the judge then scores.
 
-  build_rows(...)           -> per-row dicts (id, lang, domain, intent, role,
-                                salt, meta_prompt) ready for generate.py's
+  build_rows(...)           -> per-row dicts (id, lang, domain, role, salt,
+                                meta_prompt) ready for generate.py's
                                 mode="localized"
   judge_quality_prompt(...) -> {score, reason}, holistic 0-10, no rubric
+
+**Redesigned per studies/localized_axes_ablation/'s 11 full-scale ablations**
+(see taxonomy.py's docstring for the domain-side half of this): `intent` is no
+longer sampled from a suggested list -- `03_intent_necessity` found the model
+ignores the suggestion ~68% of the time anyway, with no score benefit either
+way, so the prompt now just asks the model to decide one itself. Persona rate
+dropped `PERSONA_P` 0.5 -> 0.1 (`02_persona_rate`: no quality benefit from the
+higher rate). `salt` (the old "diversity seed" nudge) is gone entirely
+(`09_salt_necessity`: no measurable diversity benefit, and it had no
+programmatic backstop anyway -- see synthgen/pipeline/near_dup.py for the real
+one); the RNG draw is kept below purely for stream stability.
 """
 from __future__ import annotations
 
@@ -19,11 +30,7 @@ from synthgen.localized import taxonomy as T
 
 # Fraction of examples that even get a persona *suggested* (the model may still
 # drop it). The rest are deliberately persona-free direct requests.
-PERSONA_P = 0.5
-
-# Fraction of examples drawn from the GENERAL (professional/creative) domains;
-# the rest come from the LOCAL domains that carry the localization signal.
-GENERAL_P = 0.2
+PERSONA_P = 0.1
 
 
 # --- language-agnostic fluency / mixing clauses ----------------------------
@@ -67,20 +74,38 @@ Create ONE high-quality instruction-tuning example: a realistic user
 instruction in {lang_name} and an excellent assistant response.
 
 Domain: {domain}
-Diversity seed: {salt}   (use it to pick a NON-OBVIOUS angle; do not default to
-the single most famous example of this domain.)
 
-Silently choose a SPECIFIC sub-aspect of "{domain}" in {country}. Then decide a
-realistic user intent (suggested: {intent}) — use it only if it fits this domain,
-otherwise pick an intent that does.
+Silently decide a realistic user intent that fits this domain and the
+overall theme of the request -- do not default to the single most obvious
+intent for this domain.
 {persona_block}
+
+If a more specific, non-obvious general-capability angle fits naturally
+with this domain, narrow to it -- otherwise keep the task as a direct
+{domain} request.
+
+If a genuine {country}-specific angle fits naturally with this domain (a
+real local fact, institution, custom, price, place, or convention -- not a
+cliche), weave it in -- otherwise keep the request general. Do not force
+this if it would feel unnatural.
+
+If this domain would more naturally take the shape of editing/rewriting
+existing text, or extracting/classifying information from it, rather than
+open-ended generation, shape the instruction that way -- otherwise write it
+as a direct generation request.
+
+If a more specific, higher-difficulty version of this task fits naturally
+(one requiring deeper domain expertise or more careful problem-solving to
+answer well), prefer it over a generic/easy version -- otherwise keep the
+task at a normal difficulty level. Do not force unnecessary complexity.
 
 Write the INSTRUCTION so that ALL hold:
   - {fluency_clause}
   - Realistic & self-contained: something a real person in {country} would type
     (they may include their own short draft/notes if the task needs it); NOT a
     textbook/quiz question about a supplied passage.
-  - {scope_clause}
+  - Substantive & non-trivial: a real task worth doing, shaped naturally by
+    whichever angle(s) above actually fit -- never forced, never listed out.
   - Any constraint must be NATURAL and motivated (a real user would impose it);
     no pointless lexical/format tricks.
 
@@ -107,27 +132,13 @@ _PERSONA_ON = ("Suggested persona: a {role} — use it ONLY if such a person wou
                "situation and goal and let it shape the instruction.")
 _PERSONA_OFF = "No persona: write a direct, standalone request."
 
-# Locality requirement branches on the domain kind: local domains must demand
-# country-specific knowledge; general (professional/creative) ones need only be
-# substantive and written in natural in-language register.
-_SCOPE_LOCAL = ("Genuinely local & non-trivial: answering well requires knowledge "
-                "specific to {country}; avoid trivia with an obvious one-word answer.")
-_SCOPE_GENERAL = ("Substantive & non-trivial: a real task worth doing (e.g. draft, "
-                  "write, edit, or summarize something). It need NOT hinge on "
-                  "{country}-specific facts, but keep it in natural {lang_name} and "
-                  "let local touches appear where they fit; avoid trivial one-line asks.")
 
-
-def generation_prompt(*, lang_name: str, country: str, domain: str, intent: str,
-                      salt: int, role: str | None = None,
-                      localized: bool = True) -> str:
+def generation_prompt(*, lang_name: str, country: str, domain: str,
+                      role: str | None = None) -> str:
     persona = _PERSONA_ON.format(role=role) if role else _PERSONA_OFF
-    scope = (_SCOPE_LOCAL if localized else _SCOPE_GENERAL).format(
-        country=country, lang_name=lang_name)
     return GENERATION_PROMPT.format(
-        lang_name=lang_name, country=country, domain=domain, intent=intent,
-        salt=salt, persona_block=persona, fluency_clause=_fluency_clause(lang_name),
-        scope_clause=scope)
+        lang_name=lang_name, country=country, domain=domain,
+        persona_block=persona, fluency_clause=_fluency_clause(lang_name))
 
 
 # --- JUDGE (holistic, no rubric) -------------------------------------------
@@ -154,6 +165,15 @@ response is, if the INSTRUCTION is any of these:
     3 bullet points", "in simple language for a beginner", "keep it under 100
     words" — are natural and NOT disqualifying.)
   - Not a genuine request: a textbook/quiz item, not something a real person types.
+    NOTE: an edit/rewrite request ("fix this paragraph", "make this shorter")
+    or an extraction/classification request ("pull out the dates in this
+    text", "which category does this belong to") is a GENUINE real-world
+    task, not automatically a quiz item — judge it as you would any other
+    task, by whether a real person would plausibly ask it. Likewise, a task
+    that requires real expertise or careful multi-step reasoning is not
+    "textbook" just because it's hard — contrived academic phrasing
+    ("Prove that...", "Given the following axioms...") is the actual
+    defect to watch for, not difficulty itself.
 
 Otherwise the task is worthwhile — score by the SEVERITY of the single WORST
 problem in the RESPONSE (do NOT count flaws):
@@ -194,33 +214,53 @@ def judge_quality_prompt(*, lang_name: str, country: str, instruction: str,
 
 # --- row building ------------------------------------------------------------
 
+def _weighted_domains(weights: dict[str, float]) -> tuple[list[str], list[float]]:
+    """DOMAINS + matching weight list, uniform fallback for any domain missing
+    from `weights` (e.g. before ground_domains.py has been (re)run) so a
+    stale/incomplete weights dict degrades gracefully instead of KeyError-ing
+    or silently never sampling a domain."""
+    if not weights:
+        return T.DOMAINS, [1.0] * len(T.DOMAINS)
+    default = min(weights.values()) if weights else 1.0
+    return T.DOMAINS, [weights.get(d, default) for d in T.DOMAINS]
+
+
 def build_rows(n: int, lang_code: str, *, start_index: int = 0, seed: int = 0,
-              persona_p: float = PERSONA_P, general_p: float = GENERAL_P) -> list[dict]:
+              persona_p: float = PERSONA_P) -> list[dict]:
     """`n` new localized-generation rows for `lang_code`, ids continuing from
     `start_index` — so a later top-up round can append more without colliding
     with rows already generated/judged/kept. Deterministic given the same
     (lang_code, start_index, seed), distinct across successive start_index
-    batches (each round advances start_index)."""
+    batches (each round advances start_index).
+
+    Domain is drawn from `T.DOMAINS`, weighted by `T.DOMAIN_WEIGHTS` (real
+    WildChat-1M frequency -- see taxonomy.py's docstring); intent is no
+    longer sampled at all (the model decides one itself, per
+    GENERATION_PROMPT -- see this module's docstring)."""
     lang_name = LANGUAGES_PHASE3[lang_code]
     country = LANG_COUNTRY[lang_code]
     rng = random.Random(f"{seed}:{lang_code}:{start_index}")
+    domains, domain_weights = _weighted_domains(T.DOMAIN_WEIGHTS)
 
     rows = []
     for i in range(n):
         idx = start_index + i
-        is_local = rng.random() >= general_p
-        domain = rng.choice(T.LOCAL_DOMAINS if is_local else T.GENERAL_DOMAINS)
-        intents = T.LOCAL_INTENTS if is_local else T.GENERAL_INTENTS
-        intent = rng.choice(intents)
+        domain = rng.choices(domains, weights=domain_weights, k=1)[0]
         role = rng.choice(T.ROLES) if rng.random() < persona_p else None
+        # Still drawn (not just dropped) so the RNG stream stays aligned with
+        # every prior generation batch -- removing this call would shift the
+        # domain/role draws for every row after it. No longer passed into the
+        # prompt: the study's 09_salt_necessity ablation found no measurable
+        # diversity benefit from surfacing it as a text nudge (see
+        # studies/localized_axes_ablation/REPORT.md), and it had no
+        # programmatic backstop anyway -- see synthgen/pipeline/near_dup.py
+        # for the real one. Kept on the row for provenance/debugging.
         salt = rng.randint(1000, 9999)
         rows.append({
             "id": f"{lang_code}-{idx:06d}", "lang": lang_code,
-            "domain": domain, "is_local": is_local, "intent": intent,
-            "role": role, "salt": salt,
+            "domain": domain, "role": role, "salt": salt,
             "meta_prompt": generation_prompt(
-                lang_name=lang_name, country=country, domain=domain,
-                intent=intent, salt=salt, role=role, localized=is_local),
+                lang_name=lang_name, country=country, domain=domain, role=role),
         })
     return rows
 
