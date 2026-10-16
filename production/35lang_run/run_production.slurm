@@ -37,7 +37,7 @@ export SIF=/scratch/project_465002530/containers/vllm-openai-rocm.sif
 export HF_HOME=/scratch/project_462001516/cache/huggingface/abhasjha
 export RUN="$REPO/production/35lang_run"
 export EP="$RUN/endpoints"          # shared across all 16 nodes via Lustre
-export DATA_ROOT=/scratch/project_462001516/abhasjha/oellm_production_35lang
+export DATA_ROOT=/scratch/project_465002530/abhasjha/oellm_production_35lang  # moved off 462001516: that project was down to ~100K free inodes
 export GEN_MODEL=google/gemma-4-31b-it
 export JUDGE_MODEL=Qwen/Qwen3.6-27B
 export NUM_GEN_NODES=12             # SLURM_PROCID < this -> gen, else judge
@@ -160,7 +160,6 @@ python3 -m synthgen.cli topup \
   --langs $LANGS \
   --gen-backend vllm --gen-models gen --gen-endpoints-dir '$EP/gen' --gen-min-endpoints $MIN_GEN \
   --judge-backend vllm --judge-model judge --judge-endpoints-dir '$EP/judge' --judge-min-endpoints $MIN_JUDGE \
-  --embedding-dedupe \
   --gen-concurrency $GEN_CONCURRENCY --judge-concurrency $JUDGE_CONCURRENCY --concurrency $JUDGE_CONCURRENCY \
   --max-rounds 30 --max-attempts 3 --retry-delay 15
 "

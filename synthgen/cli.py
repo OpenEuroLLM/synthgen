@@ -127,6 +127,7 @@ def _cmd_dedupe(args):
         embedding_dedupe=args.embedding_dedupe,
         embedding_threshold=args.embedding_threshold,
         embedding_model=args.embedding_model,
+        embedding_workers=args.embedding_workers,
     )
     print(_json.dumps(summary, indent=2, ensure_ascii=False))
 
@@ -180,6 +181,7 @@ def _cmd_topup(args):
         split=args.split, embedding_dedupe=args.embedding_dedupe,
         embedding_threshold=args.embedding_threshold,
         embedding_model=args.embedding_model,
+        embedding_workers=args.embedding_workers,
         gen_concurrency=args.gen_concurrency, judge_concurrency=args.judge_concurrency,
     )
     print(_json.dumps(summary, indent=2, ensure_ascii=False))
@@ -309,6 +311,12 @@ def main(argv: list[str] | None = None) -> None:
                         "(default: near_dup.DEFAULT_EMBED_MODEL, a multilingual "
                         "model -- don't swap in an English-only one, see "
                         "near_dup.py)")
+    p.add_argument("--embedding-workers", type=int, default=None,
+                   help="run --embedding-dedupe's O(n^2) per-language scan across "
+                        "this many languages concurrently (process pool; each "
+                        "language bucket is independent) instead of serially -- "
+                        "CPU-only, no GPU needed. Default: serial (1). Pass e.g. "
+                        "the node's core count for a real production run.")
     p.set_defaults(func=_cmd_dedupe)
 
     # qc
@@ -391,6 +399,13 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--embedding-model", default=None,
                    help="sentence-transformers model id for --embedding-dedupe "
                         "(default: near_dup.DEFAULT_EMBED_MODEL, multilingual)")
+    p.add_argument("--embedding-workers", type=int, default=None,
+                   help="run --embedding-dedupe's O(n^2) per-language scan across "
+                        "this many languages concurrently (process pool) instead "
+                        "of serially -- CPU-only. Default: serial (1). At "
+                        "production scale (~150-200k rows/language) this matters "
+                        "a lot: serial is the sum of every language's O(n^2) "
+                        "cost, parallel is roughly just the slowest one.")
     p.add_argument("--gen-concurrency", type=int, default=None,
                    help="override --concurrency for just the gen-phase call. "
                         "Needed when the gen endpoint pool has many more "

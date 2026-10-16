@@ -30,7 +30,8 @@ def run(*, input: Path, output: Path,
         min_response_chars: int = 8, report: Path | None = None,
         embedding_dedupe: bool = False,
         embedding_threshold: float | None = None,
-        embedding_model: str | None = None) -> dict:
+        embedding_model: str | None = None,
+        embedding_workers: int | None = None) -> dict:
     """`embedding_dedupe=True` adds a second pass, after the exact-match pass
     below: paraphrased near-duplicates within each language (cosine
     similarity of sentence embeddings) are dropped too, not just
@@ -103,6 +104,8 @@ def run(*, input: Path, output: Path,
             kw["threshold"] = embedding_threshold
         if embedding_model is not None:
             kw["model_name"] = embedding_model
+        if embedding_workers is not None:
+            kw["max_workers"] = embedding_workers
         try:
             kept_rows, emb_report = near_dup.embedding_dedupe(rows, **kw)
         except near_dup.EmbedderUnavailable as e:

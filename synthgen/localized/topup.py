@@ -71,6 +71,7 @@ def run(
     embedding_dedupe: bool = False,
     embedding_threshold: float | None = None,
     embedding_model: str | None = None,
+    embedding_workers: int | None = None,
     persona_p: float | None = None,
     gen_concurrency: int | None = None,
     judge_concurrency: int | None = None,
@@ -202,7 +203,8 @@ def run(
         dedupe_summary = dedupe.run(input=kept_all_path, output=final_path,
                                     embedding_dedupe=embedding_dedupe,
                                     embedding_threshold=embedding_threshold,
-                                    embedding_model=embedding_model)
+                                    embedding_model=embedding_model,
+                                    embedding_workers=embedding_workers)
         embedding_near_dup_dropped_total += dedupe_summary.get("dropped_near_dup_embedding", 0)
 
         new_survivors = _lang_counts(final_path)

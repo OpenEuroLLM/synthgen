@@ -21,7 +21,9 @@ by hand; if you tune one, check the other.
 """
 from __future__ import annotations
 
+import os
 from collections import defaultdict
+from concurrent.futures import ProcessPoolExecutor
 
 from synthgen.log import get_logger
 
@@ -96,25 +98,58 @@ def embedding_dedupe_mask(texts: list[str], *, threshold: float = DEFAULT_THRESH
     return keep_mask
 
 
+def _dedupe_one_lang(args: tuple[str, list[str], float, str]) -> tuple[str, list[bool]]:
+    """Process-pool worker: one language bucket per call. Module-level (not a
+    closure/lambda) so it's picklable for ProcessPoolExecutor. Each worker
+    process loads its own embedder copy (the `_embedder` cache is per-process,
+    not shared) -- fine at the model sizes this module uses (~470MB), and
+    each worker only ever loads it once since it's handed exactly one bucket.
+    """
+    lang, texts, threshold, model_name = args
+    try:
+        import torch
+        torch.set_num_threads(1)  # avoid BLAS thread oversubscription across
+                                   # worker processes sharing a node's cores
+    except ImportError:
+        pass
+    mask = embedding_dedupe_mask(texts, threshold=threshold, model_name=model_name)
+    return lang, mask
+
+
 def embedding_dedupe(rows: list[dict], *, text_key: str = "prompt",
                       lang_key: str = "lang", threshold: float = DEFAULT_THRESHOLD,
                       model_name: str = DEFAULT_EMBED_MODEL,
+                      max_workers: int | None = None,
                       ) -> tuple[list[dict], dict]:
     """Buckets `rows` by `lang_key` -- never pooled across languages, since a
     near-dup rate in one language says nothing about another -- and drops
     embedding near-duplicates within each bucket. Returns
     `(kept_rows, report)`; raises `EmbedderUnavailable` if the embedder can't
     load (caller decides whether to skip this stage or fail the run).
+
+    `embedding_dedupe_mask`'s O(n^2) scan is CPU-only (plain numpy/BLAS, no
+    GPU involved) and was measured (production/35lang_run/_dedup_sizing_
+    check2.py, a real debug-node benchmark) to cost ~15-54h *total* run
+    sequentially across ~35 language buckets at production scale (~150-200k
+    rows/language). Since buckets are fully independent, `max_workers > 1`
+    runs them concurrently via a process pool instead -- wall-clock drops
+    from "sum of all buckets" to roughly "the single slowest bucket".
+    Defaults to serial (max_workers=None or 1) to keep the simple/no-
+    multiprocessing-overhead behavior for small inputs and tests; pass e.g.
+    max_workers=min(35, os.cpu_count()) for a real production run on a CPU
+    node with enough cores.
     """
     buckets: dict[str, list[int]] = defaultdict(list)
     for idx, r in enumerate(rows):
         buckets[r.get(lang_key, "")].append(idx)
 
+    lang_items = [(lang, idxs, [rows[i].get(text_key, "") or "" for i in idxs])
+                  for lang, idxs in buckets.items()]
+
     drop: set[int] = set()
     by_lang_dropped: dict[str, int] = {}
-    for lang, idxs in buckets.items():
-        texts = [rows[i].get(text_key, "") or "" for i in idxs]
-        mask = embedding_dedupe_mask(texts, threshold=threshold, model_name=model_name)
+
+    def _apply(lang: str, idxs: list[int], mask: list[bool]) -> None:
         n_dropped = sum(1 for m in mask if not m)
         if n_dropped:
             log.info("embedding near-dup: lang=%s dropped=%d/%d", lang, n_dropped, len(idxs))
@@ -122,6 +157,18 @@ def embedding_dedupe(rows: list[dict], *, text_key: str = "prompt",
         for i, keep in zip(idxs, mask):
             if not keep:
                 drop.add(i)
+
+    if max_workers and max_workers > 1 and len(lang_items) > 1:
+        n_workers = min(max_workers, len(lang_items), os.cpu_count() or 1)
+        tasks = [(lang, texts, threshold, model_name) for lang, _, texts in lang_items]
+        idxs_by_lang = {lang: idxs for lang, idxs, _ in lang_items}
+        with ProcessPoolExecutor(max_workers=n_workers) as ex:
+            for lang, mask in ex.map(_dedupe_one_lang, tasks):
+                _apply(lang, idxs_by_lang[lang], mask)
+    else:
+        for lang, idxs, texts in lang_items:
+            mask = embedding_dedupe_mask(texts, threshold=threshold, model_name=model_name)
+            _apply(lang, idxs, mask)
 
     kept_rows = [r for i, r in enumerate(rows) if i not in drop]
     report = {
