@@ -1,9 +1,9 @@
-"""End-to-end integration checks for topup.py's two safety-critical
-guarantees, using a FakeBackend (deterministic, in-process, no GPU/network)
-so they run in seconds -- but going through the REAL generate.py/dedupe.py/
-near_dup.py/quality_filter.py code, not stubs, so a real regression in any
-of them would actually be caught here. Built in lieu of a live smoke test
-(no time for one before the 36-language production run).
+"""End-to-end integration checks for topup.py's safety-critical guarantees,
+using a FakeBackend (deterministic, in-process, no GPU/network) so they run
+in seconds -- but going through the REAL generate.py/dedupe.py/near_dup.py/
+quality_filter.py code, not stubs, so a real regression in any of them would
+actually be caught here. Built in lieu of a live smoke test (no time for one
+before the 36-language production run).
 
   1. Stop-resume: killing mid-round and calling topup.run() again continues
      from on-disk checkpoint state -- prior successful rows are preserved
@@ -17,6 +17,14 @@ of them would actually be caught here. Built in lieu of a live smoke test
      calculation triggers a real replacement generation next round, ending
      with target_per_lang genuinely-distinct rows, not just
      target_per_lang exact-string-unique ones.
+  3. Already-judge-satisfied + backlog-cleared languages don't get doubled
+     up: a real production run found topup blindly writing a fresh full
+     overgen batch for languages that already had far more than
+     target_per_lang judge-passing rows sitting on disk, simply because
+     their prompt queue happened to be empty -- it never checked the
+     already-existing judge data at all. This reproduces that exact
+     precondition (gen+judge done, dedupe never run) and asserts no new
+     prompts get written and no new backend calls happen.
 
 Note: synthgen.pipeline.generate.py's backend.chat() only ever receives the
 fully-rendered prompt text (via _messages_for), never the row dict itself --
@@ -30,7 +38,8 @@ from __future__ import annotations
 import json
 
 from synthgen.config import Paths, SynthConfig
-from synthgen.io import iter_jsonl, load_done_ids_ok
+from synthgen.io import iter_jsonl, load_done_ids_ok, write_jsonl
+from synthgen.localized import prompts as prompts_localized
 from synthgen.localized import topup
 from synthgen.pipeline import near_dup
 
@@ -159,3 +168,64 @@ def test_stop_resume_does_not_redo_completed_work(tmp_path):
     # the resumed backend never re-received a prompt that already succeeded
     assert not (set(gen2.calls) & prompts_sent_in_round1), (
         "resume re-requested a prompt that had already succeeded before the kill")
+
+
+def test_backlog_cleared_but_interim_judge_estimate_already_at_target_skips_new_prompts(tmp_path):
+    """Reproduces the real production bug: gen+judge already done for a
+    language (far more than target_per_lang judge-passing rows exist), but
+    quality_filter/dedupe have NEVER run (loc_full.dedup.jsonl doesn't
+    exist), and the language's prompt queue is fully drained (backlog==0).
+    The old code read this as "survivors=0, backlog clear -> write a full
+    fresh overgen batch". The fix must instead compute an interim judge-
+    aware estimate, see the language is already well past target, and skip
+    writing anything new -- asserted here by checking NO new prompts get
+    appended and NEITHER backend ever receives a single call."""
+    target = 5
+    n_existing = 7  # > target, all unique (no near-dup concerns), all passing
+
+    cfg = _cfg(tmp_path)
+    rows = prompts_localized.build_rows(n_existing, "es", start_index=0, seed=0)
+    write_jsonl(cfg.paths.prompts / "localized_prompts.jsonl", rows)
+
+    gen_records = [
+        {"id": r["id"], "lang": "es", "domain": r.get("domain"),
+         "is_local": r.get("is_local"), "intent": r.get("intent"),
+         "role": r.get("role"), "salt": r.get("salt"),
+         "intent_used": "ask", "role_used": "none", "model": "fake",
+         "instruction": f"instr-{r['id']}", "response": f"resp-{r['id']}",
+         "usage": {}}
+        for r in rows
+    ]
+    write_jsonl(cfg.paths.outputs / "loc_fake.jsonl", gen_records)
+
+    judge_records = [
+        {"id": r["id"], "lang": "es", "model": "fake", "score": 9,
+         "reason": "fine", "usage": {}}
+        for r in rows
+    ]
+    write_jsonl(cfg.paths.outputs / "judged_fake.jsonl", judge_records)
+
+    # loc_full.dedup.jsonl deliberately does NOT exist -- same as every real
+    # job submission so far, which all died before dedupe ever ran once.
+    assert not (cfg.paths.outputs / "loc_full.dedup.jsonl").exists()
+
+    gen = FakeBackend(["should-never-be-called"])
+    judge = FakeBackend(["should-never-be-called"])
+    summary = topup.run(
+        cfg, gen_backends=[gen], judge_backend=judge,
+        target_per_lang=target, thresholds={"global": 0}, lang_codes=["es"],
+        seed=0, max_rounds=1, overgen_factor_default=1.0,
+    )
+
+    assert summary["met_target"], f"should have met target from pre-existing data: {summary}"
+    assert summary["survivors_by_lang"]["es"] >= target
+
+    prompts_after = list(iter_jsonl(cfg.paths.prompts / "localized_prompts.jsonl"))
+    assert len(prompts_after) == n_existing, (
+        f"expected no new prompts written for an already-satisfied language, "
+        f"got {len(prompts_after)} (started with {n_existing})")
+
+    assert gen.calls == [], f"gen backend should never have been called, got {len(gen.calls)} calls"
+    assert judge.calls == [], (
+        f"judge backend should never have been called (all {n_existing} rows "
+        f"already judged), got {len(judge.calls)} calls")

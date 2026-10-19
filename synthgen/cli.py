@@ -176,6 +176,7 @@ def _cmd_topup(args):
         cfg, gen_backends=gen_backends, judge_backend=judge_backend,
         target_per_lang=args.target, thresholds=thresholds,
         lang_codes=args.langs, overgen_factor_default=args.overgen_factor,
+        max_overgen_factor=args.max_overgen_factor,
         max_rounds=args.max_rounds, seed=args.seed,
         max_attempts=args.max_attempts, retry_delay=args.retry_delay,
         split=args.split, embedding_dedupe=args.embedding_dedupe,
@@ -375,7 +376,14 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--judge-min-endpoints", type=int, default=1)
     p.add_argument("--overgen-factor", type=float, default=1.6,
                    help="Initial raw-rows-per-needed-survivor multiplier, before "
-                        "the observed survival rate takes over (default: 1.6)")
+                        "the observed (per-language) survival rate takes over "
+                        "(default: 1.6)")
+    p.add_argument("--max-overgen-factor", type=float, default=5.0,
+                   help="Cap on the per-language overgen factor once a real "
+                        "survival rate is observed (default: 5.0). Raise this "
+                        "for a known severe-outlier language (e.g. one passing "
+                        "judge at ~8%% when most pass 90%%+) to close its gap "
+                        "faster instead of over several rounds.")
     p.add_argument("--max-rounds", type=int, default=20)
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--max-attempts", type=int, default=3,

@@ -43,15 +43,74 @@ def _lang_counts(path: Path) -> Counter:
     return c
 
 
-def _survival_rate(gen_out_paths: list[Path], final_path: Path) -> float | None:
-    """Observed (deduped survivors) / (raw successful generations) so far,
-    across every round and every generator model — used to calibrate how many
-    extra raw rows the next batch needs."""
-    raw_ok = sum(len(load_done_ids_ok(p)) for p in gen_out_paths)
-    if raw_ok == 0 or not final_path.exists():
-        return None
-    survivors = sum(1 for _ in iter_jsonl(final_path))
-    return survivors / raw_ok if survivors else None
+def _raw_ok_by_lang(gen_out_paths: list[Path]) -> Counter:
+    """Per-language count of successful (non-error) raw generations, summed
+    across every gen_out_path -- handles split=True sharding across multiple
+    generator backends/models the same way the official end-of-round pass
+    already does (concatenate-then-count, not per-path)."""
+    c: Counter = Counter()
+    for p in gen_out_paths:
+        if not p.exists():
+            continue
+        for r in iter_jsonl(p):
+            if "error" not in r:
+                c[r.get("lang", "")] += 1
+    return c
+
+
+def _interim_survivors_and_rates(
+    *, gen_out_paths: list[Path], judge_out: Path, thresholds: dict,
+    interim_kept_path: Path, interim_final_path: Path,
+    embedding_dedupe: bool, embedding_threshold: float | None,
+    embedding_model: str | None, embedding_workers: int | None,
+) -> tuple[Counter, dict[str, float]]:
+    """Lazy, cheap (CPU-only, no LLM calls) re-run of the SAME quality_filter
+    + dedupe pipeline the official end-of-round pass uses, against whatever
+    gen+judge data already exists on disk RIGHT NOW -- not just the last
+    *completed* round's `final_path` (which may not exist at all if no round
+    has ever reached dedupe, as happened for weeks across this run's first
+    three job submissions). Written to throwaway interim_* paths so the
+    official kept_all_path/final_path are never touched.
+
+    Must run the real dedupe pipeline (not a quality-filter-only shortcut):
+    a paraphrased near-duplicate that only embedding_dedupe catches would
+    otherwise look like a "survivor" here and wrongly suppress a replacement
+    generation that's actually still needed -- the same class of blindness
+    this function exists to fix, just relocated.
+
+    Returns (interim_survivors_by_lang, interim_rate_by_lang). Guards the one
+    case quality_filter.run()/dedupe.run() do NOT guard themselves (both
+    raise FileNotFoundError on a missing input path): if no gen_out_paths
+    exist yet, or judge_out doesn't exist, returns ({}, {}) without touching
+    either -- exactly preserves old behavior (overgen_factor_default
+    fallback, deficit computed from scratch) for a genuinely fresh run.
+    """
+    existing_gen_paths = [p for p in gen_out_paths if p.exists()]
+    if not existing_gen_paths or not judge_out.exists():
+        return Counter(), {}
+
+    kept_paths = []
+    for p in existing_gen_paths:
+        kp = interim_kept_path.with_name(
+            f"{interim_kept_path.stem}_{p.stem}{interim_kept_path.suffix}")
+        quality_filter.run(gen=p, judged=judge_out, thresholds=thresholds, output=kp)
+        kept_paths.append(kp)
+    with open(interim_kept_path, "w", encoding="utf-8") as fout:
+        for kp in kept_paths:
+            for line in kp.open("r", encoding="utf-8"):
+                fout.write(line)
+
+    dedupe.run(input=interim_kept_path, output=interim_final_path,
+               embedding_dedupe=embedding_dedupe,
+               embedding_threshold=embedding_threshold,
+               embedding_model=embedding_model,
+               embedding_workers=embedding_workers)
+
+    interim_survivors = _lang_counts(interim_final_path)
+    raw_ok = _raw_ok_by_lang(existing_gen_paths)
+    interim_rate = {l: interim_survivors.get(l, 0) / n
+                    for l, n in raw_ok.items() if n > 0 and interim_survivors.get(l, 0) > 0}
+    return interim_survivors, interim_rate
 
 
 def run(
@@ -63,6 +122,7 @@ def run(
     thresholds: dict,
     lang_codes: list[str] | None = None,
     overgen_factor_default: float = 1.6,
+    max_overgen_factor: float = 5.0,
     max_rounds: int = 20,
     seed: int = 0,
     max_attempts: int = 3,
@@ -106,6 +166,28 @@ def run(
     just the login node); if it isn't, each round logs a warning and falls
     back to exact-match-only, same as `dedupe.run()` does standalone.
 
+    Per-language overgen factor: each round, before deciding whether a
+    backlog-cleared language needs new prompts, a lazy "interim" re-run of
+    quality_filter+dedupe against whatever's on disk right now (see
+    `_interim_survivors_and_rates`) checks (a) whether that language already
+    has enough judge-passing, deduped rows to meet `target_per_lang` --
+    skipping it entirely if so, even though the old backlog-only check would
+    have blindly requested more -- and (b) that language's OWN observed
+    survival rate, clamped to `[1.1, max_overgen_factor]`, instead of one
+    rate pooled across every language. A language with a much lower pass
+    rate than the rest (e.g. an 8% outlier when most languages pass 90%+)
+    needs a correspondingly larger factor to close its gap in one round;
+    raise `max_overgen_factor` above its 5.0 default if you have a known
+    severe outlier and want it caught up faster rather than over several
+    rounds.
+
+    Each round also drains any already-generated-but-unjudged backlog via an
+    extra judge pass at the TOP of the round (before the above decision),
+    so judge's dedicated endpoints aren't idle through an entire round's gen
+    phase when there's already real judge work waiting from a prior
+    interrupted run -- cheap/no-op via generate.run()'s own id-checkpointing
+    whenever there's nothing new to judge.
+
     `gen_concurrency`/`judge_concurrency`, if given, override `cfg.concurrency`
     for just the gen-phase or judge-phase `generate.run()` call respectively.
     Matters because `synthgen/backends/vllm.py`'s `EndpointPool` is a plain
@@ -124,6 +206,8 @@ def run(
     prompts_path = cfg.paths.prompts / "localized_prompts.jsonl"
     kept_all_path = cfg.paths.outputs / "loc_full.kept.jsonl"
     final_path = cfg.paths.outputs / "loc_full.dedup.jsonl"
+    interim_kept_path = cfg.paths.outputs / "loc_full.interim_kept.jsonl"
+    interim_final_path = cfg.paths.outputs / "loc_full.interim_dedup.jsonl"
     judge_out = generate.output_path_for("judge", cfg, judge_backend.model)
 
     embedding_near_dup_dropped_total = 0
@@ -137,23 +221,64 @@ def run(
                      len(langs), rnd - 1)
             break
 
+        # Drain any already-generated-but-unjudged backlog FIRST, before
+        # deciding what (if anything) new to generate this round -- so
+        # judge's dedicated endpoints aren't idle through this round's gen
+        # phase when there's already real judge work waiting (e.g. from a
+        # prior interrupted run). Cheap/no-op via generate.run()'s own
+        # id-checkpointing whenever there's nothing new to judge.
+        gen_out_paths_so_far = [p for p in (
+            generate.output_path_for("localized", cfg, be.model) for be in gen_backends)
+            if p.exists()]
+        if gen_out_paths_so_far:
+            original_concurrency = cfg.concurrency
+            try:
+                cfg.concurrency = judge_concurrency if judge_concurrency is not None else original_concurrency
+                for p in gen_out_paths_so_far:
+                    generate.run(cfg, backends=[judge_backend], mode="judge", in_path=p,
+                                max_attempts=max_attempts, retry_delay=retry_delay)
+            finally:
+                cfg.concurrency = original_concurrency
+
         gen_out_paths = [generate.output_path_for("localized", cfg, be.model)
                          for be in gen_backends]
         generated_ok = set()
         for p in gen_out_paths:
             generated_ok |= load_done_ids_ok(p)
         prompts_have = _lang_counts(prompts_path)
-        rate = _survival_rate(gen_out_paths, final_path)
-        factor = min(5.0, max(1.1, 1.0 / rate)) if rate else overgen_factor_default
+        backlogs = {lang: prompts_have.get(lang, 0) - sum(
+            1 for i in generated_ok if i.startswith(f"{lang}-")) for lang in deficits}
+
+        # Lazy: only pay for the interim quality_filter+dedupe pass if at
+        # least one language is actually a candidate for new prompts this
+        # round (backlog cleared) -- the helper's own existence-guard makes
+        # it a no-op anyway on a data-free first round, but this skips even
+        # the attempt when every language still has backlog outstanding.
+        interim_survivors, interim_rate = (
+            _interim_survivors_and_rates(
+                gen_out_paths=gen_out_paths, judge_out=judge_out, thresholds=thresholds,
+                interim_kept_path=interim_kept_path, interim_final_path=interim_final_path,
+                embedding_dedupe=embedding_dedupe, embedding_threshold=embedding_threshold,
+                embedding_model=embedding_model, embedding_workers=embedding_workers,
+            ) if any(b <= 0 for b in backlogs.values()) else (Counter(), {})
+        )
 
         appended = 0
         for lang, deficit in deficits.items():
-            backlog = prompts_have.get(lang, 0) - sum(
-                1 for i in generated_ok if i.startswith(f"{lang}-"))
+            backlog = backlogs[lang]
             if backlog > 0:
                 log.info("[topup] round %d: %s has %d rows still in flight, "
                         "not adding more yet", rnd, lang, backlog)
                 continue
+            interim_n = interim_survivors.get(lang, 0)
+            if interim_n >= target_per_lang:
+                log.info("[topup] round %d: %s backlog clear but interim judge-"
+                         "pass+dedup estimate already has %d >= target %d -- "
+                         "skipping, no new prompts", rnd, lang, interim_n, target_per_lang)
+                continue
+            rate = interim_rate.get(lang)
+            factor = (min(max_overgen_factor, max(1.1, 1.0 / rate)) if rate
+                      else overgen_factor_default)
             n_new = math.ceil(deficit * factor)
             start = next_id_index(prompts_path, lang)
             build_kwargs = {}
