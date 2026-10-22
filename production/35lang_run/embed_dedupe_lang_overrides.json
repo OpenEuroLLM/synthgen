@@ -1,0 +1,6 @@
+{
+  "mt": {"model": "/gpfs/scratch/ehpc532/eit234648/models/labse", "threshold": 0.96},
+  "ga": {"model": "/gpfs/scratch/ehpc532/eit234648/models/labse", "threshold": 0.96},
+  "eu": {"model": "/gpfs/scratch/ehpc532/eit234648/models/labse", "threshold": 0.96},
+  "is": {"model": "/gpfs/scratch/ehpc532/eit234648/models/labse", "threshold": 0.96}
+}

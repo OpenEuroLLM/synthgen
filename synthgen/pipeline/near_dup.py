@@ -178,3 +178,152 @@ def embedding_dedupe(rows: list[dict], *, text_key: str = "prompt",
         "dropped_by_lang": by_lang_dropped,
     }
     return kept_rows, report
+
+
+# --- GPU path -----------------------------------------------------------------
+# Same model, same threshold, same greedy order-preserving keep/drop rule as
+# `embedding_dedupe_mask` -- only where it runs changes. At production scale the
+# CPU path is dominated by single-threaded encoding (~18 texts/s per worker on
+# MN5) and its process pool grows ~1GB/worker/5min during encode, which OOM'd a
+# 503GB node. Here each GPU encodes whole language buckets in big batches and
+# the greedy scan runs as blocked matmuls.
+
+_gpu_device: str | None = None
+_gpu_embedders: dict = {}  # model name -> SentenceTransformer, per worker process
+
+
+def greedy_keep_mask_blocked(emb, threshold: float = DEFAULT_THRESHOLD,
+                             block: int = 1024) -> list[bool]:
+    """Exactly `embedding_dedupe_mask`'s keep/drop rule (row i is dropped iff its
+    cosine to any *already-kept earlier* row is >= threshold; first occurrence
+    wins), computed block-by-block with torch matmuls instead of one matvec per
+    row. `emb`: (n, d) L2-normalized float tensor, on any device.
+
+    Per block: one matmul against everything kept so far, one block x block
+    matmul, then a short sequential pass over the block's rows (cheap numpy) to
+    resolve duplicates *within* the block in order.
+    """
+    import numpy as np
+    import torch
+
+    n, d = emb.shape
+    keep = np.zeros(n, dtype=bool)
+    kept_buf = torch.empty((n, d), dtype=emb.dtype, device=emb.device)
+    k = 0
+    for s in range(0, n, block):
+        blk = emb[s:s + block]
+        b = blk.shape[0]
+        if k:
+            dup_vs_kept = ((blk @ kept_buf[:k].T).amax(dim=1) >= threshold).cpu().numpy()
+        else:
+            dup_vs_kept = np.zeros(b, dtype=bool)
+        intra = (blk @ blk.T >= threshold).cpu().numpy()
+        kept_local: list[int] = []
+        for r in range(b):
+            if dup_vs_kept[r]:
+                continue
+            if kept_local and intra[r, kept_local].any():
+                continue
+            kept_local.append(r)
+        if kept_local:
+            idx = torch.as_tensor(kept_local, device=emb.device)
+            kept_buf[k:k + len(kept_local)] = blk[idx]
+            k += len(kept_local)
+            keep[s + np.asarray(kept_local)] = True
+    return keep.tolist()
+
+
+def _init_gpu_worker(gpu_ids) -> None:
+    """Pool initializer: each worker claims one GPU id from the shared queue."""
+    global _gpu_device
+    _gpu_device = f"cuda:{gpu_ids.get()}"
+
+
+def _dedupe_one_lang_gpu(args: tuple[str, list[str], float, str, int]) -> tuple[str, list[bool]]:
+    import time
+
+    lang, texts, threshold, model_name, batch_size = args
+    if len(texts) < 2:
+        return lang, [True] * len(texts)
+    t0 = time.time()
+    model = _gpu_embedders.get(model_name)
+    if model is None:
+        try:
+            from sentence_transformers import SentenceTransformer
+            model = _gpu_embedders[model_name] = SentenceTransformer(model_name, device=_gpu_device)
+        except Exception as e:
+            raise EmbedderUnavailable(f"could not load {model_name!r} on {_gpu_device} ({e})") from e
+    emb = model.encode(texts, batch_size=batch_size, normalize_embeddings=True,
+                       convert_to_tensor=True, show_progress_bar=False)
+    t1 = time.time()
+    mask = greedy_keep_mask_blocked(emb.float(), threshold)
+    log.info("embedding near-dup [%s]: lang=%s n=%d dropped=%d threshold=%.3f model=%s encode=%.0fs scan=%.0fs",
+             _gpu_device, lang, len(texts), mask.count(False), threshold, model_name, t1 - t0, time.time() - t1)
+    return lang, mask
+
+
+def embedding_dedupe_gpu(rows: list[dict], *, text_key: str = "prompt",
+                         lang_key: str = "lang", threshold: float = DEFAULT_THRESHOLD,
+                         model_name: str = DEFAULT_EMBED_MODEL,
+                         n_gpus: int | None = None, encode_batch_size: int = 256,
+                         lang_overrides: dict[str, dict] | None = None,
+                         ) -> tuple[list[dict], dict]:
+    """GPU counterpart of `embedding_dedupe`: same buckets, same rule, same
+    report shape. One spawned worker per visible GPU; language buckets are
+    handed out largest-first so the slowest bucket starts first.
+
+    `lang_overrides` maps a language code to {"model": ..., "threshold": ...}
+    (either key optional) for languages the default embedder does not cover --
+    e.g. LaBSE for mt/ga/eu/is. Cosine scales differ between models, so an
+    overridden model needs its own threshold."""
+    lang_overrides = lang_overrides or {}
+    import multiprocessing as mp
+
+    import torch
+
+    visible = torch.cuda.device_count()
+    if visible == 0:
+        raise RuntimeError("embedding_dedupe_gpu: no CUDA device visible")
+    n_gpus = min(n_gpus or visible, visible)
+
+    buckets: dict[str, list[int]] = defaultdict(list)
+    for idx, r in enumerate(rows):
+        buckets[r.get(lang_key, "")].append(idx)
+    lang_items = sorted(
+        ((lang, idxs, [rows[i].get(text_key, "") or "" for i in idxs]) for lang, idxs in buckets.items()),
+        key=lambda t: -len(t[1]))
+
+    ctx = mp.get_context("spawn")  # CUDA cannot be used in forked children
+    gpu_ids = ctx.Queue()
+    for g in range(n_gpus):
+        gpu_ids.put(g)
+
+    drop: set[int] = set()
+    by_lang_dropped: dict[str, int] = {}
+    idxs_by_lang = {lang: idxs for lang, idxs, _ in lang_items}
+    def _cfg(lang: str) -> tuple[float, str]:
+        ov = lang_overrides.get(lang, {})
+        return float(ov.get("threshold", threshold)), ov.get("model", model_name)
+
+    tasks = [(lang, texts, *_cfg(lang), encode_batch_size) for lang, _, texts in lang_items]
+    with ProcessPoolExecutor(max_workers=min(n_gpus, len(tasks)), mp_context=ctx,
+                             initializer=_init_gpu_worker, initargs=(gpu_ids,)) as ex:
+        for lang, mask in ex.map(_dedupe_one_lang_gpu, tasks):
+            n_dropped = sum(1 for m in mask if not m)
+            by_lang_dropped[lang] = n_dropped
+            log.info("embedding near-dup: lang=%s dropped=%d/%d", lang, n_dropped, len(mask))
+            for i, keep in zip(idxs_by_lang[lang], mask):
+                if not keep:
+                    drop.add(i)
+
+    kept_rows = [r for i, r in enumerate(rows) if i not in drop]
+    report = {
+        "threshold": threshold,
+        "model": model_name,
+        "device": f"cuda x{n_gpus}",
+        "lang_overrides": {lang: dict(zip(("threshold", "model"), _cfg(lang)))
+                           for lang in lang_overrides if lang in idxs_by_lang},
+        "total_dropped": len(drop),
+        "dropped_by_lang": by_lang_dropped,
+    }
+    return kept_rows, report

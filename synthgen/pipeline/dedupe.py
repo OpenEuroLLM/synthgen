@@ -31,7 +31,9 @@ def run(*, input: Path, output: Path,
         embedding_dedupe: bool = False,
         embedding_threshold: float | None = None,
         embedding_model: str | None = None,
-        embedding_workers: int | None = None) -> dict:
+        embedding_workers: int | None = None,
+        embedding_device: str | None = None,
+        embedding_lang_overrides: dict | None = None) -> dict:
     """`embedding_dedupe=True` adds a second pass, after the exact-match pass
     below: paraphrased near-duplicates within each language (cosine
     similarity of sentence embeddings) are dropped too, not just
@@ -98,16 +100,30 @@ def run(*, input: Path, output: Path,
     if embedding_dedupe:
         from synthgen.pipeline import near_dup
 
-        rows = list(json.loads(line) for line in output.read_text().splitlines() if line.strip())
+        # Stream line by line: file iteration splits on "\n" only, whereas
+        # str.splitlines() also breaks on U+0085/U+2028/etc., which
+        # json.dumps(ensure_ascii=False) leaves raw inside strings (5 rows in
+        # the 35-lang set contain U+0085 -> JSONDecodeError). Also avoids
+        # holding the whole file as one str (+ its split copy) in memory.
+        with output.open(encoding="utf-8") as fin:
+            rows = [json.loads(line) for line in fin if line.strip()]
         kw = {}
         if embedding_threshold is not None:
             kw["threshold"] = embedding_threshold
         if embedding_model is not None:
             kw["model_name"] = embedding_model
+        use_gpu = bool(embedding_device) and embedding_device.startswith("cuda")
         if embedding_workers is not None:
-            kw["max_workers"] = embedding_workers
+            kw["n_gpus" if use_gpu else "max_workers"] = embedding_workers
+        if embedding_lang_overrides:
+            if not use_gpu:
+                raise ValueError("embedding_lang_overrides is only supported with embedding_device='cuda'")
+            kw["lang_overrides"] = embedding_lang_overrides
         try:
-            kept_rows, emb_report = near_dup.embedding_dedupe(rows, **kw)
+            if use_gpu:
+                kept_rows, emb_report = near_dup.embedding_dedupe_gpu(rows, **kw)
+            else:
+                kept_rows, emb_report = near_dup.embedding_dedupe(rows, **kw)
         except near_dup.EmbedderUnavailable as e:
             log.warning("embedding dedupe skipped: %s", e)
             summary["embedding_dedupe_skipped"] = str(e)
@@ -120,6 +136,9 @@ def run(*, input: Path, output: Path,
             summary["dropped_by_lang_embedding"] = emb_report["dropped_by_lang"]
             summary["embedding_dedupe_model"] = emb_report["model"]
             summary["embedding_dedupe_threshold"] = emb_report["threshold"]
+            summary["embedding_dedupe_device"] = emb_report.get("device", "cpu")
+            if emb_report.get("lang_overrides"):
+                summary["embedding_lang_overrides"] = emb_report["lang_overrides"]
             log.info("embedding dedupe: dropped=%d kept=%d", emb_report["total_dropped"], len(kept_rows))
 
     if report:
