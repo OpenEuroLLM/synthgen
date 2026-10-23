@@ -20,10 +20,8 @@ one package, sharing backends and a few pipeline stages:
   `quality_filter.py`), and driven by a resumable top-up loop
   (`synthgen/localized/topup.py`, CLI: `synthgen topup`) that keeps
   generating rounds until each language hits its target survivor count.
-  **This route is not yet documented in README.md** — read
-  `synthgen/localized/topup.py` and `synthgen/cli.py`'s `topup`/
-  `quality-filter`/`decide-thresholds`/`build-localized-prompts` subparsers
-  directly if you need it.
+  Documented in README.md ("Localized route"); the 35-language production
+  run that used it is written up in `production/35lang_run/RUN.md`.
 
 Both routes go through the same `Backend` protocol
 (`synthgen/backends/base.py`: `async chat(client, *, messages, sampling) ->

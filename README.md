@@ -3,10 +3,22 @@
 Multilingual synthetic instruction-following (IF) data generation, with pluggable
 generation backends.
 
-`synthgen` builds prompts across **language × topic × persona × constraint**
-axes, generates them with one or more chat-completions models for diversity,
-filters leakage, verifies lang-id and constraint compliance, and produces a
-clean SFT JSONL suitable for fine-tuning.
+`synthgen` has two generation routes that share backends, the `generate`
+runner and the dedupe stage:
+
+- **Topic route** (`synthgen.pipeline`): builds prompts across
+  **language × topic × persona × constraint** axes, generates them with one or
+  more chat-completions models, filters leakage, verifies lang-id and
+  constraint compliance, then generates responses.
+- **Localized route** (`synthgen.localized`): one call writes an instruction
+  *and* its response natively in the target language, conditioned on
+  **domain × role × intent × language**; an LLM judge scores every row,
+  low scores are filtered out, and `topup` loops until each language has
+  enough survivors. This is the route behind the released dataset
+  [`openeurollm/EuroMultiSynth-Instruct`](https://huggingface.co/datasets/openeurollm/EuroMultiSynth-Instruct)
+  (4.16M rows, 35 languages) — see
+  [`production/35lang_run/RUN.md`](production/35lang_run/RUN.md) for exactly
+  how that run was done.
 
 Two generation routes are supported, selected per run with `--backend`:
 
@@ -28,7 +40,7 @@ pip install -e ".[dev]"            # + ruff, pytest
 
 Requires Python ≥ 3.10.
 
-## Pipeline
+## Pipeline (topic route)
 
 ```
 build-prompts → generate (--mode prompt) → filter → verify
@@ -155,11 +167,93 @@ synthgen export-openinstruct \
 # writes by_language/synthgen-if/<lang>.parquet
 ```
 
+### Near-duplicate removal (embeddings)
+
+`dedupe` always drops exact duplicates of `(lang, normalized prompt)`.
+`--embedding-dedupe` adds a second pass that also drops paraphrases: prompts
+are embedded and a prompt is dropped if its cosine similarity to an earlier
+*kept* prompt **of the same language** is at or above the threshold
+(languages are never compared with each other).
+
+```bash
+synthgen dedupe --input outputs/loc_full.kept.jsonl \
+                --output outputs/loc_full.dedup.jsonl \
+                --report outputs/dedupe_report.json \
+                --embedding-dedupe --embedding-threshold 0.97 \
+                --embedding-device cuda --embedding-workers 4 \
+                --lang-overrides embed_dedupe_lang_overrides.json
+```
+
+- `--embedding-model` — default `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`
+  (multilingual on purpose; English-only embedders inflate similarity on
+  other languages). Default threshold 0.85 is aggressive; the 35-language
+  release used 0.97 after inspecting example pairs per similarity band.
+- `--embedding-device cuda` runs it on GPUs (one worker per GPU, blocked
+  matmuls; same result as the CPU path). `--embedding-workers` is then the
+  number of GPUs; on CPU it is the number of languages scanned in parallel.
+  At production scale use the GPU — CPU encoding is very slow.
+- `--lang-overrides` (GPU only) gives languages their own model/threshold,
+  e.g. LaBSE for languages MiniLM does not cover:
+  `{"mt": {"model": "/path/to/labse", "threshold": 0.96}}`.
+- Needs `sentence-transformers`. If it can't load, the pass is **skipped with
+  a warning** and only exact dedupe is applied — check
+  `embedding_dedupe_skipped` / `dropped_near_dup_embedding` in the summary.
+
 ### Empirical topic distribution
 
 ```bash
 synthgen topics --dataset allenai/WildChat-1M --n 2000   # needs `.[topics]` + OPENROUTER_API_KEY
 ```
+
+## Localized route (generate + judge + filter)
+
+Used for the 35-language production run. The vLLM servers' served names
+(`--served-model-name gen` / `judge`) become the file names below, and every
+stage resumes by row id, so keep them stable across resubmits.
+
+```
+build-localized-prompts → generate --mode localized → generate --mode judge
+                        → quality-filter → dedupe (exact [+ embedding])
+```
+
+```bash
+synthgen build-localized-prompts --n 1000 --langs es fr     # prompts/localized_prompts.jsonl
+synthgen generate --backend vllm --mode localized --models gen \
+    --endpoints-dir endpoints/gen                          # outputs/loc_gen.jsonl
+synthgen generate --backend vllm --mode judge --models judge \
+    --in outputs/loc_gen.jsonl --endpoints-dir endpoints/judge   # outputs/judged_judge.jsonl
+synthgen quality-filter --gen outputs/loc_gen.jsonl --judged outputs/judged_judge.jsonl \
+    --thresholds thresholds.json --output outputs/loc_full.kept.jsonl   # {"global": 7}
+synthgen dedupe --input outputs/loc_full.kept.jsonl --output outputs/loc_full.dedup.jsonl
+```
+
+`synthgen topup` runs that whole chain in rounds until every language has
+`--target` survivors: each round first judges any unjudged backlog, then
+estimates each language's survival rate and generates only what that
+language still needs (`--overgen-factor`, capped by `--max-overgen-factor`).
+
+```bash
+synthgen topup --target 100000 --thresholds thresholds.json \
+    --gen-backend vllm --gen-models gen --gen-endpoints-dir endpoints/gen \
+    --judge-backend vllm --judge-model judge --judge-endpoints-dir endpoints/judge \
+    --gen-concurrency 512 --judge-concurrency 256 --max-rounds 10
+```
+
+Notes:
+
+- **Judge sampling.** Reasoning judges (e.g. `Qwen/Qwen3.6-27B`) are called
+  with `temperature=0` and thinking disabled; otherwise they spend
+  `max_tokens` thinking and the score never appears. This is set centrally
+  in `generate.py` for `--mode judge`.
+- **Thresholds.** `decide-thresholds` derives a per-language or global cut
+  from a labelled pilot; with few labelled rows per language it is noisy, so
+  check its output by hand. The release used `{"global": 7}`.
+- **Concurrency.** Tune `--concurrency` per replica on your hardware; on
+  H100s with vLLM, ~32 in-flight requests per judge replica was the stable
+  point (256 caused connection-failure collapse).
+- Per-language parquet for open-instruct: `export-openinstruct` (above); the
+  Hugging Face release format is built by
+  `production/35lang_run/build_hf_release.py`.
 
 ## Configuration
 
@@ -176,8 +270,11 @@ Defaults (`--phase 3`):
 ## Languages
 
 - Phase 1 (pilot): 5 languages — `el cs pl ro uk`.
-- Phase 3 (production): 11 EU languages — 8 Dolci-trained
-  (`es fr de it pt pl nl cs`) + 3 held-out (`ro el uk`).
+- Phase 3 (`LANGUAGES_PHASE3`, default for `--langs`): OpenEuroLLM's 35
+  target languages (its priority list minus English) — `es fr de it pt pl nl
+  cs ro el uk bg da et fi ga hr hu lv lt mt sk sl sv ca eu gl bs ka mk sq sr
+  tr is no`. The original 11 (`es fr de it pt pl nl cs ro el uk`) were the
+  first production set: 8 Dolci-trained + 3 held-out (`ro el uk`).
 
 ## Library usage
 
@@ -223,22 +320,29 @@ raise. The runner records the error alongside successes in the output JSONL.
 
 ```
 synthgen/
-├── cli.py               # `synthgen` entrypoint
-├── config.py            # SynthConfig, Paths, constants
+├── cli.py                   # `synthgen` entrypoint (both routes)
+├── config.py                # SynthConfig, Paths, languages, constants
 ├── log.py, io.py
-├── prompts.py
 ├── backends/
-│   ├── base.py          # Backend protocol
+│   ├── base.py              # Backend protocol
 │   ├── openrouter.py
-│   └── vllm.py          # EndpointPool + VLLMBackend
-├── generate.py          # backend-agnostic runner, prompt + response modes
-├── filter.py
-├── verify.py
-├── back_translate.py
-├── dedupe.py
-├── qc.py
-├── to_open_instruct.py  # export SFT JSONL → per-language parquet source
-└── topics.py            # empirical topic distribution
+│   └── vllm.py              # EndpointPool + VLLMBackend
+├── pipeline/                # topic route + shared stages
+│   ├── prompts.py
+│   ├── generate.py          # backend-agnostic runner: prompt / response / localized / judge
+│   ├── filter.py, verify.py, back_translate.py, qc.py
+│   ├── dedupe.py            # exact dedupe (+ optional embedding pass)
+│   ├── near_dup.py          # embedding near-dup removal, CPU and GPU
+│   ├── to_open_instruct.py  # export SFT JSONL → per-language parquet source
+│   └── topics.py            # empirical topic distribution
+└── localized/               # localized route
+    ├── taxonomy.py          # domain / role / intent / language axes
+    ├── prompts.py           # generation + judge prompt builders
+    ├── quality_filter.py    # keep rows scoring >= threshold
+    ├── thresholds.py        # decide-thresholds
+    └── topup.py             # resumable generate → judge → filter → dedupe loop
+production/35lang_run/       # SLURM scripts + RUN.md for the 35-language release
+tests/
 ```
 
 ## Environment

@@ -25,6 +25,52 @@ on MareNostrum 5** (BSC, NVIDIA H100, partition `acc`, account `ehpc532`).
 | 7 | Hugging Face release build | MN5, 1 node `acc_debug` | `build_hf_release.slurm` | 47816337 | `hf_release/synthgen-35lang-if/` | 4,160,598 |
 | 8 | upload | MN5 login node `alogin1` | `hf upload-large-folder` (manual) | — | HF repo (private) | — |
 
+### Commands, in order
+
+Submit from the repo root, `/gpfs/scratch/ehpc532/eit234648/synthgen` on MN5
+(the scripts' `#SBATCH --output` paths are relative to it). Each step reads
+the previous step's file; all of them resume or can be re-run safely.
+
+```bash
+# 0. login node, once: models, container, python extras (compute nodes have no internet)
+#    gen   /gpfs/scratch/ehpc532/models/google/gemma-4-31B-it
+#    judge /gpfs/scratch/ehpc532/eit234648/models/Qwen/Qwen3.6-27B
+#    LaBSE /gpfs/scratch/ehpc532/eit234648/models/labse
+#    SIF   /gpfs/scratch/ehpc532/eit234648/vllm/vllm-v0.22.1.sif
+#    overlays: st_overlay (sentence-transformers + deps), hf_overlay (pyarrow)
+
+# 1. LUMI: generation + first judgments (topup, 16 nodes; resubmitted until gen was done)
+sbatch production/35lang_run/run_production.slurm            # on LUMI
+#    then rsync outputs/loc_gen.jsonl + outputs/judged_judge.jsonl to
+#    /gpfs/scratch/ehpc532/eit234648/oellm_production_35lang/outputs/
+
+# 2. MN5 smoke test of the port (1 node, throwaway data root)
+sbatch production/35lang_run/smoke_mn5.slurm
+
+# 3. MN5 judge the backlog -> quality filter -> exact dedupe (8 nodes, ~14 h)
+sbatch -N 8 production/35lang_run/run_judge_pass_mn5_sup.slurm
+#    -> oellm_production_35lang_sup/outputs/{judged_judge,loc_full.kept,loc_full.dedup}.jsonl
+
+# 4. MN5 exact + within-language embedding dedupe on 4 GPUs (~25 min)
+sbatch production/35lang_run/run_embed_dedupe_mn5.slurm
+#    -> oellm_production_35lang_sup/outputs/loc_full.dedup_embed.jsonl (4,160,598 rows)
+#    equivalent CLI call, inside the vLLM SIF with st_overlay on PYTHONPATH:
+#    synthgen dedupe --input loc_full.kept.jsonl --output loc_full.dedup_embed.jsonl \
+#      --report loc_full.dedup_embed.report.json --embedding-dedupe \
+#      --embedding-threshold 0.97 --embedding-device cuda --embedding-workers 4 \
+#      --lang-overrides production/35lang_run/embed_dedupe_lang_overrides.json
+
+# 5. MN5 build the Hugging Face folder (parquet per language + card), CPU
+sbatch production/35lang_run/build_hf_release.slurm
+#    -> hf_release/synthgen-35lang-if/{README.md,stats.json,data/<lang>/*.parquet}
+
+# 6. alogin1 (ssh mn5-inet, tunnel on :18888): upload, after `hf auth login`
+HTTPS_PROXY=http://localhost:18888 HF_HUB_DISABLE_XET=1 \
+  hf upload-large-folder openeurollm/EuroMultiSynth-Instruct \
+  /gpfs/scratch/ehpc532/eit234648/hf_release/synthgen-35lang-if \
+  --repo-type dataset --num-workers 4
+```
+
 All MN5 data lives under `/gpfs/scratch/ehpc532/eit234648/`. The final outputs
 are in `oellm_production_35lang_sup/outputs/` (the supervised run's isolated
 root, see stage 3); `oellm_production_35lang/` holds the earlier, partially
@@ -139,7 +185,11 @@ mt 54k, et 58k, lv 74k, hu 77k.
 ## Stage 4 — embedding near-duplicate removal (within language)
 
 `run_embed_dedupe_mn5.slurm` → `run_embed_dedupe.py` → `synthgen.pipeline.dedupe.run(embedding_dedupe=True, ...)`,
-1 node with 4 GPUs (`acc_ehpc`), 22 min:
+1 node with 4 GPUs (`acc_ehpc`), 22 min. The same run is now also available
+as `synthgen dedupe --embedding-dedupe --embedding-device cuda
+--lang-overrides <file>` (added after the release; the driver additionally
+hard-fails if the embedder can't load, where the CLI only warns and falls
+back to exact dedupe).
 
 - Input `loc_full.kept.jsonl` (5,688,783); exact pass again (→ 5,595,396),
   then the near-dup pass → **`loc_full.dedup_embed.jsonl`, 4,160,598 rows**
