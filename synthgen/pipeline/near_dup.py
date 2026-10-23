@@ -47,6 +47,30 @@ class EmbedderUnavailable(RuntimeError):
     """sentence-transformers isn't installed, or the model failed to load."""
 
 
+def load_lang_overrides(path) -> dict:
+    """Read + validate a per-language override file for `embedding_dedupe_gpu`.
+
+    Format: `{"mt": {"model": "/path/to/labse", "threshold": 0.96}, ...}` --
+    `threshold` is required, `model` optional (default: the run's model). A
+    local `model` folder must be a sentence-transformers save (`modules.json`);
+    a Hub id is passed through. Validated up front so a typo fails before the
+    hours-long exact pass, not after it.
+    """
+    import json
+    from pathlib import Path
+    ov = json.loads(Path(path).read_text())
+    if not isinstance(ov, dict):
+        raise ValueError(f"lang overrides must be a JSON object, got {type(ov).__name__}")
+    for lang, cfg in ov.items():
+        if not isinstance(cfg, dict) or not isinstance(cfg.get("threshold"), (int, float)):
+            raise ValueError(f"lang overrides: {lang} has no numeric threshold ({cfg})")
+        model = cfg.get("model")
+        if model and Path(model).is_absolute() and not Path(model, "modules.json").is_file():
+            raise ValueError(f"lang overrides: {lang} model folder missing or not a "
+                             f"sentence-transformers save: {model}")
+    return ov
+
+
 def _load_embedder(model_name: str = DEFAULT_EMBED_MODEL):
     global _embedder
     if _embedder is None:

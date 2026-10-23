@@ -130,3 +130,28 @@ def test_dedupe_run_embedding_unavailable_is_skipped_not_fatal(tmp_path, monkeyp
     assert summary["kept"] == 2
     assert "embedding_dedupe_skipped" in summary
     assert "dropped_near_dup_embedding" not in summary
+
+
+def test_load_lang_overrides_accepts_valid_file(tmp_path):
+    model = tmp_path / "labse"
+    model.mkdir()
+    (model / "modules.json").write_text("[]")
+    f = tmp_path / "ov.json"
+    f.write_text(json.dumps({"mt": {"model": str(model), "threshold": 0.96},
+                             "ga": {"threshold": 0.9},
+                             "eu": {"model": "sentence-transformers/LaBSE", "threshold": 0.96}}))
+    ov = near_dup.load_lang_overrides(f)
+    assert ov["mt"]["threshold"] == 0.96 and ov["ga"] == {"threshold": 0.9}
+
+
+@pytest.mark.parametrize("content", [
+    {"mt": {"model": "/no/such/folder", "threshold": 0.96}},
+    {"mt": {"threshold": "high"}},
+    {"mt": 0.96},
+    [0.96],
+])
+def test_load_lang_overrides_rejects_bad_file(tmp_path, content):
+    f = tmp_path / "ov.json"
+    f.write_text(json.dumps(content))
+    with pytest.raises(ValueError):
+        near_dup.load_lang_overrides(f)

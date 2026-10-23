@@ -22,20 +22,17 @@ import json
 import multiprocessing
 from pathlib import Path
 
-from synthgen.pipeline import dedupe
+from synthgen.pipeline import dedupe, near_dup
 
 
 def _load_overrides(path: str | None) -> dict | None:
     """Read + validate the per-language override file; fail before any work."""
     if not path:
         return None
-    ov = json.loads(Path(path).read_text())
-    for lang, cfg in ov.items():
-        if not isinstance(cfg.get("threshold"), (int, float)):
-            raise SystemExit(f"FATAL: --lang-overrides: {lang} has no numeric threshold ({cfg})")
-        if "model" in cfg and not Path(cfg["model"], "modules.json").is_file():
-            raise SystemExit(f"FATAL: --lang-overrides: {lang} model folder missing: {cfg['model']}")
-    return ov
+    try:
+        return near_dup.load_lang_overrides(path)
+    except ValueError as e:
+        raise SystemExit(f"FATAL: --lang-overrides: {e}")
 
 
 def main() -> None:

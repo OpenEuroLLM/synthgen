@@ -119,7 +119,21 @@ def _cmd_back_translate(args):
 
 def _cmd_dedupe(args):
     import json as _json
-    from synthgen.pipeline import dedupe
+    import multiprocessing
+    from synthgen.pipeline import dedupe, near_dup
+    overrides = None
+    if args.lang_overrides:
+        if not (args.embedding_device or "").startswith("cuda"):
+            raise SystemExit("--lang-overrides requires --embedding-device cuda")
+        try:
+            overrides = near_dup.load_lang_overrides(args.lang_overrides)
+        except ValueError as e:
+            raise SystemExit(f"--lang-overrides: {e}")
+    if args.embedding_dedupe:
+        # Spawn, not fork: run() holds every row in the parent, and forked pool
+        # workers slowly copy that address space (refcount writes defeat
+        # copy-on-write) -- 20 of them OOM'd a 125 GB node on the 35-lang set.
+        multiprocessing.set_start_method("spawn", force=True)
     summary = dedupe.run(
         input=Path(args.input), output=Path(args.output),
         min_response_chars=args.min_response_chars,
@@ -128,6 +142,8 @@ def _cmd_dedupe(args):
         embedding_threshold=args.embedding_threshold,
         embedding_model=args.embedding_model,
         embedding_workers=args.embedding_workers,
+        embedding_device=args.embedding_device,
+        embedding_lang_overrides=overrides,
     )
     print(_json.dumps(summary, indent=2, ensure_ascii=False))
 
@@ -313,11 +329,22 @@ def main(argv: list[str] | None = None) -> None:
                         "model -- don't swap in an English-only one, see "
                         "near_dup.py)")
     p.add_argument("--embedding-workers", type=int, default=None,
-                   help="run --embedding-dedupe's O(n^2) per-language scan across "
-                        "this many languages concurrently (process pool; each "
-                        "language bucket is independent) instead of serially -- "
-                        "CPU-only, no GPU needed. Default: serial (1). Pass e.g. "
-                        "the node's core count for a real production run.")
+                   help="CPU (default): run --embedding-dedupe's O(n^2) "
+                        "per-language scan across this many languages "
+                        "concurrently (process pool; each language bucket is "
+                        "independent) instead of serially. Default: serial (1). "
+                        "With --embedding-device cuda: number of GPUs to use "
+                        "(default: all visible).")
+    p.add_argument("--embedding-device", default=None,
+                   help="'cuda' runs --embedding-dedupe on GPUs "
+                        "(near_dup.embedding_dedupe_gpu: same within-language "
+                        "greedy rule, one worker per GPU, blocked matmul scan). "
+                        "Default: CPU. Much faster at production scale.")
+    p.add_argument("--lang-overrides", default=None,
+                   help="JSON file giving some languages their own model and/or "
+                        "threshold, e.g. {\"mt\": {\"model\": \"/path/labse\", "
+                        "\"threshold\": 0.96}} for languages the default embedder "
+                        "does not cover. Requires --embedding-device cuda.")
     p.set_defaults(func=_cmd_dedupe)
 
     # qc
