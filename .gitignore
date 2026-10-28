@@ -26,3 +26,8 @@ pilot/
 .idea/
 .vscode/
 .DS_Store
+
+# Generated at run time by the MN5 .slurm scripts and vLLM launcher
+production/35lang_run/_per_node_*.sh
+production/35lang_run/_in_container_*.sh
+endpoints/
